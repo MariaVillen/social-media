@@ -1,7 +1,16 @@
 import classes from "./Post.module.scss";
-import { MoreVert, FavoriteBorder, ThumbUp } from "@mui/icons-material";
+import { MoreVert, Favorite, ThumbUp } from "@mui/icons-material";
+import { useState } from "react";
 
 export default function Post(props) {
+
+  const [like, setLike] = useState(props.post.like);
+  const [isLiked, setisLiked] = useState(false);
+
+  const likeHandler = () => {
+    setLike( isLiked ? like-1 : like + 1);
+    setisLiked(!isLiked);
+  }
 
   return (
     <div className={classes.post}>
@@ -13,7 +22,9 @@ export default function Post(props) {
               src={props.user.profilePicture}
               alt={props.user.username}
             />
-            <span className={classes.post_profile_username}>{props.user.username}</span>
+            <span className={classes.post_profile_username}>
+              {props.user.username}
+            </span>
             <span className={classes.post_date}>{props.post.date}</span>
           </div>
           <div className={classes.post_menu}>
@@ -26,9 +37,15 @@ export default function Post(props) {
         </div>
         <div className={classes.post_footer}>
           <div className={classes.post_likes}>
-            <FavoriteBorder className={classes.likeIcon} />
-            <ThumbUp className={classes.likeIcon} />
-            <span className={classes.likeCounter}>{props.post.like} people liked it!</span>
+            <button className={classes.favorite} onClick={likeHandler}>
+              <Favorite className={classes.likeIcon} />
+            </button>
+            <button className={classes.thumbup} onClick={likeHandler}>
+              <ThumbUp className={classes.likeIcon} />
+            </button>
+            <span className={classes.likeCounter}>
+              { like } people liked it!
+            </span>
           </div>
           <div className={classes.post_comments}>
             <span>{props.post.comment} comments</span>

@@ -57,12 +57,28 @@
     &_likes {
         display: flex;
         align-items: center;
+
+        button {
+            width: auto;
+            border-radius: 50%;
+            color: white;
+            text-align: center;
+            margin-right: 5px;
+            padding: 8px;
+
+            &.favorite {
+                background-color: red;
+            }
+            &.thumbup {
+                background-color: blue;
+            }
+
+        }
     }
 
     .likeIcon {
         width: 24px;
         height: 24px;
-        margin-right: 5px;
         cursor: pointer;
     }
 
