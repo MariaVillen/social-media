@@ -1,7 +1,8 @@
 import classes from "./Post.module.scss";
 import { MoreVert, FavoriteBorder, ThumbUp } from "@mui/icons-material";
 
-export default function Post() {
+export default function Post(props) {
+
   return (
     <div className={classes.post}>
       <div className={classes.post_wrapper}>
@@ -9,28 +10,28 @@ export default function Post() {
           <div className={classes.post_profile}>
             <img
               className={classes.post_profile_image}
-              src="/assets/persons/v3_0014506.png"
-              alt="person"
+              src={props.user.profilePicture}
+              alt={props.user.username}
             />
-            <span className={classes.post_profile_username}>Jhon Doe</span>
-            <span className={classes.post_date}>5 min ago</span>
+            <span className={classes.post_profile_username}>{props.user.username}</span>
+            <span className={classes.post_date}>{props.post.date}</span>
           </div>
           <div className={classes.post_menu}>
             <MoreVert />
           </div>
         </div>
         <div className={classes.post_body}>
-          <span className={classes.post_body_text}>Hey first post!</span>
-          <img src="/assets/posts/paisaje2.jpg" alt="" />
+          <span className={classes.post_body_text}>{props.post?.desc}</span>
+          <img src={props.post.photo} alt="" />
         </div>
         <div className={classes.post_footer}>
           <div className={classes.post_likes}>
             <FavoriteBorder className={classes.likeIcon} />
             <ThumbUp className={classes.likeIcon} />
-            <span className={classes.likeCounter}>32 people liked it!</span>
+            <span className={classes.likeCounter}>{props.post.like} people liked it!</span>
           </div>
           <div className={classes.post_comments}>
-            <span>9 comments</span>
+            <span>{props.post.comment} comments</span>
           </div>
         </div>
       </div>
