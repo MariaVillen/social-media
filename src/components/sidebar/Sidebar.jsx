@@ -1,5 +1,8 @@
 import classes from "./Sidebar.module.scss";
 import { RssFeed, Chat, PlayCircle, Group, Bookmark, HelpOutline, WorkOutline, Event, School } from "@mui/icons-material";
+import { Users } from '../../dummyData';
+import CloseFriend from '../closeFriend/CloseFriend';
+
 export default function Sidebar() {
   return (
     <div className={classes.container}>
@@ -45,38 +48,11 @@ export default function Sidebar() {
         <button className={classes.button}>Show More</button>
         <hr className={classes.separator}/>
         <ul className={classes.friendList}>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
-            <li className={classes.friend}>
-                <img src="/assets/persons/v3_0287800.png" alt="Jhon Doe" className={classes.profilePictureImg} />
-                <span className={classes.friendName}>Jhon Doe</span>
-            </li>
+
+          { Users.map(
+            (user) => { return <CloseFriend key={user.id} user = {user} />}
+          ) }            
+
         </ul>
 
       </div>

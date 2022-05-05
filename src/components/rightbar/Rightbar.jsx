@@ -1,5 +1,8 @@
 import classes from './Rightbar.module.scss';
 import { Cake } from '@mui/icons-material';
+import { Users } from '../../dummyData';
+import Online from '../online/Online';
+
 
 export default function Rightbar() {
   return (
@@ -16,51 +19,9 @@ export default function Rightbar() {
           Online Friends
         </h4>
         <ul className={classes.friendList}>
-          <li className={classes.friend}>
-            <div className={classes.profile_image}>
-              <img src="/assets/persons/v3_0634863.png" alt="" />
-              <span className={classes.online}></span>
-            </div>
-            <span className={classes.username}>
-              John Carter
-            </span>
-          </li>
-          <li className={classes.friend}>
-            <div className={classes.profile_image}>
-              <img src="/assets/persons/v3_0634863.png" alt="" />
-              <span className={classes.online}></span>
-            </div>
-            <span className={classes.username}>
-              John Carter
-            </span>
-          </li>
-          <li className={classes.friend}>
-            <div className={classes.profile_image}>
-              <img src="/assets/persons/v3_0634863.png" alt="" />
-              <span className={classes.online}></span>
-            </div>
-            <span className={classes.username}>
-              John Carter
-            </span>
-          </li>
-          <li className={classes.friend}>
-            <div className={classes.profile_image}>
-              <img src="/assets/persons/v3_0634863.png" alt="" />
-              <span className={classes.online}></span>
-            </div>
-            <span className={classes.username}>
-              John Carter
-            </span>
-          </li>
-          <li className={classes.friend}>
-            <div className={classes.profile_image}>
-              <img src="/assets/persons/v3_0634863.png" alt="" />
-              <span className={classes.online}></span>
-            </div>
-            <span className={classes.username}>
-              John Carter
-            </span>
-          </li>
+          {Users.map((user) => {
+            return (<Online key={ user.id } user={user} />)
+          })}
         </ul>
       </div>
     </div>
