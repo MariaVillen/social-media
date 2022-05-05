@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,IAAI,EAAE,GAAG;CACZ;;AAED,AAAA,QAAQ,CAAC;EACL,OAAO,EAAE,IAAI;CAChB",
+    "sources": [
+        "../src/components/feed/Feed.module.scss"
+    ],
+    "names": [],
+    "file": "Feed.module.css"
+}

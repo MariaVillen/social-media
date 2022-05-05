@@ -1,4 +1,4 @@
-import classes from "./Sidebar.module.css";
+import classes from "./Sidebar.module.scss";
 import { RssFeed, Chat, PlayCircle, Group, Bookmark, HelpOutline, WorkOutline, Event, School } from "@mui/icons-material";
 export default function Sidebar() {
   return (

@@ -1,4 +1,4 @@
-import classes from './Rightbar.module.css';
+import classes from './Rightbar.module.scss';
 
 export default function Rightbar() {
   return (

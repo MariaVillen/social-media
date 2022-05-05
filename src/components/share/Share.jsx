@@ -1,5 +1,5 @@
 import { PermMedia, Label, Room, EmojiEmotions } from "@mui/icons-material";
-import classes from "./Share.module.css";
+import classes from "./Share.module.scss";
 
 export default function Share() {
   return (
@@ -25,7 +25,7 @@ export default function Share() {
             </div>
             <div className={classes.shareOption}>
               <Label htmlColor="blue" className={classes.shareIcon} />
-              <span className={classes.shareOptionText}>Tagº</span>
+              <span className={classes.shareOptionText}>Tag</span>
             </div>
             <div className={classes.shareOption}>
               <Room htmlColor="green" className={classes.shareIcon} />
