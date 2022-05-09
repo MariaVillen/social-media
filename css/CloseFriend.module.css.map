@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACJ,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,IAAI;EACnB,WAAW,EAAE,MAAM;CACtB;;AAED,AAAA,kBAAkB,CAAC;EACf,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,IAAI;CACf",
+    "sources": [
+        "../src/components/closeFriend/CloseFriend.module.scss"
+    ],
+    "names": [],
+    "file": "CloseFriend.module.css"
+}

@@ -44,42 +44,4 @@
   margin: 0;
   list-style: none;
 }
-
-.friendList .friend {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-bottom: 15px;
-}
-
-.friendList .profile_image {
-  margin-right: 10px;
-  position: relative;
-}
-
-.friendList .profile_image img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.friendList .profile_image span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: limegreen;
-  position: absolute;
-  top: -2px;
-  right: 0;
-  border: 2px solid white;
-}
-
-.friendList .userName {
-  font-weight: 500;
-}
 /*# sourceMappingURL=Rightbar.module.css.map */

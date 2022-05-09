@@ -82,10 +82,26 @@
           align-items: center;
 }
 
+.post_likes button {
+  width: auto;
+  border-radius: 50%;
+  color: white;
+  text-align: center;
+  margin-right: 5px;
+  padding: 8px;
+}
+
+.post_likes button.favorite {
+  background-color: red;
+}
+
+.post_likes button.thumbup {
+  background-color: blue;
+}
+
 .post .likeIcon {
   width: 24px;
   height: 24px;
-  margin-right: 5px;
   cursor: pointer;
 }
 

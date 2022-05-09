@@ -1,13 +1,11 @@
-import Home from './pages/home/Home';
-//import PersonIcon from '@mui/icons-material/Person'
+import InitPage from './pages/init/Init';
 
 function App() {
-  return (<Home/>
-  );
+  return ( <InitPage isLoggedIn={false}/>);
 }
 
 export default App;
 
 
 //https://www.youtube.com/watch?v=zM93yZ_8SvE&list=PLK-8DbjfYVG9OVuxSxhtTZGeSrTAy1F3R&index=40&ab_channel=LamaDev
-//1:42:00 / profile
+//1:51:35 / profile
