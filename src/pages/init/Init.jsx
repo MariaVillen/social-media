@@ -1,14 +1,19 @@
-import HomePage from "../home/Home";
+
 import Login from "../login/Login";
+import Layout from "../layout/Layout";
+
 
 const InitPage = (props) => {
 
     const isLoggedIn = props.isLoggedIn;
 
     if (isLoggedIn) {
-      return <HomePage />;
-    }
-    return <Login/>;
+      return (
+        <Layout/>
+    )
+    } else {
+    return <Login/>
+  }
   }
 
 export default InitPage;
