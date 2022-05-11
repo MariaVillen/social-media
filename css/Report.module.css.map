@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "../src/pages/init/Init.module.scss"
+        "../src/pages/reports/Report.module.scss"
     ],
     "names": [],
-    "file": "Init.module.css"
+    "file": "Report.module.css"
 }

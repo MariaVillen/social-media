@@ -1,3 +1,5 @@
+/* Breakpoints */
+/* Break Points */
 .topbar {
   height: 70px;
   width: 100%;
@@ -12,11 +14,11 @@
       -ms-flex-pack: justify;
           justify-content: space-between;
   top: 0;
-  padding: 10px;
 }
 
 .topbar_logo {
   height: 80%;
+  padding: 10px;
 }
 
 .topbar_logo img {
@@ -24,6 +26,16 @@
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.topbar_menu {
+  padding-right: 1em;
+}
+
+@media screen and (min-width: 562px) {
+  .topbar_menu {
+    height: 100%;
+  }
 }
 
 .topbar_avatar {
@@ -93,10 +105,54 @@
   }
 }
 
-.topbar_link {
+.topbar_item {
+  list-style: none;
   cursor: pointer;
   font-size: 1.2em;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+}
+
+@media screen and (min-width: 562px) {
+  .topbar_item {
+    height: 100%;
+  }
+}
+
+.topbar_item.notLink {
   padding: 1em;
-  list-style: none;
+  display: inline-block;
+  width: 100%;
+}
+
+@media screen and (min-width: 562px) {
+  .topbar_item.notLink {
+    width: auto;
+  }
+}
+
+.topbar_item.notLink:hover {
+  background-color: rgba(143, 170, 223, 0.918);
+}
+
+.topbar_link {
+  color: inherit;
+  text-decoration: none;
+  padding: 1em;
+  height: 100%;
+  display: inline-block;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
+  width: 100%;
+}
+
+@media screen and (min-width: 562px) {
+  .topbar_link {
+    width: auto;
+  }
+}
+
+.topbar_link:hover {
+  background-color: rgba(143, 170, 223, 0.918);
 }
 /*# sourceMappingURL=Topbar.module.css.map */

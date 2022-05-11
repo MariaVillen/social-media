@@ -7,7 +7,7 @@ export default function Share() {
       <div className={classes.wrapper}>
         <div className={classes.shareHeader}>
           <img
-            src="/assets/persons/v3_0014506.png"
+            src="/assets/persons/8.jpeg"
             alt="name"
             className={classes.profileImg}
           />

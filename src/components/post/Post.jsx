@@ -40,9 +40,6 @@ export default function Post(props) {
             <button className={classes.favorite} onClick={likeHandler}>
               <Favorite className={classes.likeIcon} />
             </button>
-            <button className={classes.thumbup} onClick={likeHandler}>
-              <ThumbUp className={classes.likeIcon} />
-            </button>
             <span className={classes.likeCounter}>
               { like } people liked it!
             </span>

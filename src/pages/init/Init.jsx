@@ -1,19 +1,27 @@
-
 import Login from "../login/Login";
 import Layout from "../layout/Layout";
+import HomePage from "../home/Home";
+import ProfilePage from "../profile/Profile";
+import AdminPage from "../admin/Admin";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const InitPage = (props) => {
+  const isLoggedIn = props.isLoggedIn;
 
-    const isLoggedIn = props.isLoggedIn;
-
-    if (isLoggedIn) {
-      return (
-        <Layout/>
-    )
-    } else {
-    return <Login/>
-  }
-  }
+  return isLoggedIn ? (
+    <BrowserRouter>
+      <Layout onLogin={props.onLogin}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/admin" element={<AdminPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  ) : (
+    <Login onLogin={props.onLogin}/>
+  );
+};
 
 export default InitPage;

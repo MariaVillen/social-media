@@ -1,21 +1,27 @@
+@import "../../styles-utils/graphiqueColors.scss";
+@import "../../styles-utils/mixins.scss";
+
 .home_container {
-    display: flex;
-    width: 80%;
-    margin: 0 auto;
-    background: rgb(236, 236, 236);
+  display: flex;
+  margin: 0 auto;
+  background: $graylight-color;
 }
 
-.menu_content {
-    display: none;
-    width: 30%;
+.home_sidebar {
+  display: none;
 
-    @media screen and (min-width: 562px) {
-        display:inherit;
-    }
+  @include mq(small) {
+    display: inherit;
+    flex: 2.5;
+  }
 }
+
 .feed_content {
-    flex: 2;
-    margin: 5px;
-    background-color: mistyrose;
-    margin-top: 10px;
+  flex: 5.5;
+  margin: 5px;
+  background-color: $secondary-color;
+  margin-top: 10px;
+}
+.more_comment_content {
+  flex: 2;
 }

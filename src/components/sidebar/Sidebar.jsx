@@ -2,51 +2,37 @@ import classes from "./Sidebar.module.scss";
 import { RssFeed, Chat, PlayCircle, Group, Bookmark, HelpOutline, WorkOutline, Event, School } from "@mui/icons-material";
 import { Users } from '../../dummyData';
 import CloseFriend from '../closeFriend/CloseFriend';
+import ProfileCard from '../profile-card/ProfileCard';
 
-export default function Sidebar() {
+export default function Sidebar({className}) {
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} ${className}`}>
+      <ProfileCard/>
       <div className={classes.wrapper}>
         <ul className={classes.sidebarList}>
+        <li className={classes.sidebarListItem}>
+            <RssFeed className={classes.sidebarIcon} />
+            <span className={classes.sidebarListItemText}> Changer biographie </span>
+          </li>
           <li className={classes.sidebarListItem}>
             <RssFeed className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Feed </span>
+            <span className={classes.sidebarListItemText}> Changer photo profile </span>
           </li>
           <li className={classes.sidebarListItem}>
             <Chat className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Chats </span>
+            <span className={classes.sidebarListItemText}> Changer photo header </span>
           </li>
           <li className={classes.sidebarListItem}>
             <PlayCircle className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Videos </span>
+            <span className={classes.sidebarListItemText}> Changer Mot de Pas </span>
           </li>
           <li className={classes.sidebarListItem}>
             <Group className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Groups </span>
-          </li>
-          <li className={classes.sidebarListItem}>
-            <Bookmark className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Bookmarks </span>
-          </li>
-          <li className={classes.sidebarListItem}>
-            <HelpOutline className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Questions </span>
-          </li>
-          <li className={classes.sidebarListItem}>
-            <WorkOutline className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Jobs </span>
-          </li>
-          <li className={classes.sidebarListItem}>
-            <Event className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Events </span>
-          </li>
-          <li className={classes.sidebarListItem}>
-            <School className={classes.sidebarIcon} />
-            <span className={classes.sidebarListItemText}> Courses </span>
+            <span className={classes.sidebarListItemText}> Demander suppresion compte </span>
           </li>
         </ul>
-        <button className={classes.button}>Show More</button>
         <hr className={classes.separator}/>
+        <h1>Mes amis</h1>
         <ul className={classes.friendList}>
 
           { Users.map(

@@ -1,41 +1,11 @@
-.container {
-    flex: 3.5;
+.container{
+    margin: 10px 5px;
 }
-
 .wrapper {
-    padding: 20px 20px 0 0;
-}
-
-.birthday {
-
-    display: flex;
-    align-items: center;
-
-    &_icon{
-        height: 40px;
-        width: 40px;
-        margin: 10px;
-        color: rgb(203, 0, 176);  
-    }
-
-    &_text {
-        font-weight: 300;
-        font-size: 15px;
-    }
-}
-
-.ad {
-    width: 100%;
-    border-radius: 10px;
-    margin: 30px 0;
+    padding: 20px;
 }
 
 .title {
-    margin-bottom: 20px;
-}
-
-.friendList {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    font-size: 26px;
+    font-weight: 700;
 }

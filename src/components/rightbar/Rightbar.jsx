@@ -1,29 +1,15 @@
 import classes from './Rightbar.module.scss';
-import { Cake } from '@mui/icons-material';
-import { Users } from '../../dummyData';
-import Online from '../online/Online';
+import { Users, Posts} from '../../dummyData';
+import Post from '../post/Post';
 
 
-export default function Rightbar() {
+export default function Rightbar({className}) {
   return (
-    <div className={classes.container}>
-      <div className={classes.wrapper}>
-        <div className={classes.birthday}>
-          <Cake className={classes.birthday_icon} />
-          <span className={classes.birthday_text}>
-            <b>Pola Foster</b> and <b>3 other friends</b> have a birthday today.
-          </span>
-        </div>
-        <img src="/assets/ad.png" alt="Ad" className={classes.ad} />   
-        <h4 className={classes.title}>
-          Online Friends
-        </h4>
-        <ul className={classes.friendList}>
-          {Users.map((user) => {
-            return (<Online key={ user.id } user={user} />)
-          })}
-        </ul>
-      </div>
+    <div className={`${classes.container} ${className}`}>
+      <p className={classes.title}> Top Comments Posts!</p>
+      {Posts.map((p)=>{
+          return <Post key={p.id} post={p} user={Users.filter((u)=> u.id === p.userId)[0]}/>
+        })}
     </div>
   )
 }

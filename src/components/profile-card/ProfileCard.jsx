@@ -8,14 +8,14 @@ export default function ProfileCard(props) {
       <div className={classes.profile_container_cover}>
       <img
         className={classes.profile_coverImage}
-        src="/assets/posts/3.jpeg"
+        src="/assets/covers/1.jpg"
         alt=""
       />
       </div>
       <div className={classes.profile_container_avatar}>
       <img
         className={classes.profile_userImage}
-        src="/assets/persons/7.jpeg"
+        src="/assets/persons/8.jpeg"
         alt=""
       />
       </div>

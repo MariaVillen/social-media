@@ -1,33 +1,62 @@
+/* Breakpoints */
+/* Break Points */
 .auth {
-  border-top: 13px solid orangered;
-  margin: 3rem auto;
   width: 95%;
   max-width: 25rem;
+  margin: 3rem auto;
+  padding: 0;
+  text-align: center;
+  border-top: 13px solid #eb3d25;
   border-radius: 6px;
   background-color: white;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
-  padding: 0;
+}
+
+.auth h1 {
+  padding: 1em;
   text-align: center;
+  color: #333333;
+  background-color: mistyrose;
 }
 
 .auth form {
   padding: 2em;
 }
 
-.auth h1 {
-  text-align: center;
-  color: #006354;
-  padding: 1em;
-  background-color: mistyrose;
+.auth_control {
+  margin-bottom: 0.5rem;
 }
 
-.control_check {
+.auth_control label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333333;
+}
+
+.auth_control input {
+  width: 100%;
+  padding: 0.25rem;
+  font-size: inherit;
+  text-align: left;
+  outline: none;
+  border-radius: 4px;
+  border: 2px solid mistyrose;
+  background-color: white;
+  color: #333333;
+}
+
+.auth_control input:focus, .auth_control input:active {
+  border: 2px solid #eb3d25;
+}
+
+.auth_check {
   padding: 1em;
   text-align: left;
 }
 
-.control_check label {
+.auth_check label {
   font-size: 14px;
   padding-left: 1em;
   width: 94%;
@@ -35,40 +64,12 @@
   vertical-align: middle;
 }
 
-.control_check input {
+.auth_check input {
   display: inline-block;
   vertical-align: middle;
 }
 
-.control {
-  margin-bottom: 0.5rem;
-}
-
-.control label {
-  display: block;
-  color: #006354;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.control input {
-  font: inherit;
-  background-color: white;
-  color: #006354;
-  border-radius: 4px;
-  border: 2px solid mistyrose;
-  width: 100%;
-  text-align: left;
-  padding: 0.25rem;
-  outline: none;
-}
-
-.control input:focus, .control input:active {
-  border: 2px solid orangered;
-}
-
-.actions {
-  margin-top: 1.5rem;
+.auth_actions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -79,35 +80,36 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: 1.5rem;
 }
 
-.actions button {
-  cursor: pointer;
-  font: inherit;
-  color: white;
-  background-color: orangered;
-  border: 1px solid orangered;
-  border-radius: 4px;
-  padding: 0.5rem 2.5rem;
-  font-size: bolder;
+.auth_actions_link {
   width: auto;
+  padding: 0.5rem 2.5rem;
+  cursor: pointer;
+  font-size: 1em;
+  color: white;
+  background-color: #eb3d25;
+  -webkit-transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms ease-in-out;
 }
 
-.actions button:hover {
+.auth_actions_link:hover {
   background-color: #6fb9b5;
-  border-color: #6fb9b5;
 }
 
-.actions .toggle {
+.auth_actions_toggle {
+  width: auto;
   margin-top: 1rem;
-  background-color: transparent;
-  color: orangered;
-  border: none;
   padding: 0.15rem 1.5rem;
+  font-size: 1em;
+  color: #eb3d25;
+  border: none;
+  background-color: transparent;
 }
 
-.actions .toggle:hover {
-  background-color: transparent;
+.auth_actions_toggle:hover {
   color: #6fb9b5;
+  background-color: transparent;
 }
 /*# sourceMappingURL=SignUpForm.module.css.map */
