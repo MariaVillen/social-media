@@ -32,6 +32,10 @@ const SignUpForm = (props) => {
           <label htmlFor='password'>Mot de pas</label>
           <input type='password' id='password' required />
         </div>
+        <div className={classes.control_check}>
+          <input type='checkbox' id='acceptCond' required />
+          <label htmlFor='acceptCond'>J'accept les conditions génerales et la politique d'utilisation des données.</label>
+        </div>
         <div className={classes.actions}>
           <button>Create Account</button>
           <button

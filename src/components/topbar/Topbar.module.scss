@@ -1,96 +1,83 @@
-.container{
-    height: 60px;
+.topbar {
+    height: 70px;
     width: 100%;
-    background-color: #1877f2;
+    background-color: darkblue;
     display: flex;
     align-items: center;
-    position: sticky;
+    justify-content: space-between;
     top: 0;
-    z-index: 999;
+    padding: 10px;
 
-    &_left{
-        flex: 3;
+    &_logo {
+        height: 80%;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
     }
-
-    &_center {
-        flex: 5;
-    }
-
-    &_right {
-        flex: 4;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        color: white;
-    }
-}
-
-.logo {
-    font-size: 24px;
-    margin-left: 20px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
-}
-
-.searchBar {
-    width: 95%;
-    height: 30px;
-    background-color: white;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding-right: 0.5em;
     
-        &_icon {
-            font-size: 48px !important;
-            margin-left: 20px;
+    &_avatar {
+        height: 48px;
+        width: 48px;
+        
+        @media screen and (min-width: 562px) {
+            display: none;
         }
 
-        &_input {
-            border: none;
-            flex-grow: 2;
+        img {
+            border-radius: 50%;
+            border: 3px solid white;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
         }
+        &.show + .topbar_links {
+            max-width: 100%;
 
-        &_input:focus {
-            outline: none;
+            @media screen and (min-width: 562px) {
+                max-width: 600px;
+            }
+
         }
-}
-
-
-.topbarLink {
-    margin-right: 10px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-.topbarIcons {
-    display: flex;
-
-    &_item {
-        margin-right: 15px;
-        cursor: pointer;
-        position: relative;
     }
-    &_badge {
-        width: 15px;
-        height: 15px;
-        background-color: red;
-        border-radius: 50%;
-        color: white;
+
+    &_links {
+        display: flex;
+        flex-direction: column;
         position: absolute;
-        top: -5px;
-        right: -5px;
-        justify-content: center;
-        font-size: 12px;
-        text-align: center;
+        background: rgba(255,255,255,0.9);
+        color: black;
+        right: 0;
+        top: 4.5em;
+        width: 100%;
+        height: 100vh;
+        max-width: 0px;
+        transition: max-width 300ms ease-in-out;
+        padding: 0;
+        z-index: 3;
+        overflow: hidden;
+
+
+        @media screen and (min-width: 562px) {
+            flex-direction: row;
+            position: static;
+            background-color: transparent;
+            color: white;
+            max-width: 100%;
+            height: 100%;
+        }
     }
+
+    &_link {
+        cursor: pointer;
+        font-size: 1.2em;
+        padding: 1em;
+        list-style: none;
+
+    }
+
 }
 
-.topbar_img{
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    object-fit: cover;
-    cursor: pointer;
-}
+

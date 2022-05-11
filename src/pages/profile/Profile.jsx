@@ -8,7 +8,6 @@ import Rightbar from "../../components/rightbar/Rightbar";
 export default function Profile() {
   return (
     <>
-      <Topbar />
       <div className={classes.profile}>
         <Sidebar />
         <div className={classes.right}>

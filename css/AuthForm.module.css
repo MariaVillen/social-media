@@ -54,19 +54,6 @@
   border: 2px solid orangered;
 }
 
-button.btn_link {
-  background: none;
-  color: orangered;
-  width: auto;
-  padding-bottom: 2em;
-  cursor: pointer;
-  height: auto;
-}
-
-button.btn_link:hover {
-  text-decoration: underline;
-}
-
 .actions {
   margin-top: 1.5rem;
   display: -webkit-box;
@@ -90,7 +77,6 @@ button.btn_link:hover {
   border-radius: 4px;
   padding: 0.5rem 2.5rem;
   font-size: bolder;
-  width: auto;
 }
 
 .actions button:hover {
@@ -110,4 +96,4 @@ button.btn_link:hover {
   background-color: transparent;
   color: #6fb9b5;
 }
-/*# sourceMappingURL=LoginForm.module.css.map */
+/*# sourceMappingURL=AuthForm.module.css.map */

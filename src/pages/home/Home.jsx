@@ -1,18 +1,17 @@
 import classes from "./Home.module.scss";
-import Topbar from "../../components/topbar/Topbar";
-import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
-import Rightbar from "../../components/rightbar/Rightbar";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 export default function Home() {
+
   return (
-    <>
-      <Topbar />
-      <div className={classes.homeContainer}>
+    <div className={classes.home_container}> 
+      <div className={classes.menu_content}>
         <Sidebar />
-        <Feed />
-        <Rightbar />
       </div>
-    </>
+      <div className={classes.feed_content}>
+        <Feed />
+      </div>
+    </div>   
   );
 }

@@ -25,8 +25,25 @@
     
   }
   
+  .control_check {
+    padding: 1em;
+    text-align: left;
 
-  .auth 
+    label {
+      font-size: 14px;
+      padding-left: 1em;
+      width: 94%;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    input {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+  }
+
   .control {
     margin-bottom: 0.5rem;
 
@@ -72,6 +89,7 @@
     border-radius: 4px;
     padding: 0.5rem 2.5rem;
     font-size: bolder;
+    width: auto;
   }
   
   .actions button:hover {

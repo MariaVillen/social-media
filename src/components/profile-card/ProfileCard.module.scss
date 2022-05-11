@@ -1,0 +1,70 @@
+
+.profile {
+    &_card {
+    background: white;
+    }
+
+    &_header {
+        position: relative;
+    }
+
+    &_coverImage {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        top: 0;
+        left: 0;
+    }
+
+    &_container_cover{
+        position: relative;
+        padding-bottom: calc(100% * 4/12);;
+        margin-bottom: 20%;
+    }
+
+    &_container_avatar{
+        width: 30%;
+        position: relative;
+        left: 0;
+        right: 0;
+        border-radius: 50%;
+        margin: auto;
+        border: 3px solid white;
+        padding-bottom: 30%;
+        margin-top: -37%;
+
+
+    }
+    &_userImage {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    &_info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1em;
+    }
+
+    &_description {
+        font-weight: 300;
+    }
+    &_name {
+        font-size: 24px;
+    }
+
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+}

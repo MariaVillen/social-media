@@ -1,4 +1,21 @@
-.homeContainer {
+.home_container {
     display: flex;
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
+    background: rgb(236, 236, 236);
+}
+
+.menu_content {
+    display: none;
+    width: 30%;
+
+    @media screen and (min-width: 562px) {
+        display:inherit;
+    }
+}
+.feed_content {
+    flex: 2;
+    margin: 5px;
+    background-color: mistyrose;
+    margin-top: 10px;
 }

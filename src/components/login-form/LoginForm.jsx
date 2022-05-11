@@ -27,6 +27,8 @@ const LoginForm = (props) => {
           <label htmlFor='password'>Mot de pas</label>
           <input  type='password' id='password' required />
         </div>
+        <button className={classes.btn_link}>Mot de passe oublié ?</button>
+        <hr/>
         <div className={classes.actions}>
           <button>Login</button>
           <button

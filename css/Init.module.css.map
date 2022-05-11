@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACP,gBAAgB,EAAE,SAAS;CAC9B",
+    "sources": [
+        "../src/pages/init/Init.module.scss"
+    ],
+    "names": [],
+    "file": "Init.module.css"
+}

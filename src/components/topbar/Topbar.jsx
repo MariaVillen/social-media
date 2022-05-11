@@ -1,45 +1,36 @@
-import classes from './Topbar.module.scss';
-import { Search, Person, Chat, Notifications } from '@mui/icons-material';
+import classes from "./Topbar.module.scss";
+import { useState } from "react";
+import Logo from "../../images/logos/icon-left-fontre.png";
+import { Link } from "react-router-dom";
 
 export default function Topbar() {
+  const [ isSubMenuOpen, setSubMenuOpen ] = useState(false);
+
+  const subMenuHandler = ()=>{
+    setSubMenuOpen(!isSubMenuOpen);
+    console.log('isSubMenuOpen: ', isSubMenuOpen);
+  } 
+
   return (
-    <div className = {classes.container}>
-        <div className = {classes.container_left}>
-            <span className={classes.logo} >Groupama</span>
+    <div className={classes.topbar}>
+
+      <div className={classes.topbar_logo}>
+        <img src={Logo} alt="Groupomania Logo" />
+      </div>
+
+      <nav>
+
+        <div onClick={subMenuHandler} className={`${classes.topbar_avatar} ${isSubMenuOpen && classes.show}`}>
+          <img src="/assets/persons/v3_0014506.png" alt="Profile" />
         </div>
-        <div className={classes.container_center}>
-          <div className={classes.searchBar}>
-          <Search className = {classes.search_icon} />
-          <input placeholder="Search for friends, post or video" type="text" className={classes.search_input} />
-          </div>
-        </div>
-        <div className={classes.container_right}>
-          <div className={classes.topbarLinks}>
-            <span className={classes.topbarLink}>Homepage</span>
-            <span className={classes.topbarLink}>Timeline</span>
-          </div>
-          <div className={classes.topbarIcons}>
-            <div className={classes.topbarIcons_item}>
-              <Person />
-              <span className={classes.topbarIcons_badge}>
-                1
-              </span>
-            </div>
-            <div className={classes.topbarIcons_item}>
-              <Chat />
-              <span className={classes.topbarIcons_badge}>
-                2
-              </span>
-            </div>
-            <div className={classes.topbarIcons_item}>
-              <Notifications />
-              <span className={classes.topbarIcons_badge}>
-                1
-              </span>
-            </div>
-          </div>
-          <img src="/assets/persons/v3_0014506.png" alt="Profile" className={classes.topbar_img} />
-        </div>
+
+        <ul className={classes.topbar_links}>
+          <li className={classes.topbar_link}><Link to='/'>Accueil</Link></li>
+          <li className={classes.topbar_link}><Link to='/profile'>Profile</Link></li>
+          <li className={classes.topbar_link}>Profile</li>
+        </ul>
+
+      </nav>
     </div>
-  )
+  );
 }
