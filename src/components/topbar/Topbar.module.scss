@@ -3,17 +3,17 @@
 
 
 .topbar {
-    height: 70px;
-    width: 100%;
-    background-color: darkblue;
+    
     display: flex;
     align-items: center;
     justify-content: space-between;
-    top: 0;
+    height: 70px;
+    width: 100%;
+    background-color: white;
 
     &_logo {
-        height: 80%;
-        padding:10px;
+        height: 100%;
+        padding: 10px;
 
         img {
             height: 100%;
@@ -24,7 +24,7 @@
     
     &_menu {
         padding-right: 1em;
-        @media screen and (min-width: 562px) {
+        @include mq(small) {
         height: 100%;
         }
     }
@@ -32,25 +32,24 @@
     &_avatar {
         height: 48px;
         width: 48px;
-        
-        @media screen and (min-width: 562px) {
+        @include mq(small) {
             display: none;
         }
 
         img {
-            border-radius: 50%;
-            border: 3px solid white;
             height: 100%;
             width: 100%;
             object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid white;
         }
+
         &.show + .topbar_links {
             max-width: 100%;
 
-            @media screen and (min-width: 562px) {
+            @include mq(small) {
                 max-width: 600px;
             }
-
         }
     }
 
@@ -58,26 +57,25 @@
         display: flex;
         flex-direction: column;
         position: absolute;
-        background: rgba(255,255,255,0.9);
-        color: black;
         right: 0;
         top: 4.5em;
         width: 100%;
         height: 100vh;
         max-width: 0px;
-        transition: max-width 300ms ease-in-out;
         padding: 0;
-        z-index: 3;
+        background: rgba(255,255,255,0.9);
+        color: $black-color;
+        z-index: 2;
         overflow: hidden;
-
-
-        @media screen and (min-width: 562px) {
+        transition: max-width 300ms ease-in-out;
+    
+        @include mq(small) {
             flex-direction: row;
             position: static;
-            background-color: transparent;
-            color: white;
             max-width: 100%;
             height: 100%;
+            background-color: transparent;
+            color: $black-color;
         }
     }
 
@@ -87,20 +85,22 @@
         font-size: 1.2em;
         transition: background-color 500ms ease-in-out;
 
-        @media screen and (min-width: 562px) {
+        @include mq(small) {
             height: 100%;
         }
         
         &.notLink {
-            padding: 1em;
-            display: inline-block; 
             width: 100%; 
-            @media screen and (min-width: 562px) {
+            display: inline-block; 
+            padding: 1em;
+         
+            @include mq(small) {
                 width: auto;
             }
             
             &:hover {
-                background-color: rgba(143, 170, 223, 0.918);
+                background-color: $primary-color+E6;
+                
             }
         }
     }
@@ -119,7 +119,7 @@
     }
     
     &_link:hover {
-        background-color: rgba(143, 170, 223, 0.918);
+     background-color: $primary-color+E6;
     }
 
 }
