@@ -1,3 +1,5 @@
+@import '../../styles-utils/mixins.scss';
+
 .container {
     width: 100%;
 }
@@ -8,4 +10,5 @@
     left: 0;
     width: 100%;
     z-index: 999;
+    @include box--shadow;
 }

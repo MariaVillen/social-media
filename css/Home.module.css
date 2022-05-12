@@ -10,6 +10,11 @@
 
 .home_sidebar {
   display: none;
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
 }
 
 @media screen and (min-width: 562px) {
@@ -25,14 +30,28 @@
   -webkit-box-flex: 5.5;
       -ms-flex: 5.5;
           flex: 5.5;
-  margin: 5px;
-  background-color: mistyrose;
-  margin-top: 10px;
 }
 
 .more_comment_content {
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  display: none;
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
+  padding: 0 1em;
+}
+
+@media screen and (min-width: 562px) {
+  .more_comment_content {
+    display: inherit;
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=Home.module.css.map */

@@ -1,9 +1,6 @@
 /* Breakpoints */
 /* Break Points */
 .topbar {
-  height: 70px;
-  width: 100%;
-  background-color: darkblue;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -13,11 +10,13 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  top: 0;
+  height: 70px;
+  width: 100%;
+  background-color: white;
 }
 
 .topbar_logo {
-  height: 80%;
+  height: 100%;
   padding: 10px;
 }
 
@@ -50,12 +49,12 @@
 }
 
 .topbar_avatar img {
-  border-radius: 50%;
-  border: 3px solid white;
   height: 100%;
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid white;
 }
 
 .topbar_avatar.show + .topbar_links {
@@ -77,18 +76,18 @@
       -ms-flex-direction: column;
           flex-direction: column;
   position: absolute;
-  background: rgba(255, 255, 255, 0.9);
-  color: black;
   right: 0;
   top: 4.5em;
   width: 100%;
   height: 100vh;
   max-width: 0px;
-  -webkit-transition: max-width 300ms ease-in-out;
-  transition: max-width 300ms ease-in-out;
   padding: 0;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333333;
   z-index: 3;
   overflow: hidden;
+  -webkit-transition: max-width 300ms ease-in-out;
+  transition: max-width 300ms ease-in-out;
 }
 
 @media screen and (min-width: 562px) {
@@ -98,10 +97,10 @@
         -ms-flex-direction: row;
             flex-direction: row;
     position: static;
-    background-color: transparent;
-    color: white;
     max-width: 100%;
     height: 100%;
+    background-color: transparent;
+    color: #333333;
   }
 }
 
@@ -120,9 +119,9 @@
 }
 
 .topbar_item.notLink {
-  padding: 1em;
-  display: inline-block;
   width: 100%;
+  display: inline-block;
+  padding: 1em;
 }
 
 @media screen and (min-width: 562px) {
@@ -132,7 +131,7 @@
 }
 
 .topbar_item.notLink:hover {
-  background-color: rgba(143, 170, 223, 0.918);
+  background-color: #eb3d25E6;
 }
 
 .topbar_link {
@@ -153,6 +152,6 @@
 }
 
 .topbar_link:hover {
-  background-color: rgba(143, 170, 223, 0.918);
+  background-color: #eb3d25E6;
 }
 /*# sourceMappingURL=Topbar.module.css.map */

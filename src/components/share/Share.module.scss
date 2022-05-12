@@ -2,7 +2,6 @@
     width: 100%;
     box-shadow: 0px 0px 11px 0px rgba(0,0,0, 0.46);
     background-color: white;
-
 }
 
 .wrapper{
@@ -11,7 +10,6 @@
 
 .shareHeader {
     display: flex;
-    align-items: center;
     padding: 10px;
 
 }
@@ -22,6 +20,7 @@
     border-radius: 50%;
     object-fit: cover;
     margin-right: 10px;
+    margin-top: 0.2em;
 }
 
 .shareInput {
@@ -32,24 +31,58 @@
     padding: 1em;
 }
 
+.preview {
+    text-align: center;
+}
+.loadedImage {
+    max-width: 100%;
+    position: relative;
+    display: inline-block;
+    margin: 0 auto;
+
+    img {
+        max-height: 300px;
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        display: inline-block;
+    }
+
+    button {
+        width: auto;
+        background-color: darkblue;
+        color: white;
+        font-size: 1em;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        border: 1px solid white;
+    }
+
+ 
+}
+
 .separator {
     margin: 20px;
 }
 .shareFooter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
 }
 .shareOptions{
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    margin-left: 20px;
 }
 .shareOption {
     display: flex;
     align-items: center;
-    margin-right: 15px;
+    margin-right: 1em;
     cursor: pointer;
+    width: auto;
+    background: transparent;
+    padding-left: 1em;
 }
 
 .shareIcon {
@@ -65,9 +98,36 @@
     border: none;
     padding: 1em;
     border-radius: 5px;
-    background-color: green;
+    background-color: orangered;
     font-weight: 500;
     margin-right: 20px;
     cursor: pointer;
     color:white;
+}
+
+.createPost {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 3;
+}
+
+.contentEdit {
+    width: 100%;
+    background: mistyrose;
+    border-radius: 1em;
+    padding: 1em;
+    /* border: 1px solid gray; */
+}
+.edit {
+    border: none;
+    font-size: 1em;
+    outline: none;
+    resize: none;
+    box-sizing: content-box;
+    width: 100%;
+    background-color: transparent;
 }

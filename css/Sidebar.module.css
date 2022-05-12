@@ -1,9 +1,4 @@
 .container {
-  height: calc(100vh - 80px);
-  overflow-y: scroll;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 80px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -11,18 +6,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-}
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #b3b3b3;
 }
 
 .wrapper {
@@ -65,5 +48,12 @@ button {
   padding: 0;
   margin: 0;
   list-style: none;
+}
+
+.title {
+  font-size: 1.5em;
+  text-align: center;
+  padding: 0.5em;
+  font-weight: 700;
 }
 /*# sourceMappingURL=Sidebar.module.css.map */

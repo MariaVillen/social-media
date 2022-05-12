@@ -9,6 +9,10 @@
 
 .home_sidebar {
   display: none;
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+  position: sticky;
+  top: 70px;
 
   @include mq(small) {
     display: inherit;
@@ -18,10 +22,22 @@
 
 .feed_content {
   flex: 5.5;
-  margin: 5px;
-  background-color: $secondary-color;
-  margin-top: 10px;
 }
 .more_comment_content {
-  flex: 2;
+  display: none;
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+  position: sticky;
+  top: 70px;
+  padding: 0 1em;
+
+  @include mq(small) {
+    display: inherit;
+    flex: 2;
+    
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

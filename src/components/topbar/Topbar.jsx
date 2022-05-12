@@ -1,7 +1,7 @@
-import classes from "./Topbar.module.scss";
 import { useState } from "react";
-import Logo from "../../images/logos/icon-left-fontre.png";
 import { Link } from "react-router-dom";
+import classes from "./Topbar.module.scss";
+import Logo from "../../images/logos/icon-left-fontre.png";
 
 export default function Topbar(props) {
   const [ isSubMenuOpen, setSubMenuOpen ] = useState(false);

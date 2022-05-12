@@ -1,5 +1,5 @@
 import classes from "./Sidebar.module.scss";
-import { RssFeed, Chat, PlayCircle, Group, Bookmark, HelpOutline, WorkOutline, Event, School } from "@mui/icons-material";
+import { NoAccounts, AutoStories, LockReset, Photo} from "@mui/icons-material";
 import { Users } from '../../dummyData';
 import CloseFriend from '../closeFriend/CloseFriend';
 import ProfileCard from '../profile-card/ProfileCard';
@@ -11,28 +11,28 @@ export default function Sidebar({className}) {
       <div className={classes.wrapper}>
         <ul className={classes.sidebarList}>
         <li className={classes.sidebarListItem}>
-            <RssFeed className={classes.sidebarIcon} />
+            <AutoStories className={classes.sidebarIcon} />
             <span className={classes.sidebarListItemText}> Changer biographie </span>
           </li>
           <li className={classes.sidebarListItem}>
-            <RssFeed className={classes.sidebarIcon} />
+            <Photo className={classes.sidebarIcon} />
             <span className={classes.sidebarListItemText}> Changer photo profile </span>
           </li>
           <li className={classes.sidebarListItem}>
-            <Chat className={classes.sidebarIcon} />
+            <Photo className={classes.sidebarIcon} />
             <span className={classes.sidebarListItemText}> Changer photo header </span>
           </li>
           <li className={classes.sidebarListItem}>
-            <PlayCircle className={classes.sidebarIcon} />
+            <LockReset className={classes.sidebarIcon} />
             <span className={classes.sidebarListItemText}> Changer Mot de Pas </span>
           </li>
           <li className={classes.sidebarListItem}>
-            <Group className={classes.sidebarIcon} />
+            <NoAccounts className={classes.sidebarIcon} />
             <span className={classes.sidebarListItemText}> Demander suppresion compte </span>
           </li>
         </ul>
         <hr className={classes.separator}/>
-        <h1>Mes amis</h1>
+        <p className={classes.title}>Mes contacts</p>
         <ul className={classes.friendList}>
 
           { Users.map(
