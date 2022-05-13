@@ -27,7 +27,10 @@ export default function Login(props) {
         <div className={classes.login_body}>
           <div className={classes.login_body_form}>
             {isLoginView ? (
-              <LoginForm onLogin={props.onLogin} onChangeFormView={changeViewHandler} />
+              <LoginForm
+                onLogin={props.onLogin}
+                onChangeFormView={changeViewHandler}
+              />
             ) : (
               <SignUpForm onChangeFormView={changeViewHandler} />
             )}

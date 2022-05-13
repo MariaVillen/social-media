@@ -1,0 +1,37 @@
+.preview {
+  text-align: center;
+}
+
+.preview_container {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.preview_image {
+  display: inline-block;
+  max-height: 300px;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.preview_btn_close {
+  display: inline-block;
+  width: auto;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  font-size: 1em;
+  color: #000063;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #000063;
+}
+
+.preview_btn_close:hover {
+  background-color: mistyrose;
+}
+/*# sourceMappingURL=PreviewImage.module.css.map */

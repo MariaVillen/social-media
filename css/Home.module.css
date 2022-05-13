@@ -26,13 +26,15 @@
   }
 }
 
-.feed_content {
+.home_feed_content {
   -webkit-box-flex: 5.5;
       -ms-flex: 5.5;
           flex: 5.5;
+  padding: 20px;
+  margin: 0 auto;
 }
 
-.more_comment_content {
+.home_more_comment_content {
   display: none;
   height: calc(100vh - 70px);
   overflow-y: scroll;
@@ -43,7 +45,7 @@
 }
 
 @media screen and (min-width: 562px) {
-  .more_comment_content {
+  .home_more_comment_content {
     display: inherit;
     -webkit-box-flex: 2;
         -ms-flex: 2;
@@ -51,6 +53,7 @@
   }
 }
 
+/* Eliminate scrollbar */
 ::-webkit-scrollbar {
   display: none;
 }

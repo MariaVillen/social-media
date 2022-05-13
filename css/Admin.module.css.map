@@ -1,8 +1,10 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AEAA,iBAAiB;AASjB,kBAAkB",
     "sources": [
-        "../src/pages/admin/Admin.module.scss"
+        "../src/pages/admin/Admin.module.scss",
+        "../src/styles-utils/graphiqueColors.scss",
+        "../src/styles-utils/mixins.scss"
     ],
     "names": [],
     "file": "Admin.module.css"

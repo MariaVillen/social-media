@@ -1,14 +1,18 @@
 import classes from "./Home.module.scss";
-import Feed from "../../components/feed/Feed";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Rightbar from "../../components/rightbar/Rightbar";
+import Feed from "../../components/feed/Feed.component";
+import Sidebar from "../../components/sidebar/Sidebar.component";
+import Rightbar from "../../components/rightbar/Rightbar.component";
+import Share from "../../components/share/Share.component";
 
 export default function Home() {
   return (
     <div className={classes.home_container}>
       <Sidebar className={classes.home_sidebar} />
-      <Feed className={classes.feed_content} />
-      <Rightbar className={classes.more_comment_content} />
+      <div className={classes.home_feed_content} >
+        <Share/>
+        <Feed/>
+      </div>
+      <Rightbar className={classes.home_more_comment_content} />
     </div>
   );
 }
