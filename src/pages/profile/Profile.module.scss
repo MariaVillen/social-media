@@ -1,50 +1,13 @@
-.profile {
-    display: flex;
 
-    &_header {
-        height: 320px;
-        position: relative;
-    }
-
-    &_coverImage {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-    }
-
-    &_userImage {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        position: absolute;
-        left: 0;
-        right: 0;
-        margin: auto;
-        top: 150px;
-        border: 3px solid white;
-    }
-
-    &_info {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &_description {
-        font-weight: 300;
-    }
-    &_name {
-        font-size: 24px;
-    }
-
-}
 
 .right {
-    flex: 9;
+  flex: 9;
 
-    &_bottom {
-        display: flex;
-    }
+  &_bottom {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-width: 60%;
+    margin: 0 auto;
+  }
 }
