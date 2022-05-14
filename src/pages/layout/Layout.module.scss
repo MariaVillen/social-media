@@ -1,14 +1,14 @@
-@import '../../styles-utils/mixins.scss';
+@import "../../styles-utils/mixins.scss";
 
 .container {
-    width: 100%;
+  width: 100%;
 }
 
 .navigation {
-    position: sticky;
-    top:0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    @include box--shadow;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  @include box--shadow;
 }

@@ -137,3 +137,92 @@ export const Posts = [
     comment: 12,
   },
 ];
+
+
+
+export const Comments = [
+  {
+    id: 1,
+    desc: "Love For All, Hatred For None.",
+    date: "5 mins ago",
+    userId: 1,
+    like: 32,
+    postId: 1
+  },
+  {
+    id: 2,
+    desc: "Love For All, Hatred For None.",
+    date: "15 mins ago",
+    userId: 2,
+    like: 2,
+    postId: 1,
+  },
+  {
+    id: 3,
+    desc: "Every moment is a fresh beginning.",
+    date: "1 hour ago",
+    userId: 3,
+    like: 61,
+    postId: 2,
+  },
+  {
+    id: 4,
+    desc: "Every moment is a fresh beginning.",
+    date: "4 hours ago",
+    userId: 4,
+    like: 7,
+    postId: 3,
+  },
+  {
+    id: 5,
+    desc: "Every moment is a fresh beginning.",
+    date: "5 hours ago",
+    userId: 5,
+    like: 23,
+    postId: 5,
+  },
+  {
+    id: 6,
+    desc: "Every moment is a fresh beginning.",
+    date: "1 day ago",
+    userId: 6,
+    like: 44,
+    postId: 1,
+  },
+  {
+    id: 7,
+    desc: "Never regret anything that made you smile.",
+    date: "2 days ago",
+    userId: 7,
+    like: 52,
+    postId: 3,
+  },
+  {
+    id: 8,
+    desc: "Never regret anything that made you smile.",
+    date: "3 days ago",
+    userId: 8,
+    like: 15,
+    postId: 1,
+  },
+  {
+    id: 9,
+    desc: "Change the world by being yourself.",
+    date: "5 days ago",
+    userId: 9,
+    like: 11,
+    postId: 2,
+  },
+  {
+    id: 10,
+    desc: "Change the world by being yourself.",
+    date: "1 week ago",
+    userId: 10,
+    like: 104,
+    postId: 3,
+  }
+];
+
+
+
+

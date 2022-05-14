@@ -1,102 +1,150 @@
 /* Breakpoints */
 /* Break Points */
-.container {
-  width: 100%;
-  -webkit-box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.46);
-          box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.46);
-  background-color: white;
-}
-
 .wrapper {
-  padding: 10px;
+  margin: 1em 0;
 }
 
-.shareHeader {
+.wrapper .central {
+  width: 100%;
+}
+
+.wrapper .central_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 10px;
+  position: relative;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.shareHeader_content {
+.wrapper .avatar {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-item-align: baseline;
+      align-self: baseline;
+}
+
+.wrapper .avatar img {
   width: 100%;
-  padding: 1em;
-  background: mistyrose;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: mistyrose;
   border-radius: 1em;
-}
-
-.shareHeader_content_edit {
-  width: 100%;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
-  resize: none;
   font-size: 1em;
-  outline: none;
-  border: none;
-  background-color: transparent;
-}
-
-.separator {
-  margin: 20px;
-}
-
-.shareInput {
-  width: 100%;
-  padding: 1em;
   background-color: mistyrose;
-  border: none;
-  border-radius: 1em;
+  padding: 0.5em 1em;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin: 0 1em;
 }
 
-.shareFooter {
+.body span {
+  font-weight: 700;
+}
+
+.body .edit {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  width: auto;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 0.8em;
+}
+
+.likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.likes .favorite {
+  width: auto;
+  border-radius: 50%;
+  text-align: center;
+  padding: 8px;
+  background-color: transparent;
+  color: #cd1010;
+}
+
+.likes .favorite_icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.counter {
+  padding-right: 2em;
+  padding-left: 0.2em;
+}
+
+.menu {
+  visibility: hidden;
+  position: relative;
+}
+
+.wrapper:hover .menu {
+  visibility: inherit;
+}
+
+.dropdown {
+  list-style: none;
+  position: absolute;
+  right: 0;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  border: 1px solid black;
+  background: white;
+  z-index: 2;
+  padding: 0;
+}
+
+.dropdown li {
+  padding: 0.5em;
+  margin: 0;
   width: 100%;
 }
 
-.shareFooter_options {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+.dropdown li:hover {
+  background-color: rgba(255, 69, 0, 0.5);
 }
 
-.shareFooter_option {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: auto;
-  margin-right: 1em;
-  padding-left: 1em;
-  background: transparent;
-  cursor: pointer;
-}
-
-.shareFooter_option_icon {
-  height: 40px;
-  width: 40px;
-  margin-right: 1em;
-}
-
-.shareFooter_option_text {
-  font-size: 1em;
-  font-weight: 500;
-}
-
-.share_btn {
-  padding: 1em;
-  margin-right: 20px;
-  font-weight: 500;
-  color: white;
-  background-color: #eb3d25;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.footer {
+  text-align: right;
 }
 /*# sourceMappingURL=PostComment.module.css.map */
