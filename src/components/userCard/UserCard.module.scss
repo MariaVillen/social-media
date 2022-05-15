@@ -1,13 +1,12 @@
 .friend {
-    display: flex;
-    margin-bottom: 15px;
-    align-items: center;
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
 }
 
 .profilePictureImg {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 10px;
+  flex-shrink: 0;
 }

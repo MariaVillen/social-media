@@ -1,10 +1,12 @@
-export default function TextareaRezise(props) {
 
- /**
+// Textarea elements that change height when inserting data.
+
+export default function TextareaRezise(props) {
+  /**
    * @EventHandler
    * @name textAreaReziser
    * @description Change the size of the textarea.
-   * @param {EventListenerObject} e 
+   * @param {EventListenerObject} e
    */
   function textAreaReziser(e) {
     if (e.target.value.length === 0) {
@@ -19,13 +21,13 @@ export default function TextareaRezise(props) {
 
   return (
     <textarea
-        name={props.name}
-        rows="1"
-        onKeyDown={textAreaReziser}
-        placeholder={props.placeHolder}
-        className={props?.className}
-        defaultValue={props?.textRezise}
+      name={props.name}
+      rows="1"
+      onKeyDown={textAreaReziser}
+      placeholder={props.placeHolder}
+      className={props?.className}
+      defaultValue={props?.textRezise}
+      readOnly={props.readOnly}
     />
-           
   );
 }

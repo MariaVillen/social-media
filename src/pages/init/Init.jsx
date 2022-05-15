@@ -6,9 +6,11 @@ import AdminPage from "../admin/Admin";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-const InitPage = (props) => {
+// Page bypass to home or login depending on login state
 
-  /* To know if the user is logged in or not. If logged goes to site, if not, goes to login and signup forms */
+const InitPage = (props) => {
+  // To know if the user is logged in or not. 
+  // If logged goes to site, if not, goes to login and signup forms
   const isLoggedIn = props.isLoggedIn;
 
   return isLoggedIn ? (
@@ -22,7 +24,7 @@ const InitPage = (props) => {
       </Layout>
     </BrowserRouter>
   ) : (
-    <Login onLogin={props.onLogin}/>
+    <Login onLogin={props.onLogin} />
   );
 };
 

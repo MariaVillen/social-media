@@ -9,11 +9,11 @@
 }
 
 .profilePictureImg {
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
   margin: 10px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 /*# sourceMappingURL=UserCard.module.css.map */

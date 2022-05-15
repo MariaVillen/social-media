@@ -6,9 +6,12 @@ import Logo from "../../images/logos/icon-left-fontre.png";
 import LoginForm from "../../components/login-form/LoginForm";
 import SignUpForm from "../../components/singup-form/SignUpForm";
 
+// Login page presentation. Access to login or register.
+
 export default function Login(props) {
   const [isLoginView, setIsLoginView] = useState(true);
 
+  // Changes between login and register forms
   const changeViewHandler = (newViewState) => {
     setIsLoginView(newViewState);
   };

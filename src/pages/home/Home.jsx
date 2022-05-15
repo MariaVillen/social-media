@@ -5,6 +5,9 @@ import Rightbar from "../../components/rightbar/Rightbar.component";
 import Share from "../../components/share/Share.component";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
+
+// Home Page
+
 export default function Home() {
   const matches = useMediaQuery("(min-width: 768px)");
 

@@ -1,2 +1,7 @@
 @import "../../styles-utils/graphiqueColors.scss";
 @import "../../styles-utils/mixins.scss";
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+}

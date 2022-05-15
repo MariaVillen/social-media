@@ -1,127 +1,121 @@
 @import "../../styles-utils/graphiqueColors.scss";
 @import "../../styles-utils/mixins.scss";
 
-
 .topbar {
-    
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  width: 100%;
+  background-color: white;
+
+  &_logo {
+    height: 100%;
+    padding: 10px;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &_menu {
+    padding-right: 1em;
+    @include mq(small) {
+      height: 100%;
+    }
+  }
+
+  &_avatar {
+    height: 48px;
+    width: 48px;
+    @include mq(small) {
+      display: none;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid white;
+    }
+
+    &.show + .topbar_links {
+      max-width: 100%;
+
+      @include mq(small) {
+        max-width: 600px;
+      }
+    }
+  }
+
+  &_links {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 70px;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 4.5em;
     width: 100%;
-    background-color: white;
+    height: 100vh;
+    max-width: 0px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.9);
+    color: $black-color;
+    z-index: 2;
+    overflow: hidden;
+    transition: max-width 300ms ease-in-out;
 
-    &_logo {
-        height: 100%;
-        padding: 10px;
-
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
+    @include mq(small) {
+      flex-direction: row;
+      position: static;
+      max-width: 100%;
+      height: 100%;
+      background-color: transparent;
+      color: $black-color;
     }
-    
-    &_menu {
-        padding-right: 1em;
-        @include mq(small) {
-        height: 100%;
-        }
-    }
+  }
 
-    &_avatar {
-        height: 48px;
-        width: 48px;
-        @include mq(small) {
-            display: none;
-        }
+  &_item {
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 500ms ease-in-out;
 
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid white;
-        }
-
-        &.show + .topbar_links {
-            max-width: 100%;
-
-            @include mq(small) {
-                max-width: 600px;
-            }
-        }
+    @include mq(small) {
+      height: 100%;
     }
 
-    &_links {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        right: 0;
-        top: 4.5em;
-        width: 100%;
-        height: 100vh;
-        max-width: 0px;
-        padding: 0;
-        background: rgba(255,255,255,0.9);
-        color: $black-color;
-        z-index: 2;
-        overflow: hidden;
-        transition: max-width 300ms ease-in-out;
-    
-        @include mq(small) {
-            flex-direction: row;
-            position: static;
-            max-width: 100%;
-            height: 100%;
-            background-color: transparent;
-            color: $black-color;
-        }
-    }
+    &.notLink {
+      width: 100%;
+      display: inline-block;
+      padding: 1em;
 
-    &_item {
-        list-style: none;
-        cursor: pointer;
-        font-size: 1.2em;
-        transition: background-color 500ms ease-in-out;
+      @include mq(small) {
+        width: auto;
+      }
 
-        @include mq(small) {
-            height: 100%;
-        }
-        
-        &.notLink {
-            width: 100%; 
-            display: inline-block; 
-            padding: 1em;
-         
-            @include mq(small) {
-                width: auto;
-            }
-            
-            &:hover {
-                background-color: $primary-color+E6;
-                
-            }
-        }
+      &:hover {
+        background-color: $primary-color + E6;
+      }
     }
+  }
 
-    &_link {
-        color: inherit;
-        text-decoration: none;
-        padding: 1em;
-        height: 100%;
-        display: inline-block;
-        transition: background-color 500ms ease-in-out;
-        width: 100%;
-        @media screen and (min-width: 562px) {
-            width: auto;
-        }
+  &_link {
+    color: inherit;
+    text-decoration: none;
+    padding: 1em;
+    height: 100%;
+    display: inline-block;
+    transition: background-color 500ms ease-in-out;
+    width: 100%;
+    @media screen and (min-width: 562px) {
+      width: auto;
     }
-    
-    &_link:hover {
-     background-color: $primary-color+E6;
-    }
+  }
 
+  &_link:hover {
+    background-color: $primary-color + E6;
+  }
 }
-
-
