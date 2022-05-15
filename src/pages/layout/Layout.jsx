@@ -11,10 +11,11 @@ import Topbar from "../../components/topbar/Topbar.component";
  */
 
 function Layout (props) {
+
     return(
         <div className={classes.container}>
             <div className={classes.navigation}>
-                <Topbar onLogin={props.onLogin}/>
+                <Topbar onLogin={props.onLogin} allowedRoles={props.allowedRoles}/>
             </div>
             <main className={classes.main}>
                 {props.children}

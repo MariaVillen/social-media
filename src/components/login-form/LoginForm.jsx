@@ -1,4 +1,6 @@
 import classes from "./LoginForm.module.scss";
+import { setToken, setRoles } from "../../helpers/auth-helpers";
+import {login} from "../../api/api";
 
 const LoginForm = (props) => {
   const loginViewHandler = () => {
@@ -7,9 +9,42 @@ const LoginForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(true);
+    //props.onLogin(true);
     //const email = event.target.email.value;
     //const password = event.target.password.value;
+
+
+    /*
+    login({email: email, password: password})
+    .then((response) => {
+
+      const token = response.data.token;
+      const roles = response.data.roles
+
+      setToken(token);
+      setRoles(roles)   // Backend returns roles for that valid user and an access token, which are stored in localStorage in this example.
+
+      props.onLogin(true);
+  }).catch((err) => {
+
+    if(err?response){
+      alert('No Server Response')
+    } else if (err.response?status === 401){
+      alert('unhautorized')
+    } else {
+      alert('Login Failed')
+    }
+    props.onLogin(false);
+  });
+  */
+
+  //Fake success validation:
+    const token = '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';
+    const roles = [5051, 4010];
+    setToken(token);
+    setRoles(roles);
+    props.onLogin(true);
+
   };
 
   return (

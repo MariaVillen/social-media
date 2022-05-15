@@ -1,10 +1,13 @@
 import classes from "./Profile.module.scss";
 import Feed from "../../components/feed/Feed.component";
 import ProfileCard from "../../components/profile-card/ProfileCard";
+import { getRoles } from "../../helpers/auth-helpers";
 
-export default function Profile() {
+export default function Profile({allowedRoles}) {
+
   return (
-    <>
+    <>{
+      getRoles()?.find(role => allowedRoles?.includes(role)) ?
       <div className={classes.profile}>
         <div className={classes.right}>
           <div className={classes.right_top}>
@@ -33,6 +36,9 @@ export default function Profile() {
             </div>
         </div>
       </div>
+      :
+      <></>
+    }
     </>
   );
 }
