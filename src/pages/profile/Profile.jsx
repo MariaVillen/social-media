@@ -5,13 +5,13 @@ import ProfileForm from "../../components/profile-form/ProfileForm.component";
 import UserCard from "../../components/userCard/UserCard.component";
 import { PersonRemove } from "@mui/icons-material";
 import { Users } from "../../dummyData";
-
+import { getRoles } from "../../helpers/auth-helpers";
 
 // Profile Page
 
-export default function Profile(props) {
+export default function Profile(props, {allowedRoles}) {
   return (
-    <>
+    <>{getRoles()?.find(role => allowedRoles?.includes(role)) ?
       <div className={classes.header}>
         <ProfileCard
           username="Mi Nombre"
@@ -48,6 +48,9 @@ export default function Profile(props) {
           </div>
         </div>
       </div>
+      :
+      <></>
+    }
     </>
   );
 }

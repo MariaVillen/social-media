@@ -12,14 +12,15 @@ const InitPage = (props) => {
   // To know if the user is logged in or not. 
   // If logged goes to site, if not, goes to login and signup forms
   const isLoggedIn = props.isLoggedIn;
+  const allowedRoles = props.allowedRoles;
 
   return isLoggedIn ? (
     <BrowserRouter>
-      <Layout onLogin={props.onLogin}>
+      <Layout onLogin={props.onLogin} allowedRoles={allowedRoles}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/admin" element={<AdminPage />} />
+          <Route path="/profile" element={<ProfilePage allowedRoles={[allowedRoles.User]}/>} />
+          <Route path="/admin" element={<AdminPage allowedRoles={[allowedRoles.Admin]} />} />
         </Routes>
       </Layout>
     </BrowserRouter>
