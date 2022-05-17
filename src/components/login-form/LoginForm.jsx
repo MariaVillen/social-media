@@ -69,7 +69,9 @@ const LoginForm = (props) => {
         <hr />
 
         <div className={classes.auth_actions}>
-          <button className={classes.auth_actions_link} onClick={submitHandler}>Login</button>
+          <button className={classes.auth_actions_link} onClick={submitHandler}>
+            Login
+          </button>
 
           <button
             type="button"

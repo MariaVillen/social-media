@@ -1,7 +1,6 @@
 @import "../../styles-utils/graphiqueColors.scss";
 @import "../../styles-utils/mixins.scss";
 
-
 .auth {
   width: 95%;
   max-width: 25rem;
@@ -12,7 +11,7 @@
   border-radius: 6px;
   background-color: white;
   @include box--shadow;
-   
+
   h1 {
     padding: 1em;
     text-align: center;
@@ -21,7 +20,7 @@
   }
 
   form {
-    padding: 2em;  
+    padding: 2em;
   }
 
   &_control {
@@ -32,9 +31,9 @@
       margin-bottom: 0.5rem;
       font-weight: bold;
       color: $black-color;
-    }    
+    }
 
-    input { 
+    input {
       width: 100%;
       padding: 0.25rem;
       font-size: inherit;
@@ -45,12 +44,13 @@
       background-color: white;
       color: $black-color;
 
-      &:focus, &:active {
-      border: 2px solid $primary-color;
+      &:focus,
+      &:active {
+        border: 2px solid $primary-color;
       }
     }
   }
-    
+
   &_forgotpass {
     width: auto;
     height: auto;
@@ -58,13 +58,13 @@
     font-size: 1em;
     background: none;
     color: $primary-color;
-    cursor: pointer; 
-    
+    cursor: pointer;
+
     &:hover {
       text-decoration: underline;
     }
   }
-  
+
   &_actions {
     display: flex;
     flex-direction: column;
@@ -83,7 +83,6 @@
       &:hover {
         background-color: $secondary-color-op;
       }
-
     }
 
     &_toggle {
@@ -94,8 +93,7 @@
       color: $primary-color;
       border: none;
       background-color: transparent;
-     
-      
+
       &:hover {
         color: $secondary-color-op;
         background-color: transparent;

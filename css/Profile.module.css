@@ -1,36 +1,29 @@
-.profile {
+/* Breakpoints */
+/* Break Points */
+.header {
+  display: block;
+}
+
+.content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 1em;
 }
 
-.profile_header {
-  height: 320px;
-  position: relative;
+.content_infoLoggedUser {
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 70px;
 }
 
-.profile_coverImage {
-  width: 100%;
-  height: 250px;
-  -o-object-fit: cover;
-     object-fit: cover;
+.content_infoLoggedUser h2 {
+  margin: 1em 0;
 }
 
-.profile_userImage {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  top: 150px;
-  border: 3px solid white;
-}
-
-.profile_info {
+.content_feed {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,39 +31,58 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.content_main {
+  margin: 0 auto;
+}
+
+.title {
+  margin: 1em 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.friendList {
+  list-style: none;
+  display: inline-block;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 100%;
+  padding: 0;
+}
+
+.friendList ul {
+  padding: 0;
+  margin: 0;
+}
+
+.friendList li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.profile_description {
-  font-weight: 300;
+.friendList li .icon {
+  border-radius: 50%;
+  color: #eb3d25;
+  border: 1px solid #eb3d25;
+  padding: 3px;
+  background-color: white;
 }
 
-.profile_name {
-  font-size: 24px;
-}
-
-.right {
-  -webkit-box-flex: 9;
-      -ms-flex: 9;
-          flex: 9;
-}
-
-.right_bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -ms-flex-line-pack: center;
-      align-content: center;
-  max-width: 60%;
-  margin: 0 auto;
+.friendList li .icon:hover {
+  color: white;
+  background-color: #eb3d25;
 }
 /*# sourceMappingURL=Profile.module.css.map */

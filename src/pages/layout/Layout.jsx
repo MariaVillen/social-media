@@ -1,13 +1,12 @@
 import classes from "./Layout.module.scss";
 import Topbar from "../../components/topbar/Topbar.component";
 
-
 /**
- * @component 
+ * @component
  * @name Layout
  * @description Navigation Bar and a main content that holds the differents pages.
  * @param {*} props props.onLogin: function to change if user is logged or not for logout function.
- * @returns 
+ * @returns
  */
 
 function Layout (props) {

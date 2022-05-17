@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AEAA,iBAAiB;AASjB,kBAAkB",
+    "mappings": "AEAA,iBAAiB;AASjB,kBAAkB;AFNlB,AAAA,UAAU,CAAC;EACT,SAAS,EAAE,KAAK;EAChB,MAAM,EAAE,MAAM;CACf",
     "sources": [
         "../src/pages/admin/Admin.module.scss",
         "../src/styles-utils/graphiqueColors.scss",

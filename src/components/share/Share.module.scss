@@ -1,101 +1,110 @@
 @import "../../styles-utils/graphiqueColors.scss";
 @import "../../styles-utils/mixins.scss";
 
-.container{
-    width: 100%;
-    box-shadow: 0px 0px 11px 0px rgba(0,0,0, 0.46);
-    background-color: white;
+.container {
+  width: 100%;
+  box-shadow: 0px 0px 11px 0px rgba(0, 0, 0, 0.46);
+  background-color: white;
 }
 
-.wrapper{
-    padding: 10px;
+.wrapper {
+  padding: 10px;
 }
 
 .shareHeader {
-    display: flex;
-    padding: 10px;
+  display: flex;
+  padding: 10px;
 
-    &_image{
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-        margin-top: 0.2em;
-        border-radius: 50%;
-        object-fit: cover;
-    }
+  &_image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    margin-top: 0.2em;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 
-    &_content{
-
-        width: 100%;
-        padding: 1em;
-        background: $secondary-color;
-        border-radius: 1em;
-
-        &_edit {
-            width: 100%;
-            box-sizing: content-box;
-            resize: none;
-            font-size: 1em;
-            outline: none;
-            border: none;
-            background-color: transparent;
-        }
-    }
-
-}
-
-
-.separator {
-    margin: 20px;
-}
-
-
-.shareInput {
+  &_content {
     width: 100%;
     padding: 1em;
-    background-color: $secondary-color;
-    border: none;
+    background: $secondary-color;
     border-radius: 1em;
+
+    &_edit {
+      width: 100%;
+      box-sizing: content-box;
+      resize: none;
+      font-size: 1em;
+      outline: none;
+      border: none;
+      background-color: transparent;
+    }
+  }
+}
+
+.separator {
+  margin: 20px;
+}
+
+.shareInput {
+  width: 100%;
+  padding: 1em;
+  background-color: $secondary-color;
+  border: none;
+  border-radius: 1em;
 }
 
 .shareFooter {
   width: 100%;
-    
-    &_options {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    &_option {
-        display: flex;
-        align-items: center;
-        width: auto;
-        margin-right: 1em;
-        padding-left: 1em;
-        background: transparent;
-        cursor: pointer;
-     
-        &_icon {
-            height: 40px;
-            width: 40px;
-            margin-right: 1em;
-        }
-        &_text {
-            font-size: 1em;
-            font-weight: 500;
-        }
-    }
 
+  &_options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &_option {
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin-right: 1em;
+    padding-left: 1em;
+    background: transparent;
+    cursor: pointer;
+
+    &_icon {
+      height: 40px;
+      width: 40px;
+      margin-right: 1em;
+    }
+    &_text {
+      font-size: 1em;
+      font-weight: 500;
+    }
+  }
 }
 
 .share_btn {
-    padding: 1em;
-    margin-right: 20px;
-    font-weight: 500;
-    color:white;
-    background-color: $primary-color;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  
+  padding: 1em;
+  margin-right: 20px;
+  font-weight: 500;
+  color: white;
+  background-color: $primary-color;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.share_btn_cancel {
+  text-align: right;
+
+  svg {
+    padding: 3px;
+    border-radius: 50%;
+    transform: rotate(0deg);
+    transition: transform 300ms ease-in-out;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
 }

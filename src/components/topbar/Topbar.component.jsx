@@ -4,13 +4,20 @@ import classes from "./Topbar.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
 import { getRoles } from "../../helpers/auth-helpers";
 
+// Menu TopBar General navigation bar.
+
 export default function Topbar(props) {
+  
   const allowedRoles = props.allowedRoles;
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+
+  // Event to unlog button, will set the login state false.
 
   const unLogHandler = () => {
     props.onLogin(false);
   };
+
+  // Event to control the responsive menu.
 
   const subMenuHandler = () => {
     setSubMenuOpen(!isSubMenuOpen);
@@ -39,6 +46,7 @@ export default function Topbar(props) {
               Accueil
             </Link>
           </li>
+
           {getRoles()?.find((role) => allowedRoles.Profile === role) && (
             <li className={classes.topbar_item}>
               <Link className={classes.topbar_link} to="/profile">

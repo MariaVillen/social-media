@@ -1,15 +1,30 @@
-import { Favorite, Close } from "@mui/icons-material";
-import { useState } from "react";
 import classes from "./PostComment.module.scss";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
-import UserCard from "../../components/userCard/UserCard.component";
+import { useState } from "react";
+import {
+  MoreHoriz,
+  Favorite,
+  FavoriteBorderOutlined,
+} from "@mui/icons-material";
 
 export default function PostComment(props) {
-  /**
-   * @EventHandler
-   * @name submitHandler
-   * @param {*} event 
-   */
+  // Like Handler
+  const [like, setLike] = useState(props.comment.like);
+  const [isLiked, setisLiked] = useState(false);
+
+  const likeHandler = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setisLiked(!isLiked);
+  };
+
+  // Menu Handler
+
+  const [isMenuActive, setIsMenuActive] = useState(false);
+  const menuViewHandler = () => {
+    setIsMenuActive(!isMenuActive);
+  };
+
+  // Submit Handler
   const submitHandler = (event) => {
     event.preventDefault();
     //const password = event.target.password.value;
@@ -17,40 +32,57 @@ export default function PostComment(props) {
 
   return (
     <>
-      <div className={classes.container}>
+      <div className={classes.wrapper}>
+        <div className={classes.central}>
+          <div className={classes.central_container}>
+            <div className={classes.avatar}>
+              <img src={props.user.profilePicture} alt={props.user.username} />
+            </div>
 
-        <form onSubmit={submitHandler}>
-          <div className={classes.wrapper}>
+            <div className={classes.body}>
+              <span>{props.user.username}</span>
 
-            <div className={classes.shareHeader}>
-              <UserCard 
-                username="MyName" 
-                profilePicture="/assets/persons/8.jpeg"
-                hideName
+              <TextareaRezise
+                name="textComment"
+                placeHolder={props.placeHolder}
+                className={classes.edit}
+                textRezise={props.comment.desc}
+                readOnly
               />
-        
-              <div className={classes.shareHeader_content}>
-                <TextareaRezise name="textComment" placeHolder={props.placeHolder} className={classes.shareHeader_content_edit} autoFocus/>
-              </div>
-        
             </div>
+            <div className={classes.menu}>
+              <MoreHoriz
+                onClick={menuViewHandler}
+                className={classes.comment_menu_icon}
+              />
 
-            <hr className={classes.separator} />
-        
-            <div className={classes.shareFooter}>
-              <div className={classes.shareFooter_options}>
-
-                <div className={classes.shareFooter_option}>
-                  <Favorite htmlColor="tomato" className={classes.shareFooter_option_icon} />
-                  <span className={classes.shareFooter_option_text}>1 like it</span>
-                </div>
-
-                <button className={classes.share_btn}>Publier</button>
-              </div>
+              {isMenuActive ? (
+                <ul className={classes.dropdown}>
+                  <li>Editer</li>
+                  <li>Supprimer</li>
+                  <li>Signaler</li>
+                </ul>
+              ) : null}
             </div>
-
           </div>
-        </form>
+        </div>
+        <div className={classes.footer}>
+          <div className={classes.likes}>
+            <button className={classes.favorite} onClick={likeHandler}>
+              {isLiked ? (
+                <Favorite className={classes.favorite_icon} />
+              ) : (
+                <FavoriteBorderOutlined
+                  className={classes.comment_favorite_icon}
+                />
+              )}
+            </button>
+
+            <span className={classes.counter}>{like}</span>
+
+            <span>{props.comment.date}</span>
+          </div>
+        </div>
       </div>
     </>
   );
