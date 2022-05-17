@@ -9,16 +9,17 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 // Home Page
 
 export default function Home() {
-  const matches = useMediaQuery("(min-width: 768px)");
+  const tablet = useMediaQuery("(min-width: 768px)");
+  const pc = useMediaQuery("(min-width: 1200px)");
 
   return (
     <div className={classes.home_container}>
-      {matches ? <Sidebar className={classes.home_sidebar} /> : <></>}
+      {tablet ? <Sidebar className={classes.home_sidebar} /> : <></>}
       <div className={classes.home_feed_content}>
         <Share />
         <Feed />
       </div>
-      {matches ? (
+      {pc ? (
         <Rightbar className={classes.home_more_comment_content} />
       ) : (
         <></>
