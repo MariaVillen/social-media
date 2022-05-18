@@ -14,6 +14,7 @@ export function clearToken() {
 }
 
 export function getRoles() {
+    // return an array of allowed role
     return JSON.parse(window.localStorage.getItem(ROLES));
 }
 

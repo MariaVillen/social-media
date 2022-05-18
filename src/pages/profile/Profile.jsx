@@ -11,8 +11,10 @@ import { getRoles } from "../../helpers/auth-helpers";
 
 export default function Profile(props, {allowedRoles}) {
   return (
-    <>{getRoles()?.find(role => allowedRoles?.includes(role)) ?
-      <div className={classes.header}>
+    <> 
+     {getRoles()?.find(role => allowedRoles?.includes(role)) 
+     ? <>
+     <div className={classes.header}>
         <ProfileCard
           username="Mi Nombre"
           cover="/assets/covers/1.jpg"
@@ -48,8 +50,7 @@ export default function Profile(props, {allowedRoles}) {
           </div>
         </div>
       </div>
-      :
-      <></>
+      </>: null
     }
     </>
   );

@@ -1,14 +1,41 @@
 import classes from "./LoginForm.module.scss";
+import {useRef, useState, useEffect} from 'react';
 import { setToken, setRoles } from "../../helpers/auth-helpers";
-import {login} from "../../api/api";
 
 const LoginForm = (props) => {
+
+  // Referencies
+  const emailRef = useRef();
+  const errRef = useRef();
+
+  // Error States
+  const [email, setEmail] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  // focus on user input
+  useEffect(()=>{
+    emailRef.current.focus();
+  },[])
+
+  // Reset error messages to '' si cambia el user o password
+  useEffect(()=>{
+    setErrMsg('');
+  }, [email, pwd])
+
+
   const loginViewHandler = () => {
     props.onChangeFormView(false);
   };
 
-  const submitHandler = (event) => {
-    event.preventDefault();
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    console.log(email,pwd);
+    setEmail('');
+    setPwd('');
+    setSuccess(true);
+
     //props.onLogin(true);
     //const email = event.target.email.value;
     //const password = event.target.password.value;
@@ -49,17 +76,30 @@ const LoginForm = (props) => {
 
   return (
     <section className={classes.auth}>
+     
       <h1>Login</h1>
 
       <form onSubmit={submitHandler}>
         <div className={classes.auth_control}>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" required />
+          <input 
+                type="email" 
+                id="email" 
+                ref={emailRef}
+                autoComplete="off"
+                onChange={(e)=>setEmail(e.target.value)}
+                value={email}
+                required />
         </div>
 
         <div className={classes.auth_control}>
           <label htmlFor="password">Mot de pas</label>
-          <input type="password" id="password" required />
+          <input 
+                  type="password" 
+                  id="password" 
+                  onChange={e=> setPwd(e.target.value)}
+                  value={pwd}
+                  required />
         </div>
 
         <button className={classes.auth_forgotpass}>
@@ -73,13 +113,13 @@ const LoginForm = (props) => {
             Login
           </button>
 
-          <button
+          <p
             type="button"
             className={classes.auth_actions_toggle}
             onClick={loginViewHandler}
           >
             Create new account
-          </button>
+          </p>
         </div>
       </form>
     </section>

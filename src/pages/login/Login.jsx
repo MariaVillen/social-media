@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import classes from "./Login.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
-
 import LoginForm from "../../components/login-form/LoginForm";
 import SignUpForm from "../../components/singup-form/SignUpForm";
 

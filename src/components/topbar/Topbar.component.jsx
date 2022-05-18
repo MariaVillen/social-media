@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import classes from "./Topbar.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
-import { getRoles } from "../../helpers/auth-helpers";
+import { getRoles, clearToken, clearRoles } from "../../helpers/auth-helpers";
 
 // Menu TopBar General navigation bar.
 
@@ -14,6 +14,8 @@ export default function Topbar(props) {
   // Event to unlog button, will set the login state false.
 
   const unLogHandler = () => {
+    clearToken();
+    clearRoles();
     props.onLogin(false);
   };
 
@@ -47,7 +49,7 @@ export default function Topbar(props) {
             </Link>
           </li>
 
-          {getRoles()?.find((role) => allowedRoles.Profile === role) && (
+          {getRoles()?.find((role) => allowedRoles.User === role) && (
             <li className={classes.topbar_item}>
               <Link className={classes.topbar_link} to="/profile">
                 Profile

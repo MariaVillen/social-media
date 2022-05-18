@@ -49,6 +49,21 @@
         border: 2px solid $primary-color;
       }
     }
+
+  .instructions {
+
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    color: $primary-color;
+    padding: 14px;
+    position: relative;
+    bottom: -5px;
+  }
+  .offscreen {
+      position: absolute;
+      left: -9999px;
+  }
+  
   }
 
   &_check {
@@ -75,6 +90,7 @@
     align-items: center;
     margin-top: 1.5rem;
 
+
     &_link {
       width: auto;
       padding: 0.5rem 2.5rem;
@@ -83,11 +99,17 @@
       color: white;
       background-color: $primary-color;
       transition: background-color 500ms ease-in-out;
+      
+      &:disabled, &:disabled:hover {
+        background-color: $graydark-color;
+        color: white;
+      }
 
       &:hover {
         background-color: $secondary-color-op;
       }
     }
+
 
     &_toggle {
       width: auto;
