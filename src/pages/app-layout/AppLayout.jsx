@@ -1,5 +1,6 @@
-import classes from "./Layout.module.scss";
+import classes from "./AppLayout.module.scss";
 import Topbar from "../../components/topbar/Topbar.component";
+import { Outlet } from "react-router-dom";
 
 /**
  * @component
@@ -9,7 +10,7 @@ import Topbar from "../../components/topbar/Topbar.component";
  * @returns
  */
 
-function Layout (props) {
+function AppLayout (props) {
 
     return(
         <div className={classes.container}>
@@ -17,10 +18,10 @@ function Layout (props) {
                 <Topbar onLogin={props.onLogin} allowedRoles={props.allowedRoles}/>
             </div>
             <main className={classes.main}>
-                {props.children}
+                <Outlet/>
             </main>
         </div>
     )
 }
 
-export default Layout;
+export default AppLayout;

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "./Topbar.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
 import { getRoles, clearToken, clearRoles } from "../../helpers/auth-helpers";
@@ -8,15 +8,16 @@ import { getRoles, clearToken, clearRoles } from "../../helpers/auth-helpers";
 
 export default function Topbar(props) {
   
-  const allowedRoles = props.allowedRoles;
+  const allowedRoles = /*props.allowedRoles*/[5150, 2001];
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
 
+  const navigate = useNavigate();
   // Event to unlog button, will set the login state false.
 
   const unLogHandler = () => {
     clearToken();
     clearRoles();
-    props.onLogin(false);
+    navigate("/login");
   };
 
   // Event to control the responsive menu.
@@ -49,20 +50,20 @@ export default function Topbar(props) {
             </Link>
           </li>
 
-          {getRoles()?.find((role) => allowedRoles.User === role) && (
+          {/* {getRoles()?.find((role) => allowedRoles.User === role) && ( */}
             <li className={classes.topbar_item}>
               <Link className={classes.topbar_link} to="/profile">
                 Profile
               </Link>
             </li>
-          )}
-          {getRoles()?.find((role) => allowedRoles.Admin === role) && (
+          {/* )}
+          {getRoles()?.find((role) => allowedRoles.Admin === role) && ( */}
             <li className={classes.topbar_item}>
               <Link className={classes.topbar_link} to="/admin">
                 Administration
               </Link>
             </li>
-          )}
+          {/* )} */}
           <li
             className={`${classes.topbar_item} ${classes.notLink}`}
             onClick={unLogHandler}

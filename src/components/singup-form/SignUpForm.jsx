@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import classes from "./SignUpForm.module.scss";
 import {useRef, useState, useEffect} from 'react';
-import {signup} from '../../api/api.js';
+import {signup} from '../../api/api.js'; // call function 
+import {Link } from 'react-router-dom';
 
-const SignUpForm = (props) => {
+const SignUpForm = () => {
 
  // Validation
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!$%@\.]).{8,24}$/;
@@ -60,10 +61,7 @@ const SignUpForm = (props) => {
     setErrMsg('');
   }, [email, pwd, name, lastName, conditions])
 
-  const loginViewHandler = () => {
-    props.onChangeFormView(true);
-  };
-  
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -171,14 +169,9 @@ const SignUpForm = (props) => {
 
         <div className={classes.auth_actions}>
           <button type="submit" className={classes.auth_actions_link} disabled={!(validEmail && validLastName && validName && validPwd && conditions)}>Créer un compte.</button>
-
-          <p
-            className={classes.auth_actions_toggle}
-            onClick={loginViewHandler}
-          >
-            {/*put router link here */}
+          <Link className={classes.auth_actions_toggle} to="/login">
             Connectez-vous avec un compte existant
-          </p>
+          </Link>
         </div>
       </form>
     </section></>

@@ -1,13 +1,19 @@
 import classes from "./LoginForm.module.scss";
 import { useRef, useState, useEffect, useContext } from "react";
 import {login} from "../../api/api";
+import {Link, useNavigate } from "react-router-dom";
 
 import AuthContext from "../../context/AuthProvider";
 import { setToken, setRoles } from "../../helpers/auth-helpers";
 
-const LoginForm = (props) => {
+const LoginForm = () => {
 
+  // Navigate
+  const navigate = useNavigate();
+
+  // Authorization
   const{ setAuth } = useContext(AuthContext); 
+
   // Referencies
   const emailRef = useRef();
   const errRef = useRef();
@@ -27,10 +33,6 @@ const LoginForm = (props) => {
   useEffect(() => {
     setErrMsg("");
   }, [email, pwd]);
-
-  const loginViewHandler = () => {
-    props.onChangeFormView(false);
-  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -55,6 +57,7 @@ const LoginForm = (props) => {
       setEmail("");
       setPwd("");
       setSuccess(true);
+      navigate("/");
 
     } catch(err){
       if (!err?.response) {
@@ -146,19 +149,18 @@ const LoginForm = (props) => {
             required
           />
         </div>
-
-        <a href="#" className={classes.auth_forgotpass}>
+        <Link className={classes.auth_forgotpass} to="/forgottenPass">
           Mot de passe oublié ?
-        </a>
+        </Link>
 
         <div className={classes.auth_actions}>
           <button type="submit" className={classes.auth_actions_link}>
             Connexion
           </button>
 
-          <p className={classes.auth_actions_toggle} onClick={loginViewHandler}>
+          <Link className={classes.auth_actions_toggle} to="/register">
             Créer un nouveau compte
-          </p>
+          </Link>
         </div>
       </form>
     </section>

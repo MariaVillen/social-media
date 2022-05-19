@@ -1,9 +1,9 @@
 import classes from "./Home.module.scss";
-import Feed from "../../components/feed/Feed.component";
 import Sidebar from "../../components/sidebar/Sidebar.component";
 import Rightbar from "../../components/rightbar/Rightbar.component";
 import Share from "../../components/share/Share.component";
 import useMediaQuery from "../../hooks/useMediaQuery";
+import { Outlet } from "react-router-dom";
 
 
 // Home Page
@@ -17,7 +17,7 @@ export default function Home() {
       {tablet ? <Sidebar className={classes.home_sidebar} /> : <></>}
       <div className={classes.home_feed_content}>
         <Share />
-        <Feed />
+        <Outlet/>
       </div>
       {pc ? (
         <Rightbar className={classes.home_more_comment_content} />

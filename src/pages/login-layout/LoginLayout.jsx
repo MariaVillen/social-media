@@ -1,19 +1,12 @@
-import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
-import classes from "./Login.module.scss";
+import classes from "./LoginLayout.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
-import LoginForm from "../../components/login-form/LoginForm";
-import SignUpForm from "../../components/singup-form/SignUpForm";
+
 
 // Login page presentation. Access to login or register.
 
 export default function Login(props) {
-  const [isLoginView, setIsLoginView] = useState(true);
-
-  // Changes between login and register forms
-  const changeViewHandler = (newViewState) => {
-    setIsLoginView(newViewState);
-  };
 
   return (
     <div className={classes.login}>
@@ -28,14 +21,7 @@ export default function Login(props) {
         </div>
         <div className={classes.login_body}>
           <div className={classes.login_body_form}>
-            {isLoginView ? (
-              <LoginForm
-                onLogin={props.onLogin}
-                onChangeFormView={changeViewHandler}
-              />
-            ) : (
-              <SignUpForm onChangeFormView={changeViewHandler} />
-            )}
+            <Outlet/>
           </div>
         </div>
       </div>

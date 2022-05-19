@@ -2,25 +2,29 @@
 import classes from './Admin.module.scss';
 import PostComment from '../../components/post-comment/PostComment.component';
 import { getRoles } from "../../helpers/auth-helpers";
+import { Outlet, Link } from "react-router-dom";
 
 export default function Admin({allowedRoles}) {
 return (
-    <>{
-      getRoles()?.find(role => allowedRoles?.includes(role)) ?
+     <>
+      {/* { getRoles()?.find(role => allowedRoles?.includes(role)) ? */}
     <div>
-      <h1> Panneau d'administrationage </h1>
-       <PostComment placeHolder="Je veux commenter!"/>
-
-       <h2>Gerer les utilisateurs</h2>
-       <h3>Utilisateurs non actifs</h3>
-       <h3>Utilisateurs actifs</h3>
-       <h3>Utilisateurs effacées</h3>
-       <h2>Gerer les signalements</h2>
-
+      <h1> Panneau d'administration</h1>
+      <ul>
+        <li>
+        <Link className={classes.topbar_link} to="/admin/users">
+                Users 
+        </Link>
+        </li>
+        <li>
+        <Link className={classes.topbar_link} to="/admin/reports">
+                Reports
+        </Link>
+       </li>
+      </ul>
+      <Outlet/>
     </div>
-    :
-    <></>
-    }
+     {/* :<></>} */}
     </>
   )
 }
