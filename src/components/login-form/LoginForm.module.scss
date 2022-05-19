@@ -23,6 +23,13 @@
     padding: 2em;
   }
 
+  
+  .errMsg {
+    background-color: yellow;
+    font-weight: 500;
+    padding: 1em;
+  }
+  
   &_control {
     margin-bottom: 0.5rem;
 
@@ -49,6 +56,19 @@
         border: 2px solid $primary-color;
       }
     }
+
+    .instructions {
+      font-size: 0.75rem;
+      border-radius: 0.5rem;
+      color: $primary-color;
+      padding: 14px;
+      position: relative;
+      bottom: -5px;
+    }
+    .offscreen {
+      position: absolute;
+      left: -9999px;
+    }
   }
 
   &_forgotpass {
@@ -69,7 +89,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 1.5rem;
+    margin-top: 3em;
 
     &_link {
       width: auto;

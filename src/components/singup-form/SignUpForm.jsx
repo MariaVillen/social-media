@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import classes from "./SignUpForm.module.scss";
 import {useRef, useState, useEffect} from 'react';
 import {signup} from '../../api/api.js';
@@ -6,7 +7,7 @@ const SignUpForm = (props) => {
 
  // Validation
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!$%@\.]).{8,24}$/;
-  const NAME_REGEX =/^[A-Za-zàâçéèêëîïôûùüÿñæœ']+/; 
+  const NAME_REGEX =/^[A-Za-zàâçéèêëîïôûùüÿñæœ' ]+/; 
   const EMAIL_REGEX= /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
 
   
@@ -14,8 +15,9 @@ const SignUpForm = (props) => {
   const emailRef = useRef();
   const nameRef = useRef();
   const lastNameRef = useRef();
-  const conditionsRef = useRef();
   const errRef = useRef();
+  const condRef = useRef();
+
 
   // Error States
   const [email, setEmail] = useState('');
@@ -26,7 +28,7 @@ const SignUpForm = (props) => {
   const [validName, setValidName] = useState(false);
   const [lastName, setLastName] = useState('');
   const [validLastName, setValidLastName] = useState(false);
-  const [conditions, setConditions] = useState(false);
+  const [conditions, setConditions] =  useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
 
@@ -73,93 +75,92 @@ const SignUpForm = (props) => {
       setPwd('')
       setName('')
       setLastName('')
-      setConditions('');
+      //setConditions('');
+      
     } catch (err) {
-        if (!err?.response) {
-          setErrMsg("No server response");
-        } else if (err.response?.status===409){
-          setErrMsg('Email already in use');
-        } else {
-          setErrMsg('Registratio failed')
-        }
-        errRef.current.focus();
+      console.log(err);
+      if (!err?.response) {
+        setErrMsg('Pas de réponse du serveur.');
+      } else if (err.response?.status === 400) {
+        console.log(err.message);
+        setErrMsg("Email déjà utilisé")
+      } else {
+        console.log(err.message);
+        setErrMsg('La connexion a échoué');
+      }
+      errRef.current.focus();
     }
-
   };
 
   return (
-    <section className={classes.auth}>
+    <><section className={classes.auth}>
 
-       <p ref={errRef} className={errMsg ? "errMsg":"offscreen"} aria-live="assertive">{errMsg}</p>
-
-      <h1>Sign Up</h1>
-
-      <form onSubmit={submitHandler}> 
+      <h1>S'inscrire</h1>
+      <p ref={errRef} className={errMsg ? classes.errMsg : classes.offscreen } aria-live="assertive">{errMsg}</p><form onSubmit={submitHandler}>
         <div className={classes.auth_control}>
           <label htmlFor="email">Email</label>
-          <input 
-              type="email" 
-              id="email" 
-              ref={emailRef}
-              autoComplete="off"
-              onChange={(e)=>setEmail(e.target.value)}
-              value={email}
-              required 
-          />
-          <p className = {(email && !validEmail) ? classes.instructions : classes.offscreen}>
-            Mensaje de Instrucciones 
+          <input
+            type="email"
+            id="email"
+            ref={emailRef}
+            autoComplete="off"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            required />
+          <p className={(email && !validEmail) ? classes.instructions : classes.offscreen}>
+            Mensaje de Instrucciones
           </p>
         </div>
 
         <div className={classes.auth_control}>
           <label htmlFor="name">Nom</label>
-          <input 
-            type="text" 
-            id="name" 
+          <input
+            type="text"
+            id="name"
             ref={nameRef}
             autoComplete="off"
-            onChange={(e)=>setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
             value={name}
             required />
-          <p className = {(name && !validName) ? classes.instructions : classes.offscreen}>
-              Mensaje de Instrucciones 
+          <p className={(name && !validName) ? classes.instructions : classes.offscreen}>
+            Mensaje de Instrucciones
           </p>
         </div>
 
         <div className={classes.auth_control}>
-          <label htmlFor="lastName">Prenom</label>
-          <input 
-              type="text" 
-              id="lastName"
-              ref={lastNameRef}
-              autoComplete="off"
-              onChange={(e)=>setLastName(e.target.value)}
-              value={lastName}
-              required />
-               <p className = {(lastName && !validLastName) ? classes.instructions : classes.offscreen}>
-              Mensaje de Instrucciones 
-            </p>
+          <label htmlFor="lastName">Prénom</label>
+          <input
+            type="text"
+            id="lastName"
+            ref={lastNameRef}
+            autoComplete="off"
+            onChange={(e) => setLastName(e.target.value)}
+            value={lastName}
+            required />
+          <p className={(lastName && !validLastName) ? classes.instructions : classes.offscreen}>
+            Mensaje de Instrucciones
+          </p>
         </div>
 
         <div className={classes.auth_control}>
-          <label htmlFor="password">Mot de pas</label>
-          <input 
-              type="password" 
-              id="password" 
-              onChange={e=> setPwd(e.target.value)}
-              value={pwd}
-              required />
-             <p className = {(pwd && !validPwd) ? classes.instructions : classes.offscreen}>
-              Mensaje de Instrucciones 
-            </p>
+          <label htmlFor="password">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            onChange={e => setPwd(e.target.value)}
+            value={pwd}
+            required />
+          <p className={(pwd && !validPwd) ? classes.instructions : classes.offscreen}>
+            Mensaje de Instrucciones
+          </p>
         </div>
 
         <div className={classes.auth_check}>
-          <input 
-            type="checkbox" 
-            id="conditions" 
-            ref={conditionsRef}
-            onClick={()=>{setConditions(!conditions)}}
+          <input
+            type="checkbox"
+            ref={condRef}
+            onChange={(e) => { setConditions(!conditions)}}
+            id="conditions"
             value={conditions}
             required />
           <label htmlFor="conditions">
@@ -169,19 +170,18 @@ const SignUpForm = (props) => {
         </div>
 
         <div className={classes.auth_actions}>
-          <button type="submit" className={classes.auth_actions_link} disabled= {!(validEmail && validLastName && validName && validPwd && conditions) }>Create Account</button>
+          <button type="submit" className={classes.auth_actions_link} disabled={!(validEmail && validLastName && validName && validPwd && conditions)}>Créer un compte.</button>
 
           <p
-            type="button"
             className={classes.auth_actions_toggle}
             onClick={loginViewHandler}
           >
             {/*put router link here */}
-            Login with existing account
+            Connectez-vous avec un compte existant
           </p>
         </div>
       </form>
-    </section>
+    </section></>
   );
 };
 

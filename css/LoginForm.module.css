@@ -24,6 +24,12 @@
   padding: 2em;
 }
 
+.auth .errMsg {
+  background-color: yellow;
+  font-weight: 500;
+  padding: 1em;
+}
+
 .auth_control {
   margin-bottom: 0.5rem;
 }
@@ -51,6 +57,20 @@
   border: 2px solid #eb3d25;
 }
 
+.auth_control .instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  color: #eb3d25;
+  padding: 14px;
+  position: relative;
+  bottom: -5px;
+}
+
+.auth_control .offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
 .auth_forgotpass {
   width: auto;
   height: auto;
@@ -76,7 +96,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 3em;
 }
 
 .auth_actions_link {

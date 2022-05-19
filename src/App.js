@@ -10,8 +10,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   
     const ROLES = {
-        "Admin": 5051,
-        "User": 4010
+        "Admin": 5150,
+        "User": 2001
     }
 
 

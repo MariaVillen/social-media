@@ -8,7 +8,7 @@ return (
     <>{
       getRoles()?.find(role => allowedRoles?.includes(role)) ?
     <div>
-      <h1> Admin Page </h1>
+      <h1> Panneau d'administrationage </h1>
        <PostComment placeHolder="Je veux commenter!"/>
 
        <h2>Gerer les utilisateurs</h2>

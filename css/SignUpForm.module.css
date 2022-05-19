@@ -24,6 +24,12 @@
   padding: 2em;
 }
 
+.auth .errMsg {
+  background-color: yellow;
+  font-weight: 500;
+  padding: 1em;
+}
+
 .auth_control {
   margin-bottom: 0.5rem;
 }

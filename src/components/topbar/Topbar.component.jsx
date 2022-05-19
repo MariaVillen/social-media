@@ -67,7 +67,7 @@ export default function Topbar(props) {
             className={`${classes.topbar_item} ${classes.notLink}`}
             onClick={unLogHandler}
           >
-            Logout
+            Déconnexion
           </li>
         </ul>
       </nav>
