@@ -2,21 +2,28 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Topbar.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
+import { sendLogoutRequest } from "../../api/api";
+import useAuth from "../../hooks/useAuth";
 import { getRoles, clearToken, clearRoles } from "../../helpers/auth-helpers";
 
 // Menu TopBar General navigation bar.
 
-export default function Topbar(props) {
-  
-  const allowedRoles = /*props.allowedRoles*/[5150, 2001];
+export default function Topbar({ adminAccess }) {
+  // Authorization
+  const { auth } = useAuth();
+  const userRole = auth.user.roles;
+  console.log(userRole);
+  // Submenu handler
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
 
+  // Navigation
   const navigate = useNavigate();
-  // Event to unlog button, will set the login state false.
 
-  const unLogHandler = () => {
+  // Unlog Handler
+  const unLogHandler = async () => {
     clearToken();
     clearRoles();
+    //sendLogoutRequest(auth.user);
     navigate("/login");
   };
 
@@ -49,21 +56,18 @@ export default function Topbar(props) {
               Accueil
             </Link>
           </li>
-
-          {/* {getRoles()?.find((role) => allowedRoles.User === role) && ( */}
-            <li className={classes.topbar_item}>
-              <Link className={classes.topbar_link} to="/profile">
-                Profile
-              </Link>
-            </li>
-          {/* )}
-          {getRoles()?.find((role) => allowedRoles.Admin === role) && ( */}
+          <li className={classes.topbar_item}>
+            <Link className={classes.topbar_link} to="/profile">
+              Profile
+            </Link>
+          </li>
+          {adminAccess.find((role) => userRole === role) && (
             <li className={classes.topbar_item}>
               <Link className={classes.topbar_link} to="/admin">
                 Administration
               </Link>
             </li>
-          {/* )} */}
+          )}
           <li
             className={`${classes.topbar_item} ${classes.notLink}`}
             onClick={unLogHandler}

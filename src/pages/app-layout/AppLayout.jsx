@@ -12,10 +12,11 @@ import { Outlet } from "react-router-dom";
 
 function AppLayout (props) {
 
+    console.log(props);
     return(
         <div className={classes.container}>
             <div className={classes.navigation}>
-                <Topbar onLogin={props.onLogin} allowedRoles={props.allowedRoles}/>
+                <Topbar adminAccess={props.adminAccess}/>
             </div>
             <main className={classes.main}>
                 <Outlet/>

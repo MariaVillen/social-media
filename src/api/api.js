@@ -5,15 +5,20 @@ const LOGIN_URL="/auth/login";
 const api = axios.create({
     baseURL: 'http://localhost:3000/api',
     headers: {'Content-Type':'application/json'},
-    // withCredentials: true
+    withCredentials: true
 })
 
-export function signup (user) {
+export function sendLogoutRequest(user){
     return api.post(REGISTER_URL,
         JSON.stringify(user));
 }
 
-export function login (user){
+export function sendSignupRequest(user) {
+    return api.post(REGISTER_URL,
+        JSON.stringify(user));
+}
+
+export function sendLoginRequest(user){
     return api.post(LOGIN_URL, JSON.stringify(user));
 }
 

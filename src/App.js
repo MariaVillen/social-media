@@ -1,7 +1,10 @@
+import RequireAuth from "./helpers/RequireAuth";
+
 import LoginLayout from "./pages/login-layout/LoginLayout";
 import LoginForm from "./components/login-form/LoginForm";
 import SignUpForm from "./components/singup-form/SignUpForm";
 import ForgotenPass from "./components/forgottenpass/ForgotenPass";
+import Unauthorized from "./pages/unauthorized/Unauthorized";
 
 import AppLayout from "./pages/app-layout/AppLayout";
 import HomePage from "./pages/home/Home";
@@ -19,32 +22,36 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   const ROLES = {
-    Admin: 5150,
-    User: 2001,
+    admin: 5150,
+    user: 2001,
   };
 
   // Verifty the state of logged or not of user
 
   return (
     <Routes>
-
       {/* App Routes */}
-
-      <Route path="/" element={<AppLayout allowedRoles={ROLES} />}>
-        <Route path="/" element={<HomePage />}>
-          <Route index path="/" element={<Feed />} />
-          <Route path="post/:id" element={<PostDetail />} />
+      <Route element={<RequireAuth allowedRoles ={[ROLES.user, ROLES.admin]}/>}>
+        <Route element={<AppLayout adminAccess={[ROLES.admin]}/>}>
+          <Route path="/" element={<HomePage />}>
+            <Route index path="/" element={<Feed />} />
+            <Route path="post/:id" element={<PostDetail />} />
+          </Route>
+          <Route
+            path="profile"
+            element={<ProfilePage/>}
+          />
         </Route>
-        <Route
-          path="profile"
-          element={<ProfilePage allowedRoles={[ROLES.User, ROLES.Admin]} />}
-        />
-        <Route
-          path="admin"
-          element={<AdminPage allowedRoles={[ROLES.Admin]} />}
-        >
+      </Route>
+      <Route element={<RequireAuth allowedRoles ={[ROLES.admin]}/>}>
+        <Route element={<AppLayout adminAccess ={[ROLES.admin]}/>}>
+          <Route
+            path="admin"
+            element={<AdminPage allowedRoles={[ROLES.admin]} />}
+          >
           <Route index path="users" element={<UsersPannel />} />
-          <Route path="reports" element={<ReportPannel />} />
+            <Route path="reports" element={<ReportPannel />} />
+          </Route>
         </Route>
       </Route>
 
@@ -54,8 +61,9 @@ function App() {
         <Route index path="login" element={<LoginForm />} />
         <Route path="register" element={<SignUpForm />} />
         <Route path="forgottenPass" element={<ForgotenPass />} />
+        <Route path="unauthorized" element={<Unauthorized />} />
       </Route>
-      
+
       {/* Cath All */}
       <Route path="/*" element={<NotFound />} />
     </Routes>

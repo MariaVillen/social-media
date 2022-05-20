@@ -1,18 +1,21 @@
 import classes from "./LoginForm.module.scss";
-import { useRef, useState, useEffect, useContext } from "react";
-import {login} from "../../api/api";
-import {Link, useNavigate } from "react-router-dom";
-
-import AuthContext from "../../context/AuthProvider";
+import { useRef, useState, useEffect } from "react";
+import {sendLoginRequest} from "../../api/api";
+import {Link, useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import { setToken, setRoles } from "../../helpers/auth-helpers";
 
 const LoginForm = () => {
 
-  // Navigate
-  const navigate = useNavigate();
+
 
   // Authorization
-  const{ setAuth } = useContext(AuthContext); 
+  const{ setAuth } = useAuth(); 
+
+  // Navigate
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/"; // Get where user came from
 
   // Referencies
   const emailRef = useRef();
@@ -22,7 +25,6 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [pwd, setPwd] = useState("");
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
 
   // focus on user input
   useEffect(() => {
@@ -38,7 +40,7 @@ const LoginForm = () => {
     e.preventDefault();
 
     try {
-      const response = await login({email: email, password:pwd});
+      const response = await sendLoginRequest({email: email, password:pwd});
       if (!response) {
         console.log('sin respuesta');
         return;
@@ -52,12 +54,12 @@ const LoginForm = () => {
         return;
       }
       const accessToken = response?.data?.accessToken;
+      const userId = response?.data?.userId
       const roles = response?.data?.userRole;
-      setAuth({email, pwd, roles, accessToken});
+      setAuth({user: {id: userId, roles: roles}, accessToken});
       setEmail("");
       setPwd("");
-      setSuccess(true);
-      navigate("/");
+      navigate(from, {repalce:true}); // redirect to last location
 
     } catch(err){
       if (!err?.response) {

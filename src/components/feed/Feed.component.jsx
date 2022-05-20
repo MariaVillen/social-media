@@ -11,6 +11,8 @@ import { Posts, Users } from "../../dummyData";
  */
 
 export default function Feed(props, { className = "" }) {
+
+
   // Data Filter post by UserId
   const postList = props.onlyForUserId
     ? Posts.filter((p) => {
@@ -18,7 +20,6 @@ export default function Feed(props, { className = "" }) {
       })
     : Posts;
 
-  console.log(postList);
   return (
     <>
       {postList.map((p) => {

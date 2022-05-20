@@ -1,10 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import classes from "./SignUpForm.module.scss";
 import {useRef, useState, useEffect} from 'react';
-import {signup} from '../../api/api.js'; // call function 
-import {Link } from 'react-router-dom';
+import {sendSignupRequest} from '../../api/api.js'; // call function 
+import {Link, useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+
+  // Navigation
+
+  const navigate = useNavigate();
 
  // Validation
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!$%@\.]).{8,24}$/;
@@ -65,7 +69,7 @@ const SignUpForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await signup({lastName: lastName, name: name, email: email, password: pwd});
+      const response = await sendSignupRequest({lastName: lastName, name: name, email: email, password: pwd});
       console.log(response.data);
       console.log(response.accessToken);
       setSuccess(true);
@@ -73,7 +77,7 @@ const SignUpForm = () => {
       setPwd('')
       setName('')
       setLastName('')
-      //setConditions('');
+      navigate('/login')
       
     } catch (err) {
       console.log(err);
