@@ -29,6 +29,15 @@
 
   &_main {
     margin: 0 auto;
+    flex-grow: 1;
+
+    .follow {
+      display: block;
+      background-color: $primary-color;
+      font-size: 1em;
+      color: white;
+      margin: 0 auto;
+    }
   }
 }
 

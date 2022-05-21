@@ -1,0 +1,39 @@
+
+.friendList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+
+.activeCard {
+    display: flex;
+    align-items: center;
+    margin: 1em;
+    background-color: mistyrose;
+
+    &_container{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        padding: 1em;
+
+        span {
+            padding-right: 0.5em;
+        }
+    }
+    &_action {
+        .active {
+        padding: 1em;
+        }
+        .notActive{
+            background-color: gray;
+        }
+    }
+    &_user{
+        display: flex;
+        align-items: center;
+    }
+}
+

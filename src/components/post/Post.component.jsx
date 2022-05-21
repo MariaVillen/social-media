@@ -53,6 +53,7 @@ export default function Post(props, { className = "" }) {
           <div className={classes.post_profile}>
             <UserCard
               hideName
+              userId={props.user.id}
               profilePicture={props.user.profilePicture}
               username={props.user.username}
             />

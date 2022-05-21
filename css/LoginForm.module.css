@@ -41,19 +41,40 @@
   color: #333333;
 }
 
+.auth_control span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 4px;
+  border: 2px solid mistyrose;
+}
+
+.auth_control span:focus-within {
+  border: 2px solid #eb3d25;
+}
+
+.auth_control span .passIcon {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  color: #333333;
+}
+
 .auth_control input {
   width: 100%;
   padding: 0.25rem;
   font-size: inherit;
   text-align: left;
   outline: none;
-  border-radius: 4px;
-  border: 2px solid mistyrose;
+  border: none;
   background-color: white;
   color: #333333;
 }
 
-.auth_control input:focus, .auth_control input:active {
+.auth_control > input:focus,
+.auth_control > input:active {
   border: 2px solid #eb3d25;
 }
 

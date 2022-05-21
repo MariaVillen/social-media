@@ -39,24 +39,35 @@
       font-weight: bold;
       color: $black-color;
     }
-
+    span {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      border: 2px solid $secondary-color;
+      &:focus-within {
+        border: 2px solid $primary-color;
+      }
+      .passIcon {
+        align-self: flex-end;
+        color: $black-color;
+      }
+    }
     input {
       width: 100%;
       padding: 0.25rem;
       font-size: inherit;
       text-align: left;
       outline: none;
-      border-radius: 4px;
-      border: 2px solid $secondary-color;
+      border: none;
       background-color: white;
       color: $black-color;
-
-      &:focus,
-      &:active {
-        border: 2px solid $primary-color;
-      }
     }
-
+    
+    &>input:focus,
+    &>input:active {
+          border: 2px solid $primary-color;
+      }
+   
     .instructions {
       font-size: 0.75rem;
       border-radius: 0.5rem;

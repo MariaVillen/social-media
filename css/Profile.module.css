@@ -37,6 +37,17 @@
 
 .content_main {
   margin: 0 auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.content_main .follow {
+  display: block;
+  background-color: #eb3d25;
+  font-size: 1em;
+  color: white;
+  margin: 0 auto;
 }
 
 .title {

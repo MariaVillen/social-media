@@ -1,30 +1,31 @@
-
-import classes from './Admin.module.scss';
-import PostComment from '../../components/post-comment/PostComment.component';
+import classes from "./Admin.module.scss";
+import {AccountCircle, FlagCircle } from "@mui/icons-material";
 import { getRoles } from "../../helpers/auth-helpers";
 import { Outlet, Link } from "react-router-dom";
 
-export default function Admin({allowedRoles}) {
-return (
-     <>
-      {/* { getRoles()?.find(role => allowedRoles?.includes(role)) ? */}
-    <div>
-      <h1> Panneau d'administration</h1>
-      <ul>
-        <li>
-        <Link className={classes.topbar_link} to="/admin/users">
-                Users 
-        </Link>
-        </li>
-        <li>
-        <Link className={classes.topbar_link} to="/admin/reports">
-                Reports
-        </Link>
-       </li>
-      </ul>
-      <Outlet/>
-    </div>
-     {/* :<></>} */}
+export default function Admin({ allowedRoles }) {
+  return (
+    <>
+      <main className = {classes.container}>
+          <nav className = {classes.navbar}>
+            <ul>
+              <li>
+                <Link className={classes.navbar_link} to="/admin">
+                  <AccountCircle className={classes.navbar_link_icon}/> Users
+                </Link>
+              </li>
+              <li>
+                <Link className={classes.navbar_link} to="/admin/reports">
+                  <FlagCircle className={classes.navbar_link_icon}/> Reports
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className={classes.wrapper}>
+          <h1> Panneau d'administration</h1>
+          <Outlet />
+        </div>
+      </main>
     </>
-  )
+  );
 }

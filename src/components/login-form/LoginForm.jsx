@@ -1,13 +1,13 @@
 import classes from "./LoginForm.module.scss";
 import { useRef, useState, useEffect } from "react";
-import {sendLoginRequest} from "../../api/api";
 import {Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { setToken, setRoles } from "../../helpers/auth-helpers";
+import { useApiData } from "../../api/api";
+import { VisibilityOff, Visibility } from "@mui/icons-material";
 
 const LoginForm = () => {
 
-
+ const {sendLoginRequest} = useApiData();
 
   // Authorization
   const{ setAuth } = useAuth(); 
@@ -31,31 +31,37 @@ const LoginForm = () => {
     emailRef.current.focus();
   }, []);
 
-  // Reset error messages to '' si cambia el user o password
+  // Reset error messages to '' if user or password changes
   useEffect(() => {
     setErrMsg("");
   }, [email, pwd]);
 
+  // Pass visibility
+  const [seePass, setSeePass] = useState(false);
+
+  // Submition
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
       const response = await sendLoginRequest({email: email, password:pwd});
+      console.log('Login Response: ', response.data);
       if (!response) {
-        console.log('sin respuesta');
+        console.log('No answer');
         return;
       }
       if (!response?.data?.accessToken) {
-        console.log('sin access token');
+        console.log('Not acces token sent');
         return;
       }
       if (!response?.data?.userRole) {
-        console.log('sin roles');
+        console.log('No roles sent');
         return;
       }
       const accessToken = response?.data?.accessToken;
       const userId = response?.data?.userId
       const roles = response?.data?.userRole;
+
       setAuth({user: {id: userId, roles: roles}, accessToken});
       setEmail("");
       setPwd("");
@@ -142,14 +148,18 @@ const LoginForm = () => {
         </div>
 
         <div className={classes.auth_control}>
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(e) => setPwd(e.target.value)}
-            value={pwd}
-            required
-          />
+          <label htmlFor="password">Mot de passe </label>
+          <span>
+            <input
+              type={seePass ? "text" : "password"}
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+            />
+            {seePass ?  <Visibility className = {classes.passIcon} onClick={()=> setSeePass(false)}/> :
+            <VisibilityOff className={classes.passIcon} onClick={()=> setSeePass(true)}/>}
+          </span>
         </div>
         <Link className={classes.auth_forgotpass} to="/forgottenPass">
           Mot de passe oublié ?

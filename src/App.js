@@ -38,20 +38,23 @@ function App() {
             <Route path="post/:id" element={<PostDetail />} />
           </Route>
           <Route
-            path="profile"
+            path="profile/:id"
             element={<ProfilePage/>}
           />
         </Route>
       </Route>
       <Route element={<RequireAuth allowedRoles ={[ROLES.admin]}/>}>
         <Route element={<AppLayout adminAccess ={[ROLES.admin]}/>}>
+
           <Route
             path="admin"
             element={<AdminPage allowedRoles={[ROLES.admin]} />}
           >
-          <Route index path="users" element={<UsersPannel />} />
+            <Route index path="" element={<UsersPannel />} />
             <Route path="reports" element={<ReportPannel />} />
+
           </Route>
+          
         </Route>
       </Route>
 

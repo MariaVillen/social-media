@@ -1,10 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import classes from "./SignUpForm.module.scss";
 import {useRef, useState, useEffect} from 'react';
-import {sendSignupRequest} from '../../api/api.js'; // call function 
 import {Link, useNavigate } from 'react-router-dom';
+import { useApiData } from "../../api/api";
 
 const SignUpForm = () => {
+
+  // Api
+
+  const {sendSignupRequest} = useApiData();
 
   // Navigation
 

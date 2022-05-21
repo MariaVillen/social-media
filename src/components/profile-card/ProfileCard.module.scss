@@ -1,3 +1,5 @@
+@import "../../styles-utils/graphiqueColors.scss";
+
 .small {
   display: flex;
   flex-direction: column;
@@ -20,6 +22,7 @@
     position: relative;
     padding-bottom: calc(100% * 4 / 12);
     margin-bottom: 20%;
+    background-color: $primary-color;
   }
 
   .container_avatar {
@@ -75,6 +78,11 @@
     position: relative;
   }
 
+  .innerCover {
+    height: 200px;
+    background-color: $secondary-color;
+  }
+ 
   .coverImage {
     width: 100%;
     height: 200px;

@@ -2,17 +2,16 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Topbar.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
-import { sendLogoutRequest } from "../../api/api";
 import useAuth from "../../hooks/useAuth";
-import { getRoles, clearToken, clearRoles } from "../../helpers/auth-helpers";
+import { AccountCircle} from '@mui/icons-material';
 
 // Menu TopBar General navigation bar.
 
-export default function Topbar({ adminAccess }) {
+export default function Topbar(props) {
   // Authorization
   const { auth } = useAuth();
   const userRole = auth.user.roles;
-  console.log(userRole);
+
   // Submenu handler
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
 
@@ -21,8 +20,7 @@ export default function Topbar({ adminAccess }) {
 
   // Unlog Handler
   const unLogHandler = async () => {
-    clearToken();
-    clearRoles();
+
     //sendLogoutRequest(auth.user);
     navigate("/login");
   };
@@ -33,6 +31,7 @@ export default function Topbar({ adminAccess }) {
     setSubMenuOpen(!isSubMenuOpen);
     console.log("isSubMenuOpen: ", isSubMenuOpen);
   };
+
 
   return (
     <div className={classes.topbar}>
@@ -47,7 +46,7 @@ export default function Topbar({ adminAccess }) {
             isSubMenuOpen && classes.show
           }`}
         >
-          <img src="/assets/persons/v3_0014506.png" alt="Profile" />
+        {(props.userImage)?<img src={props.userImage} alt="Profile" />: <AccountCircle/>}
         </div>
 
         <ul className={classes.topbar_links}>
@@ -57,11 +56,11 @@ export default function Topbar({ adminAccess }) {
             </Link>
           </li>
           <li className={classes.topbar_item}>
-            <Link className={classes.topbar_link} to="/profile">
+            <Link className={classes.topbar_link} to={`/profile/${auth.user.id}`}>
               Profile
             </Link>
           </li>
-          {adminAccess.find((role) => userRole === role) && (
+          {props.adminAccess.find((role) => userRole === role) && (
             <li className={classes.topbar_item}>
               <Link className={classes.topbar_link} to="/admin">
                 Administration

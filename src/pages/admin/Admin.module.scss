@@ -2,6 +2,50 @@
 @import "../../styles-utils/mixins.scss";
 
 .container {
-  max-width: 500px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 80px);
+  width: 100%;
+}
+
+.navbar {
+  height: 100%;
+  background-color: #222;
+  color: white;
+  width: 200px;
+  padding-top: 1em;
+
+  ul {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    padding-top: 2em;
+
+    li {
+      list-style: none;
+      color: white;
+      padding: 1em;
+      width: 100%;
+      &:hover {
+        background-color: orangered;
+      }
+    }
+  }
+  
+  &_link {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+
+    &_icon {
+      margin-right: 1em;
+    }
+  }
+}
+.wrapper {
+  padding: 1em;
 }

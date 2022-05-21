@@ -69,8 +69,8 @@ export default function Share(props) {
 
           <div className={classes.shareHeader}>
             <img
-              src="/assets/persons/8.jpeg"
-              alt="name"
+              src= {props.avatar}
+              alt={ props.name}
               className={classes.shareHeader_image}
             />
 
