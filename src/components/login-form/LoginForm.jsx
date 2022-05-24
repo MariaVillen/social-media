@@ -44,9 +44,10 @@ const LoginForm = () => {
     e.preventDefault()
     // Requesting login to DB
     try {
-      console.log(email);
-      const response = await api.post("/auth/login", { email: email, password: pwd });
-      console.log("Login Response: ", response.data);
+      const response = await api.post("/auth/login", JSON.stringify({ email: email, password: pwd }), {
+        headers: {'Content-Type':'application/json'},
+        withCredentials: true
+      });
 
       if (!response) {
         console.log("No answer");
@@ -60,8 +61,8 @@ const LoginForm = () => {
       } else if (!response?.data?.userId) {
         console.log("No user id sent");
       }
-
-      // Setting auth value for authcontext
+      console.log(response);
+      // Setting auth value for authcontext<
       const accessToken = response?.data?.accessToken;
       const userId = response?.data?.userId;
       const roles = response?.data?.userRole;
@@ -70,6 +71,7 @@ const LoginForm = () => {
       // Cleaning form
       setEmail("");
       setPwd("");
+      emailRef.current.focus();
 
       // Redirecting to last location
       navigate(from, { repalce: true }); // redirect to last location
@@ -112,7 +114,6 @@ const LoginForm = () => {
             type="email"
             id="email"
             ref={emailRef}
-            autoComplete="off"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             required
