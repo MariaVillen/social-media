@@ -1,6 +1,6 @@
 import classes from "./ProfileForm.module.scss";
 import { NoAccounts, AutoStories, LockReset, Photo } from "@mui/icons-material";
-import  useApiData  from "../../api/api";
+import  api from "../../api/axios";
 
 // recuperar el user
 // dar los valores a la informacion
@@ -13,8 +13,6 @@ import  useApiData  from "../../api/api";
 
 export default function ProfileForm({user}) {
 
-  const { updateUser }  = useApiData("private");
-
   const submitHandler = async ( event )=>{
     event.preventDefault();
     const fd = new FormData();
@@ -26,7 +24,7 @@ export default function ProfileForm({user}) {
     fd.append("bio", event.target.bio);
     console.log(fd.cover);
     try {
-      const response = await updateUser(fd, idUser);
+      const response = await api.put("/user" + "/" + idUser);
       console.log('Login Response: ', response.data);
       if (!response) {
         console.log('No answer');

@@ -1,18 +1,16 @@
 
 import {useEffect, useState} from 'react';
-import  useApiData from "../../api/api";
+import  api from "../../api/axios";
 import UserCard from '../userCard/UserCard.component';
 import classes from './UserPannel.module.scss';
 
 function UserPannel() {
 
-  const {getAllUsers} = useApiData("private");
-
   const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState();
 
   useEffect(() => {
-    getAllUsers().then(
+    api.get("/user", {transformResponse:(res) => {return JSON.parse(res)}}).then(
       (usersLoaded) => {setUsers(usersLoaded.data); setIsLoading(false);console.log(users)}
     ).catch((err) => {
       console.log(err.message);

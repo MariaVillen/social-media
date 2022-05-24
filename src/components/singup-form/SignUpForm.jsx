@@ -2,13 +2,9 @@
 import classes from "./SignUpForm.module.scss";
 import {useRef, useState, useEffect} from 'react';
 import {Link, useNavigate } from 'react-router-dom';
-import useApiData from "../../api/api";
+import api from "../../api/axios";
 
 const SignUpForm = () => {
-
-  // Api
-
-  const {sendSignupRequest} = useApiData();
 
   // Navigation
 
@@ -73,7 +69,7 @@ const SignUpForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await sendSignupRequest({lastName: lastName, name: name, email: email, password: pwd});
+      const response = await api.post("/auth/singup", JSON.stringify({lastName: lastName, name: name, email: email, password: pwd}));
       console.log(response.data);
       console.log(response.accessToken);
       setSuccess(true);

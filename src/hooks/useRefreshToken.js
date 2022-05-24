@@ -1,4 +1,4 @@
-import useApiData from '../api/api';
+import useApiData from '../api/axios';
 import useAuth from './useAuth';
 
 

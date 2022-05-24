@@ -3,12 +3,11 @@ import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth"; // Get auth information
-import useApiData from "../../api/api"; // Hook for db request
+import api from "../../api/axios"; // db request
 
 
 const LoginForm = () => {
   // Instance of hook for DB requests
-  const { sendLoginRequest } = useApiData();
 
   // Getting Authorization Data from AuthContext.
   const { setAuth } = useAuth();
@@ -42,10 +41,11 @@ const LoginForm = () => {
 
   // Form Submition
   const submitHandler = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // Requesting login to DB
     try {
-      const response = await sendLoginRequest({ email: email, password: pwd });
+      console.log(email);
+      const response = await api.post("/auth/login", { email: email, password: pwd });
       console.log("Login Response: ", response.data);
 
       if (!response) {

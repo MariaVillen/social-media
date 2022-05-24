@@ -3,15 +3,14 @@ import { useState, useEffect } from "react";
 import { PermMedia, Close } from "@mui/icons-material";
 import PreviewImage from "./PreviewImage.component";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
-import  useApiData  from "../../api/api";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 // Component to share and public text and one image.
 
 export default function Share(props) {
 
-  const {createPost} = useApiData("private");
-
   const idInput = props.id || "createPost";
+  const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
     if (props.photo) {
@@ -60,7 +59,7 @@ export default function Share(props) {
     formData.append('content', event.target.textComment.value);
 
     try{
-    const result = await createPost(formData);
+    const result = await axiosPrivate.post("/post", formData);
     console.log(result);
     } catch(err) {
       console.log(err.message);
