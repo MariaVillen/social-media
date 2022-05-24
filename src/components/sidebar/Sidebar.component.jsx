@@ -5,36 +5,41 @@ import ProfileForm from "../profile-form/ProfileForm.component";
 
 // Sidebar of the home page.
 
-export default function Sidebar(props) {
+export default function Sidebar({user, users, className}) {
 
   return (
-    <div className={`${classes.container} ${props.className}`}>
+    <div className={`${classes.container} ${className}`}>
       "
       <ProfileCard
-        userId = {props.user.idUsers}
-        username= {props.user.name}
-        cover= {props.user.coverPicture}
-        avatar={props.user.profilePicture}
-        bio={props.user.bio}
+        userId = {user.id}
+        username= {user.name}
+        cover= {user.coverPicture}
+        avatar={user.profilePicture}
+        bio={user.bio}
       />
       <div className={classes.wrapper}>
-        <ProfileForm />
+        <ProfileForm user = {user}/>
         <hr className={classes.separator} />
         <p className={classes.title}>Mes contacts</p>
-        <ul className={classes.friendList}>
-          {props.users.map((user) => {
-            return (
-              <li key={user.idUsers}>
-                <UserCard
-                  key={user.idUsers}
-                  userId = {user.idUsers}
-                  username={user.name}
-                  profilePicture={user.profilePicture}
-                />
-              </li>
-            );
-          })}
-        </ul>
+        {(users?.length)
+
+          ? <ul className={classes.friendList}>
+            {users.map((u) => {
+              return (
+                <li key={u.id}>
+                  <UserCard
+                    key={u.id}
+                    userId = {u.id}
+                    username={u.name}
+                    profilePicture={u.profilePicture}
+                  />
+                </li>
+              );}
+            )}
+            </ul>
+          : <><p>Pas d'utilisateurs.</p></>
+        }
+  
       </div>
     </div>
   );

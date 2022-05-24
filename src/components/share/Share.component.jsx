@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import { PermMedia, Close } from "@mui/icons-material";
 import PreviewImage from "./PreviewImage.component";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
+import  useApiData  from "../../api/api";
 
 // Component to share and public text and one image.
 
 export default function Share(props) {
-  // Load Image if the image was send with props.photo
+
+  const {createPost} = useApiData("private");
 
   const idInput = props.id || "createPost";
 
@@ -50,16 +52,24 @@ export default function Share(props) {
   };
 
   // Event Handler for submit form
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    //const file = event.target.loadImage.files[0];
-    //const url = event.target.loadImage.value;
-    //const content = event.target.textComment.value;
+    let formData = new FormData();
+    formData.append('image', file);
+    formData.append('userId', props.userId);
+    formData.append('content', event.target.textComment.value);
+
+    try{
+    const result = await createPost(formData);
+    console.log(result);
+    } catch(err) {
+      console.log(err.message);
+    }
   };
 
   return (
     <div className={classes.container}>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} encType="multipart/form-data">
         <div className={classes.wrapper}>
           {props.content || props.photo ? (
             <div className={classes.share_btn_cancel}>
@@ -96,7 +106,7 @@ export default function Share(props) {
                 onChange={loadImagePreviewHandler}
                 accept="image/*"
                 id={idInput}
-                name="loadImage"
+                name="image"
                 type="file"
                 style={{ display: "none" }}
                 value={isImageCharged}
@@ -112,7 +122,7 @@ export default function Share(props) {
                 </span>
               </label>
 
-              <button className={classes.share_btn}>Publier</button>
+              <button type="submit"className={classes.share_btn}>Publier</button>
             </div>
           </div>
         </div>

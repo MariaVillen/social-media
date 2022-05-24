@@ -22,11 +22,11 @@ export default function Profile() {
 
 
   useEffect(()=>{
-  if (profileId === user.idUsers) {
+  if (profileId === user.id) {
     setUserProfile(user);
     setNotMyProfile(false);
   } else {
-    setUserProfile(users.filter((u)=> u.idUsers === profileId)[0]);
+    setUserProfile(users.filter((u)=> u.id === profileId)[0]);
     setNotMyProfile(true);
   }
 },[params.id]);
@@ -54,7 +54,7 @@ export default function Profile() {
               return (
                 <li>
                   <UserCard
-                    userId = {u.idUsers}
+                    userId = {u.id}
                     username={u.name}
                     profilePicture={u.profilePicture}
                     sizePicture="80px"

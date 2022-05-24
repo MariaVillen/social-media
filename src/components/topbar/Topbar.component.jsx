@@ -7,7 +7,7 @@ import { AccountCircle} from '@mui/icons-material';
 
 // Menu TopBar General navigation bar.
 
-export default function Topbar(props) {
+export default function Topbar({rolesList, userAvatar}) {
   // Authorization
   const { auth } = useAuth();
   const userRole = auth.user.roles;
@@ -35,46 +35,57 @@ export default function Topbar(props) {
 
   return (
     <div className={classes.topbar}>
+
       <div className={classes.topbar_logo}>
         <img src={Logo} alt="Groupomania Logo" />
       </div>
 
       <nav className={classes.topbar_menu}>
+
         <div
           onClick={subMenuHandler}
           className={`${classes.topbar_avatar} ${
             isSubMenuOpen && classes.show
           }`}
         >
-        {(props.userImage)?<img src={props.userImage} alt="Profile" />: <AccountCircle/>}
+          {(userAvatar)
+            ?<img src={userAvatar} alt="Profile" />
+            : <AccountCircle/>}
         </div>
 
         <ul className={classes.topbar_links}>
+    
           <li className={classes.topbar_item}>
             <Link className={classes.topbar_link} to="/">
               Accueil
             </Link>
           </li>
+
           <li className={classes.topbar_item}>
             <Link className={classes.topbar_link} to={`/profile/${auth.user.id}`}>
               Profile
             </Link>
           </li>
-          {props.adminAccess.find((role) => userRole === role) && (
+
+          {(userRole === rolesList.admin) && (
             <li className={classes.topbar_item}>
               <Link className={classes.topbar_link} to="/admin">
                 Administration
               </Link>
             </li>
           )}
+
           <li
             className={`${classes.topbar_item} ${classes.notLink}`}
             onClick={unLogHandler}
           >
             Déconnexion
           </li>
+
         </ul>
+
       </nav>
+      
     </div>
   );
 }

@@ -1,12 +1,12 @@
 
 import {useEffect, useState} from 'react';
-import { useApiData } from "../../api/api";
+import  useApiData from "../../api/api";
 import UserCard from '../userCard/UserCard.component';
 import classes from './UserPannel.module.scss';
 
 function UserPannel() {
 
-  const {getAllUsers} = useApiData();
+  const {getAllUsers} = useApiData("private");
 
   const [isLoading, setIsLoading] = useState(true);
   const [users, setUsers] = useState();

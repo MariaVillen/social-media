@@ -2,7 +2,7 @@
 import classes from "./SignUpForm.module.scss";
 import {useRef, useState, useEffect} from 'react';
 import {Link, useNavigate } from 'react-router-dom';
-import { useApiData } from "../../api/api";
+import useApiData from "../../api/api";
 
 const SignUpForm = () => {
 
