@@ -133,5 +133,22 @@
         background-color: transparent;
       }
     }
+
+    &_persist {
+      margin-top: 10px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+
+        label {
+          margin: 0;
+          font-size: 0.8em;
+        }
+        input{
+          height: 15px;
+          width: 15px;
+          margin: 0 5px 2px 2px;
+        }
+    }
   }
 }

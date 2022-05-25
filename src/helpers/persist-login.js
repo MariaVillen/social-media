@@ -6,19 +6,20 @@ import useAuth from "../hooks/useAuth";
 const PersistLogin = ()=> {
     const [isLoading, setIsLoading] = useState(true);
     const refresh = useRefreshToken();
-    const { auth } = useAuth();
+    const { auth, persist} = useAuth();
     console.log("access token en auth: ", auth.accessToken);
 
-    useEffect(()=>
-    {
+    useEffect(()=> {
+
+        let isMounted = true;
+
         const verifyRefreshToken = async () => {
             try {
-                const response = await refresh(); // get access token before we get the require auth component
-                console.log(response);
+                await refresh(); // get access token before we get the require auth component
             } catch (err) {
                 console.error(err);
             } finally {
-                setIsLoading(false); // prevent endless loadingloop
+                isMounted && setIsLoading(false); // prevent endless loadingloop
             }
         }
 
@@ -27,6 +28,7 @@ const PersistLogin = ()=> {
         !auth?.accessToken 
             ? verifyRefreshToken() 
             : setIsLoading(false); 
+            return () => isMounted = false;
     }, []);
 
     useEffect(()=>{
@@ -36,9 +38,11 @@ const PersistLogin = ()=> {
 
     return (
         <>
-            { isLoading
-                ? <p>Loading... {auth.userId}</p>
-                : <Outlet />
+            {!persist 
+                ? <Outlet />
+                : isLoading
+                    ? <p>Loading... {auth.userId}</p>
+                    : <Outlet />
             }
         </>
     )

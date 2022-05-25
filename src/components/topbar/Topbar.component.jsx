@@ -4,7 +4,7 @@ import classes from "./Topbar.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
 import useAuth from "../../hooks/useAuth";
 import DefaultAvatar from "../../images/avatar-default.png";
-import  axios  from '../../api/axios';
+import useLogout from "../../hooks/useLogout";
 
 // Menu TopBar General navigation bar.
 
@@ -12,7 +12,7 @@ export default function Topbar({rolesList, userAvatar}) {
   // Authorization
   const { auth } = useAuth();
   const userRole = auth.user.roles;
-  console.log(rolesList);
+  const logout = useLogout();
 
   // Submenu handler
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
@@ -23,8 +23,7 @@ export default function Topbar({rolesList, userAvatar}) {
   // Unlog Handler
   const unLogHandler = async () => {
 
-    await axios.post('/auth/logout');
-    //sendLogoutRequest(auth.user);
+    await logout();
     navigate("/login");
   };
 

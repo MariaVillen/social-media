@@ -10,7 +10,7 @@ const LoginForm = () => {
   // Instance of hook for DB requests
 
   // Getting Authorization Data from AuthContext.
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
 
   // Navigate handler
   const navigate = useNavigate();
@@ -95,6 +95,15 @@ const LoginForm = () => {
     }
   };
 
+  const togglePersist = () => {
+    setPersist(prev=> !prev );
+  }
+
+  useEffect(()=> {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
+
+
   return (
     <section className={classes.auth}>
       <p
@@ -151,10 +160,21 @@ const LoginForm = () => {
           <button type="submit" className={classes.auth_actions_link}>
             Connexion
           </button>
+          <div className={classes.auth_actions_persist}>
+            <input 
+              type="checkbox"
+              id="persist"
+              onChange = {togglePersist}
+              checked = {persist} 
+            />
+            <label htmlFor="persist">Trust this Device</label>
+          </div>
+          <hr/>
 
           <Link className={classes.auth_actions_toggle} to="/register">
             Créer un nouveau compte
           </Link>
+         
         </div>
       </form>
     </section>
