@@ -4,20 +4,26 @@ import { PermMedia, Close } from "@mui/icons-material";
 import PreviewImage from "./PreviewImage.component";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import Avatar from "../avatar/avatar.component";
 
 // Component to share and public text and one image.
 
-export default function Share(props) {
-
-  const idInput = props.id || "createPost";
+export default function Share({
+  userName,
+  userImage,
+  userId,
+  photo,
+  content,
+  isOpen,
+}) {
+  const idInput = userId || "createPost";
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
-    if (props.photo) {
-      setUrlImageLoaded(props.photo);
-      console.log("render");
+    if (photo) {
+      setUrlImageLoaded(photo);
     }
-  }, [props.photo]);
+  }, [photo]);
 
   // Use State for Files
   const [urlImageLoaded, setUrlImageLoaded] = useState(false); // if url exists will storage url file
@@ -30,15 +36,11 @@ export default function Share(props) {
       const reader = new FileReader();
       reader.onload = function (e) {
         setUrlImageLoaded(e.target.result);
-        console.log("url: ", urlImageLoaded);
       };
       reader.readAsDataURL(e.target.files[0]);
       setFile(e.target.files[0]);
-      console.log("file: ", file);
     } else {
-      console.log("Not Loaded");
       setUrlImageLoaded(false);
-      console.log("imput value: ", isImageCharged);
     }
   };
 
@@ -54,14 +56,13 @@ export default function Share(props) {
   const submitHandler = async (event) => {
     event.preventDefault();
     let formData = new FormData();
-    formData.append('image', file);
-    formData.append('userId', props.userId);
-    formData.append('content', event.target.textComment.value);
+    formData.append("image", file);
+    formData.append("userId", userId);
+    formData.append("content", event.target.textComment.value);
 
-    try{
-    const result = await axiosPrivate.post("/post", formData);
-    console.log(result);
-    } catch(err) {
+    try {
+      await axiosPrivate.post("/post", formData);
+    } catch (err) {
       console.log(err.message);
     }
   };
@@ -70,25 +71,15 @@ export default function Share(props) {
     <div className={classes.container}>
       <form onSubmit={submitHandler} encType="multipart/form-data">
         <div className={classes.wrapper}>
-          {props.content || props.photo ? (
-            <div className={classes.share_btn_cancel}>
-              <Close onClick={() => props.isOpen(false)} />
-            </div>
-          ) : null}
-
           <div className={classes.shareHeader}>
-            <img
-              src= {props.avatar}
-              alt={ props.name}
-              className={classes.shareHeader_image}
-            />
+            <Avatar userImage={userImage} userName={userName} userId={userId} />
 
             <div className={classes.shareHeader_content}>
               <TextareaRezise
                 name="textComment"
                 placeHolder="À quoi penses-tu?"
                 className={classes.shareHeader_content_edit}
-                textRezise={props.content}
+                textRezise={content}
               />
             </div>
           </div>
@@ -120,8 +111,16 @@ export default function Share(props) {
                   Ajouter Image
                 </span>
               </label>
-
-              <button type="submit"className={classes.share_btn}>Publier</button>
+              <div className={classes.share_action}>
+                {content || photo ? (
+                    <div className={classes.share_btn_cancel}>
+                      <span onClick={() => isOpen(false)}>Annuler</span>
+                    </div>
+                ) : null}
+                <button type="submit" className={classes.share_btn}>
+                  Publier
+                </button>
+              </div>
             </div>
           </div>
         </div>

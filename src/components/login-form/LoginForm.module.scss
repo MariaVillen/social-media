@@ -61,8 +61,11 @@
       border: none;
       background-color: white;
       color: $black-color;
+      border: none;
     }
-    
+    &>input {
+      border: 2px solid $secondary-color;
+    }
     &>input:focus,
     &>input:active {
           border: 2px solid $primary-color;

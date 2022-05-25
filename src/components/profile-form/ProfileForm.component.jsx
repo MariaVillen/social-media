@@ -40,7 +40,7 @@ export default function ProfileForm({user}) {
     <form onSubmit = {submitHandler}>
       <div className={classes.sidebarList}>
         <div className={classes.sidebarListItem}>
-          <label for="bio">
+          <label htmlFor="bio">
           <AutoStories className={classes.sidebarIcon} />
           <span className={classes.sidebarListItemText}>
             Changer biographie
@@ -49,7 +49,7 @@ export default function ProfileForm({user}) {
           <input id="bio" type="textarea"/>
         </div>
         <div className={classes.sidebarListItem}>
-          <label for="avatar">
+          <label htmlFor="avatar">
           <Photo className={classes.sidebarIcon} />
           <span className={classes.sidebarListItemText}>
             Changer photo profile
@@ -63,7 +63,7 @@ export default function ProfileForm({user}) {
               />
         </div>
         <div className={classes.sidebarListItem}>
-          <label for="cover">
+          <label htmlFor="cover">
           <Photo className={classes.sidebarIcon} />
           <span className={classes.sidebarListItemText}>
             Changer photo header
@@ -77,7 +77,7 @@ export default function ProfileForm({user}) {
               />
         </div>
         <div className={classes.sidebarListItem}>
-          <label for="pass">
+          <label htmlFor="pass">
           <LockReset className={classes.sidebarIcon} />
           <span className={classes.sidebarListItemText}>
             Changer Mot de Pas
@@ -86,7 +86,7 @@ export default function ProfileForm({user}) {
           <input id="pass" type="password"/>
         </div>
         <div className={classes.sidebarListItem}>
-          <label for="delete"> <NoAccounts className={classes.sidebarIcon} />
+          <label htmlFor="delete"> <NoAccounts className={classes.sidebarIcon} />
           <span className={classes.sidebarListItemText}>
             Demander suppresion compte
           </span>

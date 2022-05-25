@@ -71,6 +71,11 @@
   border: none;
   background-color: white;
   color: #333333;
+  border: none;
+}
+
+.auth_control > input {
+  border: 2px solid mistyrose;
 }
 
 .auth_control > input:focus,

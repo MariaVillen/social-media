@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import RequireAuth from "./helpers/RequireAuth";
+import PersistLogin from "./helpers/persist-login";
 
 // Authentication Components
 import LoginLayout from "./pages/login-layout/LoginLayout";
@@ -25,7 +26,6 @@ import ReportPannel from "./components/reports-pannel/ReportPannel.component";
 // generic component
 import NotFound from "./pages/notfound/NotFound";
 
-
 // Roles
 function App() {
   const ROLES = {
@@ -37,34 +37,30 @@ function App() {
 
   return (
     <Routes>
-      
       {/* App Routes */}
-      <Route element={<RequireAuth allowedRoles={[ROLES.user, ROLES.admin]}/>}>
+      <Route element={<PersistLogin />}>
+        <Route
+          element={<RequireAuth allowedRoles={[ROLES.user, ROLES.admin]} />}
+        >
+          <Route element={<AppLayout rolesList={ROLES} />}>
+            <Route path="/" element={<HomePage />}>
+              <Route index path="/" element={<Feed />} />
+              <Route path="post/:id" element={<PostDetail />} />
+            </Route>
 
-        <Route element={<AppLayout rolesist={ROLES}/>}>
-
-          <Route path="/" element={<HomePage />}>
-            <Route index path="/" element={<Feed />} />
-            <Route path="post/:id" element={<PostDetail />} />
+            <Route path="profile/:id" element={<ProfilePage />} />
           </Route>
-
-          <Route
-            path="profile/:id"
-            element={<ProfilePage/>}
-          />
-          <Route element={<RequireAuth allowedRoles ={[ROLES.admin]}/>}>
-            <Route
-                path="admin"
-                element={<AdminPage/>}>
-                <Route index path="" element={<UsersPannel />} />
-                <Route path="reports" element={<ReportPannel />} />
+        </Route>
+        <Route element={<RequireAuth allowedRoles={[ROLES.admin]} />}>
+          <Route element={<AppLayout rolesList={ROLES} />}>
+            <Route path="admin" element={<AdminPage />}>
+              <Route index path="" element={<UsersPannel />} />
+              <Route path="reports" element={<ReportPannel />} />
             </Route>
           </Route>
-
         </Route>
       </Route>
 
-    
       {/* Authentication Routes */}
       <Route path="/" element={<LoginLayout />}>
         <Route index path="login" element={<LoginForm />} />

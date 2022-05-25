@@ -83,6 +83,10 @@
   }
 }
 
+.share_action{
+  display: flex;
+  direction: row;
+}
 .share_btn {
   padding: 1em;
   margin-right: 20px;
@@ -92,19 +96,16 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+
+  &:hover {
+    background-color: $primary-color + 'CC';
+  }
 }
 
 .share_btn_cancel {
-  text-align: right;
-
-  svg {
-    padding: 3px;
-    border-radius: 50%;
-    transform: rotate(0deg);
-    transition: transform 300ms ease-in-out;
-
-    &:hover {
-      transform: rotate(180deg);
-    }
-  }
+  padding: 1em 2em;
+  color: black;
+  background: $secondary-color-op;
+  border-radius: 5px;
+  margin-right: 1em;
 }

@@ -3,7 +3,7 @@ import {AccountCircle, FlagCircle } from "@mui/icons-material";
 import { getRoles } from "../../helpers/auth-helpers";
 import { Outlet, Link } from "react-router-dom";
 
-export default function Admin({ allowedRoles }) {
+export default function Admin() {
   return (
     <>
       <main className = {classes.container}>

@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import classes from "./Topbar.module.scss";
 import Logo from "../../images/logos/icon-left-fontre.png";
 import useAuth from "../../hooks/useAuth";
-import { AccountCircle} from '@mui/icons-material';
+import DefaultAvatar from "../../images/avatar-default.png";
+import  axios  from '../../api/axios';
 
 // Menu TopBar General navigation bar.
 
@@ -11,6 +12,7 @@ export default function Topbar({rolesList, userAvatar}) {
   // Authorization
   const { auth } = useAuth();
   const userRole = auth.user.roles;
+  console.log(rolesList);
 
   // Submenu handler
   const [isSubMenuOpen, setSubMenuOpen] = useState(false);
@@ -21,6 +23,7 @@ export default function Topbar({rolesList, userAvatar}) {
   // Unlog Handler
   const unLogHandler = async () => {
 
+    await axios.post('/auth/logout');
     //sendLogoutRequest(auth.user);
     navigate("/login");
   };
@@ -50,7 +53,7 @@ export default function Topbar({rolesList, userAvatar}) {
         >
           {(userAvatar)
             ?<img src={userAvatar} alt="Profile" />
-            : <AccountCircle/>}
+            : <img src={DefaultAvatar} alt="Profile"/>}
         </div>
 
         <ul className={classes.topbar_links}>

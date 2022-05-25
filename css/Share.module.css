@@ -99,6 +99,13 @@
   font-weight: 500;
 }
 
+.share_action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  direction: row;
+}
+
 .share_btn {
   padding: 1em;
   margin-right: 20px;
@@ -110,23 +117,15 @@
   cursor: pointer;
 }
 
+.share_btn:hover {
+  background-color: "#eb3d25CC";
+}
+
 .share_btn_cancel {
-  text-align: right;
-}
-
-.share_btn_cancel svg {
-  padding: 3px;
-  border-radius: 50%;
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
-  -webkit-transition: -webkit-transform 300ms ease-in-out;
-  transition: -webkit-transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out;
-  transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
-}
-
-.share_btn_cancel svg:hover {
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
+  padding: 1em 2em;
+  color: black;
+  background: #6fb9b5;
+  border-radius: 5px;
+  margin-right: 1em;
 }
 /*# sourceMappingURL=Share.module.css.map */

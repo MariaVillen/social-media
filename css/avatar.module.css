@@ -1,0 +1,9 @@
+.profilePictureImg {
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin: 10px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+/*# sourceMappingURL=avatar.module.css.map */

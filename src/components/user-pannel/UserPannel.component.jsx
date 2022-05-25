@@ -1,7 +1,7 @@
 
 import {useEffect, useState} from 'react';
 import  api from "../../api/axios";
-import UserCard from '../userCard/UserCard.component';
+import Avatar from '../avatar/avatar.component';
 import classes from './UserPannel.module.scss';
 
 function UserPannel() {
@@ -29,7 +29,7 @@ function UserPannel() {
           return <li className = {classes.activeCard}>
             <div className={classes.activeCard_container}>
             <div className={classes.activeCard_user}>
-            <UserCard  key={u.id} username={u.name} profilePicture={u.profilePicture} hideName/>
+            <Avatar  key={u.id} username={u.name} userImage={u.profilePicture} userId={u.id}/>
             <div><span>{u.name}</span><span>{u.lastName}</span></div>
             </div>
             <div>Email: {u.email}</div>
