@@ -25,10 +25,10 @@
     right: 1em;
     top: 1em;
     font-size: 1em;
-    color: $dark-primary;
-    background-color: white;
+    color: white;
+    background-color: $secondary-color-op;
     border-radius: 50%;
-    border: 1px solid $dark-primary;
+    border: 1px solid $secondary-color-op;
 
     &:hover {
       background-color: $secondary-color;

@@ -4,13 +4,7 @@ import { Outlet } from "react-router-dom";
 import {useEffect, useState} from 'react';
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
-/**
- * @component
- * @name Layout
- * @description Navigation Bar and a main content that holds the differents pages.
- * @param {*} props props.onLogin: function to change if user is logged or not for logout function.
- * @returns
- */
+
 
 function AppLayout ({rolesList}) {
   // Api

@@ -55,7 +55,7 @@ export default function Topbar({rolesList, userAvatar}) {
             : <img src={DefaultAvatar} alt="Profile"/>}
         </div>
 
-        <ul className={classes.topbar_links}>
+        <ul onClick={subMenuHandler} className={classes.topbar_links}>
     
           <li className={classes.topbar_item}>
             <Link className={classes.topbar_link} to="/">

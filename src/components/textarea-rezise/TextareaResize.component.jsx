@@ -1,7 +1,7 @@
 
 // Textarea elements that change height when inserting data.
 
-export default function TextareaRezise(props) {
+export default function TextareaRezise({placeHolder, text, onChange,  name, className, innerRef, readOnly}) {
   /**
    * @EventHandler
    * @name textAreaReziser
@@ -21,13 +21,16 @@ export default function TextareaRezise(props) {
 
   return (
     <textarea
-      name={props.name}
+      name={name}
+      ref={innerRef}
       rows="1"
+      onChange = {onChange}
       onKeyDown={textAreaReziser}
-      placeholder={props.placeHolder}
-      className={props?.className}
-      defaultValue={props?.textRezise}
-      readOnly={props.readOnly}
+      placeholder={placeHolder}
+      className={className}
+      defaultValue={text}
+      value={text}
+      readOnly={readOnly}
     />
   );
 }

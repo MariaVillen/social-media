@@ -1,6 +1,6 @@
 import classes from "./Share.module.scss";
-import { useState, useEffect } from "react";
-import { PermMedia, Close } from "@mui/icons-material";
+import { useState, useEffect, useRef } from "react";
+import { PermMedia } from "@mui/icons-material";
 import PreviewImage from "./PreviewImage.component";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
@@ -16,8 +16,13 @@ export default function Share({
   content,
   isOpen,
 }) {
+  const contentRef = useRef();
   const idInput = userId || "createPost";
   const axiosPrivate = useAxiosPrivate();
+
+  useEffect(() => {
+    contentRef.current.focus();
+  }, []);
 
   useEffect(() => {
     if (photo) {
@@ -25,10 +30,11 @@ export default function Share({
     }
   }, [photo]);
 
-  // Use State for Files
+  // Use State
   const [urlImageLoaded, setUrlImageLoaded] = useState(false); // if url exists will storage url file
   const [file, setFile] = useState(); //if file is charged it will storage the file to send
   const [isImageCharged, setIsImageCharged] = useState(""); //control input value image (for reset)
+  const [text, setText] = useState(content);
 
   // Event Handler for Preview Image
   const loadImagePreviewHandler = (e) => {
@@ -45,11 +51,10 @@ export default function Share({
   };
 
   // Event Handler for delete image preview and reset input
-  const imageDeleteHandler = (event) => {
+  const imageDeleteHandler = () => {
     setUrlImageLoaded(false);
     setFile(false);
     setIsImageCharged("");
-    console.log("delete");
   };
 
   // Event Handler for submit form
@@ -58,12 +63,24 @@ export default function Share({
     let formData = new FormData();
     formData.append("image", file);
     formData.append("userId", userId);
-    formData.append("content", event.target.textComment.value);
-
-    try {
-      await axiosPrivate.post("/post", formData);
-    } catch (err) {
-      console.log(err.message);
+    formData.append("content", text);
+    if (file || text) {
+      try {
+        const success = await axiosPrivate.post("/post", formData);
+        if (success) {
+          //cleaning form
+          setUrlImageLoaded(false);
+          setFile(false);
+          setIsImageCharged("");
+          setText("");
+        } else {
+          console.log(success);
+        }
+      } catch (err) {
+        console.log(err.message);
+      }
+    } else {
+      console.log("veuillez ajouter une image ou du texte");
     }
   };
 
@@ -76,10 +93,12 @@ export default function Share({
 
             <div className={classes.shareHeader_content}>
               <TextareaRezise
+                innerRef={contentRef}
                 name="textComment"
+                onChange={(e) => setText(e.target.value)}
                 placeHolder="À quoi penses-tu?"
                 className={classes.shareHeader_content_edit}
-                textRezise={content}
+                text={text}
               />
             </div>
           </div>
@@ -113,9 +132,9 @@ export default function Share({
               </label>
               <div className={classes.share_action}>
                 {content || photo ? (
-                    <div className={classes.share_btn_cancel}>
-                      <span onClick={() => isOpen(false)}>Annuler</span>
-                    </div>
+                  <div className={classes.share_btn_cancel}>
+                    <span onClick={() => isOpen(false)}>Annuler</span>
+                  </div>
                 ) : null}
                 <button type="submit" className={classes.share_btn}>
                   Publier

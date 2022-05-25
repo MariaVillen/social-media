@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AACA,AAAA,QAAQ,CAAC;EACL,OAAO,EAAE,IAAI;EACb,MAAM,EAAE,MAAM;CACjB",
+    "mappings": "AAAA,AAAA,CAAC,CAAC;EACE,OAAO,EAAE,GAAG;CACf",
     "sources": [
         "../src/components/feed/Feed.module.scss"
     ],

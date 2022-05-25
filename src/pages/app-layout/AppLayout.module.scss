@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.main {
+  min-height: calc(100vh - 70px);
+}
+
 .navigation {
   position: sticky;
   top: 0;

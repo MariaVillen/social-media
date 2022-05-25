@@ -25,10 +25,10 @@
   right: 1em;
   top: 1em;
   font-size: 1em;
-  color: #000063;
-  background-color: white;
+  color: white;
+  background-color: #6fb9b5;
   border-radius: 50%;
-  border: 1px solid #000063;
+  border: 1px solid #6fb9b5;
 }
 
 .preview_btn_close:hover {
