@@ -17,7 +17,7 @@ export default function Home() {
     <div className={classes.home_container}>
       {tablet ? <Sidebar className={classes.home_sidebar} user={user} users={users} /> : <></>}
       <div className={classes.home_feed_content}>
-        <Share name={user.name} avatar={user.profilePicture} userId={user.id}/>
+        <Share name={user.name} userImage={user.profilePicture} userId={user.id}/>
         <Outlet context={{user}}/>
       </div>
       {pc ? (
