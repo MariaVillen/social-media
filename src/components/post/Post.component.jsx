@@ -13,9 +13,9 @@ import UserCard from "../../components/userCard/UserCard.component";
 import FeedComments from "../../components/feed-comments/FeedComents.component";
 import PostAddComment from "../../components/post-add-comment/PostAddComment.component";
 
-export default function Post(props, { className = "" }) {
+export default function Post({post, className = "" }) {
   // Likes
-  const [like, setLike] = useState(props.post.like);
+  const [like, setLike] = useState(post.totalLikes);
   const [isLiked, setisLiked] = useState(false);
 
   const likeHandler = () => {
@@ -36,6 +36,9 @@ export default function Post(props, { className = "" }) {
     setOnCommentView(!onCommentView);
   };
 
+  // Format date
+
+
   return (
     <div className={`${classes.post} ${className}`}>
       <div className={classes.post_wrapper}>
@@ -43,9 +46,9 @@ export default function Post(props, { className = "" }) {
           <div className={classes.modal}>
             <Share
               isOpen={setOnEdit}
-              content={props.post?.desc}
-              photo={props.post?.photo}
-              id={props.post.id}
+              content={post?.desc}
+              photo={post?.photo}
+              id={post.id}
             />
           </div>
         ) : null}
@@ -53,11 +56,11 @@ export default function Post(props, { className = "" }) {
           <div className={classes.post_profile}>
             <UserCard
               hideName
-              userId={props.user.id}
-              profilePicture={props.user.profilePicture}
-              username={props.user.username}
+              userId={post.user.id}
+              profilePicture={post.user.profilePicture}
+              username={post.user.name}
             />
-            <span className={classes.post_date}>{props.post.date}</span>
+            <span className={classes.post_date}>{Date(post.createdAt)}</span>
           </div>
           <div className={classes.post_menu}>
             <span className={classes.post_menu_content_icon}>
@@ -74,8 +77,8 @@ export default function Post(props, { className = "" }) {
           </div>
         </div>
         <div className={classes.post_body}>
-          <span className={classes.post_body_text}>{props.post?.desc}</span>
-          <img src={props.post.photo} alt="" />
+          <span className={classes.post_body_text}>{post?.content}</span>
+          <img src={post.attachement} alt="Description" />
         </div>
         <div className={classes.post_footer}>
           <div className={classes.post_likes}>
@@ -92,7 +95,7 @@ export default function Post(props, { className = "" }) {
             <button className={classes.comment} onClick={commentHandler}>
               <Comment className={classes.commentIcon} />
               <div className={classes.post_comments}>
-                <span>{props.post.comment} comments</span>
+                <span>{post.totalComments} comments</span>
               </div>
             </button>
           </div>
@@ -100,7 +103,7 @@ export default function Post(props, { className = "" }) {
         {onCommentView ? (
           <div className={classes.commentContent}>
             <PostAddComment />
-            <FeedComments onlyForPostId={props.post.id} />
+            <FeedComments onlyForPostId={post.id} />
           </div>
         ) : null}
       </div>

@@ -72,7 +72,8 @@ export default function Share({
           setUrlImageLoaded(false);
           setFile(false);
           setIsImageCharged("");
-          setText("");
+          setText("");     
+          console.log("POST CREATED", success);
         } else {
           console.log(success);
         }

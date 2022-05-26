@@ -22,7 +22,7 @@
 
   &_menu {
     padding-right: 1em;
-    @include mq(small) {
+    @include mq(medium) {
       height: 100%;
     }
   }
@@ -30,7 +30,7 @@
   &_avatar {
     height: 48px;
     width: 48px;
-    @include mq(small) {
+    @include mq(medium) {
       display: none;
     }
 
@@ -45,7 +45,7 @@
     &.show + .topbar_links {
       max-width: 100%;
 
-      @include mq(small) {
+      @include mq(medium) {
         max-width: 600px;
       }
     }
@@ -67,7 +67,7 @@
     overflow: hidden;
     transition: max-width 300ms ease-in-out;
 
-    @include mq(small) {
+    @include mq(medium) {
       flex-direction: row;
       position: static;
       max-width: 100%;
@@ -83,7 +83,7 @@
     font-size: 1.2em;
     transition: background-color 500ms ease-in-out;
 
-    @include mq(small) {
+    @include mq(medium) {
       height: 100%;
     }
 
@@ -92,7 +92,7 @@
       display: inline-block;
       padding: 1em;
 
-      @include mq(small) {
+      @include mq(medium) {
         width: auto;
       }
 
@@ -110,7 +110,7 @@
     display: inline-block;
     transition: background-color 500ms ease-in-out;
     width: 100%;
-    @media screen and (min-width: 562px) {
+    @include mq(medium){
       width: auto;
     }
   }

@@ -1,6 +1,5 @@
 import Post from "../post/Post.component";
 import classes from "./Feed.module.scss";
-import { Posts, Users } from "../../dummyData";
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
@@ -17,7 +16,6 @@ export default function Feed({onlyForUserId,  className = "" }) {
     const [isLoading, setIsLoading] = useState(true);
     const [posts, setPosts] = useState();
 
-
   useEffect(  () => {
 
     let isMounted = true;
@@ -32,7 +30,7 @@ export default function Feed({onlyForUserId,  className = "" }) {
 
     const getPosts = async ()=> {
       try {
-        const response = await axiosPrivate.get(post_url, {signal: controller.signal});
+        const response = await axiosPrivate.get(post_url, {signal: controller.signal, withCredentials: true});
         const posts = response.data;
 
         if (isMounted) {
@@ -68,7 +66,6 @@ export default function Feed({onlyForUserId,  className = "" }) {
                     className={className}
                     key={p.id}
                     post={p}
-                    user={Users.filter((u) => u.id === p.userId)[0]}
                   />
                 )})
               : <p className={classes.notFound}>Pas de publications trouvées.</p>
