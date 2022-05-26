@@ -9,6 +9,7 @@ import Avatar from "../avatar/avatar.component";
 // Component to share and public text and one image.
 
 export default function Share({
+  elementId,
   userName,
   userImage,
   userId,
@@ -64,15 +65,30 @@ export default function Share({
     formData.append("image", file);
     formData.append("userId", userId);
     formData.append("content", text);
-    if (file || text) {
+
+    if ((file || text) && userId)  {
+
+
       try {
-        const success = await axiosPrivate.post("/post", formData);
+
+        // If we are editing
+        let success;
+        if (elementId){
+          let POST_URL =  `/post/${elementId}`;
+          success = await axiosPrivate.put(POST_URL, formData);
+        } else { 
+        // If we are creating
+          success = await axiosPrivate.post("/post", formData);
+        }
         if (success) {
           //cleaning form
           setUrlImageLoaded(false);
           setFile(false);
           setIsImageCharged("");
           setText("");     
+          if (elementId) {
+            isOpen(false);
+          }
           console.log("POST CREATED", success);
         } else {
           console.log(success);
@@ -81,7 +97,7 @@ export default function Share({
         console.log(err.message);
       }
     } else {
-      console.log("veuillez ajouter une image ou du texte");
+      console.log("Veuillez ajouter une image ou du texte");
     }
   };
 

@@ -37,8 +37,8 @@ const useAxiosPrivate = ()=>{
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
                     ;
-                    if (prevRequest.heaaders['Authorization']) { prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;  }
-                    if (prevRequest.heaaders['authorization']) { prevRequest.headers['authorization'] = `Bearer ${newAccessToken}`;  }
+                    if (prevRequest.headers['Authorization']) { prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;  }
+                    if (prevRequest.headers['authorization']) { prevRequest.headers['authorization'] = `Bearer ${newAccessToken}`;  }
                     return axiosPrivate(prevRequest);
                 }
      

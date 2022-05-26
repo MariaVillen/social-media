@@ -31,7 +31,7 @@
   padding-right: 1em;
 }
 
-@media screen and (min-width: 562px) {
+@media screen and (min-width: 768px) {
   .topbar_menu {
     height: 100%;
   }
@@ -42,7 +42,7 @@
   width: 48px;
 }
 
-@media screen and (min-width: 562px) {
+@media screen and (min-width: 768px) {
   .topbar_avatar {
     display: none;
   }
@@ -61,7 +61,7 @@
   max-width: 100%;
 }
 
-@media screen and (min-width: 562px) {
+@media screen and (min-width: 768px) {
   .topbar_avatar.show + .topbar_links {
     max-width: 600px;
   }
@@ -90,7 +90,7 @@
   transition: max-width 300ms ease-in-out;
 }
 
-@media screen and (min-width: 562px) {
+@media screen and (min-width: 768px) {
   .topbar_links {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -112,7 +112,7 @@
   transition: background-color 500ms ease-in-out;
 }
 
-@media screen and (min-width: 562px) {
+@media screen and (min-width: 768px) {
   .topbar_item {
     height: 100%;
   }
@@ -124,7 +124,7 @@
   padding: 1em;
 }
 
-@media screen and (min-width: 562px) {
+@media screen and (min-width: 768px) {
   .topbar_item.notLink {
     width: auto;
   }
@@ -145,7 +145,7 @@
   width: 100%;
 }
 
-@media screen and (min-width: 562px) {
+@media screen and (min-width: 768px) {
   .topbar_link {
     width: auto;
   }

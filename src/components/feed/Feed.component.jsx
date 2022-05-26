@@ -10,8 +10,7 @@ export default function Feed({onlyForUserId,  className = "" }) {
 
   // Api
   const axiosPrivate = useAxiosPrivate();
-  const {auth} = useAuth();
-
+  
   // User load 
     const [isLoading, setIsLoading] = useState(true);
     const [posts, setPosts] = useState();

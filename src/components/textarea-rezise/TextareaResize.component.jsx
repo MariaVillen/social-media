@@ -28,7 +28,6 @@ export default function TextareaRezise({placeHolder, text, onChange,  name, clas
       onKeyDown={textAreaReziser}
       placeholder={placeHolder}
       className={className}
-      defaultValue={text}
       value={text}
       readOnly={readOnly}
     />
