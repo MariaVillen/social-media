@@ -13,6 +13,7 @@ export default function Home() {
   const {user, users} = useOutletContext();
   const tablet = useMediaQuery("(min-width: 768px)");
   const pc = useMediaQuery("(min-width: 1200px)");
+  
   return (
     <div className={classes.home_container}>
       {tablet ? <Sidebar className={classes.home_sidebar} user={user} users={users} /> : <></>}

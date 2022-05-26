@@ -12,15 +12,26 @@ import Share from "../share/Share.component";
 import UserCard from "../../components/userCard/UserCard.component";
 import FeedComments from "../../components/feed-comments/FeedComents.component";
 import PostAddComment from "../../components/post-add-comment/PostAddComment.component";
+import { axiosPrivate } from "../../api/axios";
+import useAuth from "../../hooks/useAuth";
 
 export default function Post({post, className = "" }) {
   // Likes
   const [like, setLike] = useState(post.totalLikes);
   const [isLiked, setisLiked] = useState(false);
+  const {auth } = useAuth();
 
-  const likeHandler = () => {
+  const likeHandler = async (e) => {
     setLike(isLiked ? like - 1 : like + 1);
     setisLiked(!isLiked);
+    const likeSens = (isLiked) ? -1 : 1;
+
+    const result = await axiosPrivate.post("/post/like", {
+      id: post.id,
+      like: likeSens,
+      type: "post"
+      userId: auth.userId
+    })
   };
 
   // Edit
@@ -46,9 +57,10 @@ export default function Post({post, className = "" }) {
           <div className={classes.modal}>
             <Share
               isOpen={setOnEdit}
-              content={post?.desc}
-              photo={post?.photo}
-              id={post.id}
+              content={post.content}
+              photo={post.attachement}
+              userId = {post.userId}
+              elementId={post.id}
             />
           </div>
         ) : null}
