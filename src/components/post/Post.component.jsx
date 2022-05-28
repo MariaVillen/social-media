@@ -161,8 +161,12 @@ const reportHandler = ()=>{
           <div className={classes.commentContent}>
             <PostAddComment userName = {post.user.name} totalComments = {totalComments} loadComments = {loadComments}
               setLoadComments = {setLoadComments} setTotalComments = {setTotalComments} userImage = {post.user.profilePicture} postId={post.id} />
-            <FeedComments loadComments = {loadComments}
-              isLoadComments = {setLoadComments} onlyForPostId={post.id} />
+            <FeedComments 
+              loadComments = {loadComments}
+              setLoadComments = {setLoadComments} 
+              setTotalComments = {setTotalComments}
+              totalComments = {totalComments}
+              onlyForPostId={post.id} />
           </div>
         ) : null}
       </div>

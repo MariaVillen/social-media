@@ -10,9 +10,10 @@ import {
 } from "@mui/icons-material";
 import Avatar from "../avatar/avatar.component";
 import useAuth from "../../hooks/useAuth";
+import { axiosPrivate } from "../../api/axios";
 
 
-export default function PostComment({className, postId, loadComments, setLoadComments, comment})  {
+export default function PostComment({className, postId, setTotalComments, totalComments, loadComments, setLoadComments, comment})  {
 
 
   const {auth} = useAuth();
@@ -27,21 +28,36 @@ export default function PostComment({className, postId, loadComments, setLoadCom
     setisLiked(!isLiked);
   };
 
-  const deleteHandler = ()=>{}
+  // Delete Handler
+  const deleteHandler = ()=>{
+    axiosPrivate.delete(`/comment/${comment.id}`, {
+      where: {
+        id: comment.id
+      }
+    })
+    .then(()=>{
+      setOnEdit(false);
+      setIsMenuActive(false);
+      setTotalComments(totalComments - 1);
+      setLoadComments(!loadComments);
+    })
+    .catch((err)=>{console.log(err)})
+  }
   
 
   // EDIT 
   const [textComment, setTextComment] = useState(comment.content);
   const contentRef = useRef();
   const [onEdit, setOnEdit] = useState(false);
-  const editHandler=()=> {
-
-  }
-
+  
+  // Allow Edition
   const allowEditionHandler = ()=>{
     setOnEdit(true);
+    setIsMenuActive(false);
     contentRef.current.focus();
   }
+
+  // Cancel Edition
   const cancelHandler = ()=>{
     setOnEdit(false);
     setTextComment(comment.content);
@@ -49,14 +65,11 @@ export default function PostComment({className, postId, loadComments, setLoadCom
     contentRef.current.style.height = "inherit";
   }
 
-
   //REPORT
-  
   const reportHandler = ()=>{}
 
 
-  // Menu Handler
-
+  // SubMenu Handler
   const [isMenuActive, setIsMenuActive] = useState(false);
   const menuViewHandler = () => {
     setIsMenuActive(!isMenuActive);
@@ -65,7 +78,20 @@ export default function PostComment({className, postId, loadComments, setLoadCom
   // Submit Handler
   const submitHandler = (event) => {
     event.preventDefault();
-    //const password = event.target.password.value;
+    console.log(comment.id);
+    axiosPrivate.put(`/comment/${comment.id}`,{content: textComment},{
+      where: {
+        id: comment.id
+      }
+    }).then(
+      ()=>{
+        setOnEdit(false);
+        setTextComment(comment.content);
+        setIsMenuActive(false);
+        contentRef.current.style.height = "inherit";
+      }
+    )
+    
   };
 
 

@@ -1,9 +1,8 @@
 
 // Textarea elements that change height when inserting data.
 
-import { Iron } from "@mui/icons-material";
 
-export default function TextareaRezise({placeHolder, text="", onChange,  name, className, innerRef, readOnly}) {
+export default function TextareaRezise({placeHolder, text, onChange,  name, className, innerRef, readOnly}) {
   /**
    * @EventHandler
    * @name textAreaReziser
@@ -33,7 +32,7 @@ export default function TextareaRezise({placeHolder, text="", onChange,  name, c
       onKeyDown={textAreaReziser}
       placeholder={placeHolder}
       className={className}
-      value={text}
+      value={text||""}
       readOnly={readOnly}
     />
   );

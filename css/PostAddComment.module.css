@@ -5,6 +5,16 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.addComment_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -26,5 +36,29 @@
   outline: none;
   border: none;
   background-color: transparent;
+}
+
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  margin-top: 1em;
+}
+
+.btn_cancel {
+  background-color: #6fb9b5;
+  width: auto;
+  padding: auto 1em;
+  margin-right: 1em;
+}
+
+.btn_submit {
+  background-color: #eb3d25;
+  color: white;
+  width: auto;
+  padding: auto 1em;
 }
 /*# sourceMappingURL=PostAddComment.module.css.map */

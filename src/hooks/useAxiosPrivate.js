@@ -34,11 +34,12 @@ const useAxiosPrivate = ()=>{
                
                 if (error?.response?.status === 403 && !prevRequest?.sent){
                     console.log("error status 403");
+                    console.log("prev ", prevRequest);
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
-                    ;
                     if (prevRequest.headers['Authorization']) { prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;  }
                     if (prevRequest.headers['authorization']) { prevRequest.headers['authorization'] = `Bearer ${newAccessToken}`;  }
+                    console.log(prevRequest);
                     return axiosPrivate(prevRequest);
                 }
      

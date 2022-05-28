@@ -59,6 +59,12 @@
   margin: 0 1em;
 }
 
+.body_textarea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .body span {
   font-weight: 700;
 }
@@ -78,9 +84,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   font-size: 0.8em;
 }
 
@@ -91,6 +97,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-left: 13%;
 }
 
 .likes .favorite {

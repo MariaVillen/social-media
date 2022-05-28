@@ -63,13 +63,14 @@
 .footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: 0.8em;
 }
 
 .likes {
   display: flex;
   align-items: center;
+  margin-left: 13%;
 
   .favorite {
     width: auto;

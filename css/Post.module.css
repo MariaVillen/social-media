@@ -188,4 +188,10 @@
   background-color: transparent;
   margin-right: 0.5em;
 }
+
+.post_menu_user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 /*# sourceMappingURL=Post.module.css.map */

@@ -86,12 +86,11 @@ export default function ProfileForm({user}) {
           <input id="pass" type="password"/>
         </div>
         <div className={classes.sidebarListItem}>
-          <label htmlFor="delete"> <NoAccounts className={classes.sidebarIcon} />
+          <div> <NoAccounts className={classes.sidebarIcon} />
           <span className={classes.sidebarListItemText}>
             Demander suppresion compte
           </span>
-          </label>
-          <input id="delete" type="text"/>
+          </div>
         </div>
         <button type="submit">Modifier</button>
       </div>

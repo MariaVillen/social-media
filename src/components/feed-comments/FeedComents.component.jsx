@@ -5,7 +5,7 @@ import {useState, useEffect} from "react";
 
 
 
-export default function FeedComponent({ onlyForPostId, setLoadComments, loadComments, className = "" }) {
+export default function FeedComponent({ onlyForPostId, setTotalComments, totalComments,setLoadComments, loadComments, className = "" }) {
 
   // Api
   const axiosPrivate = useAxiosPrivate();
@@ -36,7 +36,6 @@ useEffect(  () => {
         // Stock data
         setComments(comments);
         setIsLoading(false);
-        setLoadComments(!loadComments);
       } 
     
     } catch(err) {
@@ -64,10 +63,12 @@ useEffect(  () => {
              <PostComment
               className={className}
               key={c.id}
-              load
               postId={onlyForPostId}
               loadComments = {loadComments}
-              isLoadComments = {setLoadComments}
+              setLoadComments = {setLoadComments}
+              setTotalComments = {setTotalComments}
+              totalComments ={totalComments}
+
               comment={c}/>
               )})
           : null

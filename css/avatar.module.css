@@ -2,7 +2,7 @@
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-  margin: 10px;
+  margin: 0;
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
