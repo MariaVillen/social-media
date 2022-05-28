@@ -4,7 +4,12 @@
 .addComment {
   padding: 10px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+
+  &_container {
+    display: flex;
+    align-items: center;
+  }
 
   &_text {
     width: 100%;
@@ -21,4 +26,25 @@
     border: none;
     background-color: transparent;
   }
+}
+
+.btn {
+
+  display: flex;
+  justify-content: right;
+  margin-top: 1em;
+
+  &_cancel {
+    background-color: $secondary-color-op;
+    width: auto;
+    padding: auto 1em;
+    margin-right: 1em;
+  }
+  &_submit {
+    background-color: $primary-color;
+    color: white;
+    width: auto;
+    padding: auto 1em;
+  }
+
 }

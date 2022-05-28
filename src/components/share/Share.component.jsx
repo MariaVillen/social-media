@@ -16,6 +16,8 @@ export default function Share({
   photo,
   content,
   isOpen,
+  isLoadPosts,
+  loadPosts
 }) {
   const contentRef = useRef();
   const idInput = userId || "createPost";
@@ -35,7 +37,7 @@ export default function Share({
   const [urlImageLoaded, setUrlImageLoaded] = useState(false); // if url exists will storage url file
   const [file, setFile] = useState(); //if file is charged it will storage the file to send
   const [isImageCharged, setIsImageCharged] = useState(""); //control input value image (for reset)
-  const [text, setText] = useState(content);
+  const [text, setText] = useState(content|| null);
 
   // Event Handler for Preview Image
   const loadImagePreviewHandler = (e) => {
@@ -62,9 +64,9 @@ export default function Share({
   const submitHandler = async (event) => {
     event.preventDefault();
     let formData = new FormData();
-    formData.append("image", file);
+    if(file) {formData.append("image", file)};
     formData.append("userId", userId);
-    formData.append("content", text);
+    if(text) {formData.append("content", text)};
 
     if ((file || text) && userId)  {
 
@@ -89,6 +91,7 @@ export default function Share({
           if (elementId) {
             isOpen(false);
           }
+          isLoadPosts(!loadPosts);
           console.log("POST CREATED", success);
         } else {
           console.log(success);

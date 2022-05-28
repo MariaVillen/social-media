@@ -12,31 +12,43 @@ import Share from "../share/Share.component";
 import UserCard from "../../components/userCard/UserCard.component";
 import FeedComments from "../../components/feed-comments/FeedComents.component";
 import PostAddComment from "../../components/post-add-comment/PostAddComment.component";
-import { axiosPrivate } from "../../api/axios";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
 
-export default function Post({post, className = "" }) {
+export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   // Likes
   const [like, setLike] = useState(post.totalLikes);
   const [isLiked, setisLiked] = useState(false);
   const {auth } = useAuth();
 
-  const likeHandler = async (e) => {
-    setLike(isLiked ? like - 1 : like + 1);
-    setisLiked(!isLiked);
-    const likeSens = (isLiked) ? -1 : 1;
+  // Api
+  const axiosPrivate = useAxiosPrivate();
 
-    const result = await axiosPrivate.post("/post/like", {
-      id: post.id,
-      like: likeSens,
-      type: "post"
-      userId: auth.userId
-    })
-  };
+  const [totalComments, setTotalComments] = useState(post.totalComments);
+
+
+  const likeHandler = async (e) => {
+   
+    try{
+    const result = await axiosPrivate.post(`/post/${post.id}/like`, {
+      userId: auth.user.id
+    }).then(
+      ()=> {
+        setLike(isLiked ? like - 1 : like + 1);
+        setisLiked(!isLiked);    
+      }
+    )
+  } catch(err){
+    console.log(err);
+  }
+}
 
   // Edit
   const [onEdit, setOnEdit] = useState(false);
 
+  const [loadComments, setLoadComments] = useState([]);
+
+  
   const editHandler = () => {
     setOnEdit(true);
   };
@@ -47,7 +59,31 @@ export default function Post({post, className = "" }) {
     setOnCommentView(!onCommentView);
   };
 
-  // Format date
+
+  //Delete Post
+ const deleteHandler = async (e)=>{
+
+  try {
+    const result = await axiosPrivate.delete(`/post/${post.id}`, {
+      where:{
+        id: post.id
+      }
+    })
+    if (result) {
+      isLoadPosts(!loadPosts);
+      console.log("remove");
+    } else { console.log("Error")}
+
+  } catch(err) {
+    console.log("message: ", err);
+  }
+ }
+
+
+  //Report Post
+const reportHandler = ()=>{
+
+}
 
 
   return (
@@ -75,22 +111,31 @@ export default function Post({post, className = "" }) {
             <span className={classes.post_date}>{Date(post.createdAt)}</span>
           </div>
           <div className={classes.post_menu}>
-            <span className={classes.post_menu_content_icon}>
-              <Delete className={classes.post_menu_icon} />
-            </span>
+            {auth.user.id === post.userId 
+            ? <div className={classes.post_menu_user}> 
+              <span className={classes.post_menu_content_icon}>
+              <Delete onClick={deleteHandler} className={classes.post_menu_icon} />
+              </span>
 
-            <span className={classes.post_menu_content_icon}>
-              <Edit onClick={editHandler} className={classes.post_menu_icon} />
-            </span>
-
-            <span className={classes.post_menu_content_icon}>
-              <Report className={classes.post_menu_icon} />
-            </span>
+              <span className={classes.post_menu_content_icon}>
+                <Edit onClick={editHandler} className={classes.post_menu_icon} />
+              </span></div>
+            : null
+            }
+            {auth.user.id !== post.userId 
+             ?<span className={classes.post_menu_content_icon}>
+             <Report onClick={reportHandler} className={classes.post_menu_icon} />
+           </span>
+             : null
+            }
+            
           </div>
         </div>
         <div className={classes.post_body}>
-          <span className={classes.post_body_text}>{post?.content}</span>
-          <img src={post.attachement} alt="Description" />
+          <span className={classes.post_body_text}>{post.content}</span>
+          {post?.attachement 
+            ? <img src={post.attachement} alt="Description" /> 
+              : null }
         </div>
         <div className={classes.post_footer}>
           <div className={classes.post_likes}>
@@ -107,15 +152,17 @@ export default function Post({post, className = "" }) {
             <button className={classes.comment} onClick={commentHandler}>
               <Comment className={classes.commentIcon} />
               <div className={classes.post_comments}>
-                <span>{post.totalComments} comments</span>
+                <span>{totalComments} comments</span>
               </div>
             </button>
           </div>
         </div>
         {onCommentView ? (
           <div className={classes.commentContent}>
-            <PostAddComment />
-            <FeedComments onlyForPostId={post.id} />
+            <PostAddComment userName = {post.user.name} totalComments = {totalComments} loadComments = {loadComments}
+              setLoadComments = {setLoadComments} setTotalComments = {setTotalComments} userImage = {post.user.profilePicture} postId={post.id} />
+            <FeedComments loadComments = {loadComments}
+              isLoadComments = {setLoadComments} onlyForPostId={post.id} />
           </div>
         ) : null}
       </div>

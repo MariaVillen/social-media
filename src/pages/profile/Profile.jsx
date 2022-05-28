@@ -16,7 +16,7 @@ export default function Profile() {
 
   const params = useParams();
   const profileId= parseInt(params.id);
-  const {user, users} = useOutletContext();
+  const [user, users] = useOutletContext();
   const [userProfile, setUserProfile] = useState(user);
   const [notMyProfile, setNotMyProfile] = useState(false)
 

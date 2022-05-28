@@ -43,6 +43,10 @@
   flex-grow: 1;
   margin: 0 1em;
 
+  &_textarea {
+    display: flex;
+  }
+
   span {
     font-weight: 700;
   }

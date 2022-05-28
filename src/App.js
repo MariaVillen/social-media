@@ -44,8 +44,6 @@ function App() {
         >
           <Route element={<AppLayout rolesList={ROLES} />}>
             <Route path="/" element={<HomePage />}>
-              <Route index path="/" element={<Feed />} />
-              <Route path="post/:id" element={<PostDetail />} />
             </Route>
 
             <Route path="profile/:id" element={<ProfilePage />} />

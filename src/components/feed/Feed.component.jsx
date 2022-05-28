@@ -2,14 +2,15 @@ import Post from "../post/Post.component";
 import classes from "./Feed.module.scss";
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import useAuth from "../../hooks/useAuth";
+
 
 // Feed of Posts List
 
-export default function Feed({onlyForUserId,  className = "" }) {
+export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className = "" }) {
 
   // Api
   const axiosPrivate = useAxiosPrivate();
+
   
   // User load 
     const [isLoading, setIsLoading] = useState(true);
@@ -29,7 +30,7 @@ export default function Feed({onlyForUserId,  className = "" }) {
 
     const getPosts = async ()=> {
       try {
-        const response = await axiosPrivate.get(post_url, {signal: controller.signal, withCredentials: true});
+        const response = await axiosPrivate.get(post_url, {signal: controller.signal});
         const posts = response.data;
 
         if (isMounted) {
@@ -37,11 +38,10 @@ export default function Feed({onlyForUserId,  className = "" }) {
           setPosts(posts);
           setIsLoading(false);
         } 
-
+      
       } catch(err) {
         console.log(`"ERROR": ${err.message}`);
       }
-       
     }
 
     getPosts();
@@ -51,7 +51,7 @@ export default function Feed({onlyForUserId,  className = "" }) {
       isMounted=false;
       controller.abort();
     }
-  }, []);
+  }, [loadPosts]);
 
   return (
     <>
@@ -64,6 +64,8 @@ export default function Feed({onlyForUserId,  className = "" }) {
                   <Post
                     className={className}
                     key={p.id}
+                    loadPosts = {loadPosts}
+                    isLoadPosts = {isLoadPosts}
                     post={p}
                   />
                 )})

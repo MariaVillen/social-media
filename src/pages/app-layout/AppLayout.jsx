@@ -65,7 +65,7 @@ function AppLayout({ rolesList }) {
           </div>
 
           <main className={classes.main}>
-            <Outlet context={{ user, users }} />
+            <Outlet context={[ user, users ]} />
           </main>
         </>
       )}

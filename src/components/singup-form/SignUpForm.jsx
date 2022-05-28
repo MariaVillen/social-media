@@ -69,7 +69,7 @@ const SignUpForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/auth/singup", JSON.stringify({lastName: lastName, name: name, email: email, password: pwd}));
+      const response = await api.post("/auth/signup", JSON.stringify({lastName: lastName, name: name, email: email, password: pwd}));
       console.log(response.data);
       console.log(response.accessToken);
       setSuccess(true);
