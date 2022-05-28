@@ -1,9 +1,11 @@
 import classes from "./Admin.module.scss";
 import {AccountCircle, FlagCircle } from "@mui/icons-material";
-import { getRoles } from "../../helpers/auth-helpers";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, useOutletContext, Link } from "react-router-dom";
 
 export default function Admin() {
+
+  const [ user, users ] = useOutletContext();
+
   return (
     <>
       <main className = {classes.container}>
@@ -23,7 +25,7 @@ export default function Admin() {
           </nav>
           <div className={classes.wrapper}>
           <h1> Panneau d'administration</h1>
-          <Outlet />
+          <Outlet  context={[ user, users ]}/>
         </div>
       </main>
     </>
