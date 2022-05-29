@@ -50,6 +50,7 @@ export default function ImageForm({imageName, className, labelDesc }) {
       } else{
         console.log("imagename", imageName);
         if (imageName ==="cover") {
+          console.log("Pasa por cover");
           setUser({...user, coverPicture: response.data.message.coverPicture})
           console.log(user);
         } 
@@ -58,6 +59,7 @@ export default function ImageForm({imageName, className, labelDesc }) {
           setUser({...user, profilePicture: response.data.message.profilePicture});
           console.log(user);
         }
+        setOnEdit(false);
          console.log("Modifié!");
       }
      

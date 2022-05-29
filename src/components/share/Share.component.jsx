@@ -20,7 +20,7 @@ export default function Share({
 
   const {user} = useAuth();
   const contentRef = useRef();
-  const idInput = user.id || "createPost";
+  const idInput = elementId? user.id : "createPost";
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
@@ -82,6 +82,7 @@ export default function Share({
         // If we are creating
           success = await axiosPrivate.post("/post", formData);
         }
+
         if (success) {
           //cleaning form
           setUrlImageLoaded(false);
@@ -114,7 +115,7 @@ export default function Share({
             <div className={classes.shareHeader_content}>
               <TextareaRezise
                 innerRef={contentRef}
-                name="textComment"
+                name={user.id || "textComment"}
                 onChange={(e) => setText(e.target.value)}
                 placeHolder="À quoi penses-tu?"
                 className={classes.shareHeader_content_edit}

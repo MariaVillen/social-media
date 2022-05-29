@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import Avatar from "../avatar/avatar.component";
 import classes from "./UserPannel.module.scss";
 import { useOutletContext } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 function UserPannel() {
   const [isLoading, setIsLoading] = useState(true);
-  const [user, users] = useOutletContext();
-
+  const [users] = useOutletContext();
+  const {user} = useAuth();
   return (
     <div>
       <h2>List of users</h2>

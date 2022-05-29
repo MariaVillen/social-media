@@ -47,6 +47,7 @@ export default function TextareaForm({className}) {
       }
       console.log("Modifié!");
       setUser({...user, bio: content});
+      setOnEdit(false);
     } catch (err) {
       console.log(err);
     }

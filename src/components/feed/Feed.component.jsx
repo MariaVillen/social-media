@@ -21,16 +21,19 @@ export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className =
     const controller = new AbortController();
 
     let post_url;
+    console.log(onlyForUserId);
     if (onlyForUserId) {
-      post_url = "/post/" + onlyForUserId; 
+      post_url = "/post/user/" + onlyForUserId; 
     } else {
       post_url = "/post";
     }
 
     const getPosts = async ()=> {
       try {
+        console.log("url ", post_url);
         const response = await axiosPrivate.get(post_url, {signal: controller.signal});
         const posts = response.data;
+        console.log(response.data);
 
         if (isMounted) {
           // Stock data

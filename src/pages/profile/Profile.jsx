@@ -19,7 +19,7 @@ export default function Profile() {
   const params = useParams();
   const profileId= parseInt(params.id);
   const {users} = useOutletContext();
-  const [userProfile, setUserProfile] = useState(user);
+  const [userProfile, setUserProfile] = useState({});
   const [notMyProfile, setNotMyProfile] = useState(false)
 
 
@@ -72,7 +72,7 @@ export default function Profile() {
         <div className={classes.content_main}>
          {notMyProfile ? <button className = {classes.follow}>Suivre</button> : null}
           <div className={classes.content_feed}>
-            <Feed onlyForUserId={userProfile.idUsers} userProfile={userProfile} />
+            <Feed onlyForUserId={profileId} userProfile={userProfile} />
           </div>
         </div>
       </div>
