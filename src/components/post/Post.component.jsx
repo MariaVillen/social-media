@@ -54,6 +54,7 @@ export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   };
 
   const [onCommentView, setOnCommentView] = useState(false);
+
   //Coments
   const commentHandler = () => {
     setOnCommentView(!onCommentView);
@@ -97,6 +98,8 @@ const reportHandler = ()=>{
               photo={post.attachement}
               userId = {post.userId}
               elementId={post.id}
+              isLoadPosts={isLoadPosts}
+              loadPosts={loadPosts}
             />
           </div>
         ) : null}
