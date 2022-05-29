@@ -17,6 +17,7 @@
     text-align: center;
     color: $black-color;
     background-color: $secondary-color;
+    margin: 0;
   }
 
   form {
@@ -78,10 +79,6 @@
       padding: 14px;
       position: relative;
       bottom: -5px;
-    }
-    .offscreen {
-      position: absolute;
-      left: -9999px;
     }
   }
 
@@ -151,4 +148,8 @@
         }
     }
   }
+}
+.offscreen {
+  position: absolute;
+  left: -9999px;
 }

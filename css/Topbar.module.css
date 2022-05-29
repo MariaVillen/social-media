@@ -16,7 +16,7 @@
 }
 
 .topbar_logo {
-  height: 100%;
+  height: calc(100% - 20px);
   padding: 10px;
 }
 
@@ -29,12 +29,7 @@
 
 .topbar_menu {
   padding-right: 1em;
-}
-
-@media screen and (min-width: 768px) {
-  .topbar_menu {
-    height: 100%;
-  }
+  height: 100%;
 }
 
 .topbar_avatar {
@@ -59,11 +54,14 @@
 
 .topbar_avatar.show + .topbar_links {
   max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 @media screen and (min-width: 768px) {
   .topbar_avatar.show + .topbar_links {
     max-width: 600px;
+    height: 100%;
   }
 }
 
@@ -82,6 +80,7 @@
   height: 100vh;
   max-width: 0px;
   padding: 0;
+  margin: 0;
   background: rgba(255, 255, 255, 0.9);
   color: #333333;
   z-index: 2;
@@ -114,8 +113,17 @@
 
 @media screen and (min-width: 768px) {
   .topbar_item {
-    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
+}
+
+.topbar_item:hover {
+  background-color: #eb3d25E6;
 }
 
 .topbar_item.notLink {
@@ -127,18 +135,16 @@
 @media screen and (min-width: 768px) {
   .topbar_item.notLink {
     width: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
-}
-
-.topbar_item.notLink:hover {
-  background-color: #eb3d25E6;
 }
 
 .topbar_link {
   color: inherit;
   text-decoration: none;
   padding: 1em;
-  height: 100%;
   display: inline-block;
   -webkit-transition: background-color 500ms ease-in-out;
   transition: background-color 500ms ease-in-out;
@@ -149,9 +155,5 @@
   .topbar_link {
     width: auto;
   }
-}
-
-.topbar_link:hover {
-  background-color: #eb3d25E6;
 }
 /*# sourceMappingURL=Topbar.module.css.map */

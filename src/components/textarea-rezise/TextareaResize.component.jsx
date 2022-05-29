@@ -15,7 +15,7 @@ export default function TextareaRezise({placeHolder, text, onChange,  name, clas
         return;
       }
       e.target.style.height = "inherit";
-      const newHeight = e.target.scrollHeight + 16;
+      const newHeight = e.target.scrollHeight + 10;
       e.target.style.height = `${newHeight}px`;
       if (e.target.value.length === 0) {
         e.target.style.height = "inherit";

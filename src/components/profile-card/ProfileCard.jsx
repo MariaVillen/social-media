@@ -14,39 +14,39 @@ import DefaultAvatar from "../../images/avatar-default.png";
  * @returns
  */
 
-export default function ProfileCard(props) {
-  const sizeCard = props.sizeCard || "small";
+export default function ProfileCard({userId, name, cover, lastName, avatar, bio, size}) {
+  const sizeCard = size || "small";
 
   return (
     <div className={classes[sizeCard]}>
       <div className={classes.header}>
         <div className={classes.container_cover}>
           <div className={classes.innerCover}>
-          { props.cover? <img
+          { cover? <img
             className={classes.coverImage}
-            src={props.cover}
-            alt={props.name}
+            src={cover}
+            alt={name}
           /> : <></>}
           </div>
         </div>
-        <Link to={`profile/${props.userId}`}>    
+        <Link to={`profile/${userId}`}>    
         <div className={classes.container_avatar}>
-            {props.avatar ? 
+            {avatar ? 
           <img
             className={classes.userImage}
-            src={props.avatar}
-            alt={props.name}
+            src={avatar}
+            alt={name}
           /> : <img
           className={classes.userImage}
           src={DefaultAvatar}
-          alt={props.name}
+          alt={name}
         />}
         </div>
         </Link>     
       </div>
       <div className={classes.info}>
-        <h4 className={classes.name}>{props.username}</h4>
-        <span className={classes.description}>{props.bio? props.bio : "Salut mes amis!"}</span>
+        <h4 className={classes.name}>{name} {lastName}</h4>
+        <span className={classes.description}>{bio? bio : "Salut mes amis!"}</span>
       </div>
     </div>
   );

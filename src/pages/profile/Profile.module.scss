@@ -7,16 +7,28 @@
 
 .content {
   display: flex;
+  flex-direction: column;
   padding: 1em;
 
+  @include mq(large){
+    flex-direction: row;
+  }
+
   &_infoLoggedUser {
+    top: 70px;
+    width: 80%;
+    margin: 0 auto;
+
+    @include mq(large) { 
     height: calc(100vh - 70px);
     overflow-y: scroll;
     position: sticky;
-    top: 70px;
-
+    width: auto;
+    }
+  
     h2 {
       margin: 1em 0;
+      text-align: center;
     }
   }
 

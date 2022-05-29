@@ -35,4 +35,28 @@
 .sidebarIcon {
   margin-right: 15px;
 }
+
+.edit {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+  width: auto;
+  width: 100%;
+}
+
+.linkList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1em 0;
+}
+
+.linkList_danger {
+  color: red;
+  font-weight: 700;
+}
 /*# sourceMappingURL=ProfileForm.module.css.map */

@@ -35,18 +35,20 @@ export default function Profile() {
     <> 
      <div className={classes.header}>
         <ProfileCard
-          username={userProfile.name}
+          userId = {userProfile.id}
+          name={userProfile.name}
+          lastName={userProfile.lastName}
           cover={userProfile.coverPicture}
           avatar={userProfile.profilePicture}
           bio={userProfile.bio}
-          sizeCard="large"
+          size="large"
         />
       </div>
       <div className={classes.content}>
         { (notMyProfile) ? null :
         <div className={classes.content_infoLoggedUser}>
           <h2>Informations Personnelles</h2>
-          <ProfileForm />
+          <ProfileForm user = {user}/>
           <hr />
           <p className={classes.title}>Mes contacts</p>
           <ul className={classes.friendList}>

@@ -46,7 +46,7 @@ function App() {
             <Route path="/" element={<HomePage />}>
             </Route>
 
-            <Route path="profile/:id" element={<ProfilePage />} />
+            <Route path="profile/:id" element={<ProfilePage/>} />
           </Route>
         </Route>
         <Route element={<RequireAuth allowedRoles={[ROLES.admin]} />}>

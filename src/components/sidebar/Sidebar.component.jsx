@@ -12,7 +12,8 @@ export default function Sidebar({user, users, className}) {
       "
       <ProfileCard
         userId = {user.id}
-        username= {user.name}
+        name= {user.name}
+        lastName={user.lastName}
         cover= {user.coverPicture}
         avatar={user.profilePicture}
         bio={user.bio}

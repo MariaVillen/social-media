@@ -15,7 +15,7 @@ function AppLayout({ rolesList }) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState();
   const [users, setUsers] = useState();
-
+  const [avatar, setAvatar] = useState();
   // Load User from database
 
   useEffect(() => {

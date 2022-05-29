@@ -10,7 +10,7 @@
   background-color: white;
 
   &_logo {
-    height: 100%;
+    height: calc(100% - 20px);
     padding: 10px;
 
     img {
@@ -22,9 +22,7 @@
 
   &_menu {
     padding-right: 1em;
-    @include mq(medium) {
-      height: 100%;
-    }
+    height: 100%;
   }
 
   &_avatar {
@@ -44,9 +42,12 @@
 
     &.show + .topbar_links {
       max-width: 100%;
+      margin: 0;
+      padding: 0;
 
       @include mq(medium) {
         max-width: 600px;
+        height: 100%;
       }
     }
   }
@@ -61,6 +62,7 @@
     height: 100vh;
     max-width: 0px;
     padding: 0;
+    margin:0;
     background: rgba(255, 255, 255, 0.9);
     color: $black-color;
     z-index: 2;
@@ -84,8 +86,14 @@
     transition: background-color 500ms ease-in-out;
 
     @include mq(medium) {
-      height: 100%;
+      display: flex;
+      align-items: center;
     }
+
+    
+  &:hover {
+    background-color: $primary-color + E6;
+  }
 
     &.notLink {
       width: 100%;
@@ -94,10 +102,7 @@
 
       @include mq(medium) {
         width: auto;
-      }
-
-      &:hover {
-        background-color: $primary-color + E6;
+        display: flex;
       }
     }
   }
@@ -106,7 +111,6 @@
     color: inherit;
     text-decoration: none;
     padding: 1em;
-    height: 100%;
     display: inline-block;
     transition: background-color 500ms ease-in-out;
     width: 100%;
@@ -115,7 +119,4 @@
     }
   }
 
-  &_link:hover {
-    background-color: $primary-color + E6;
-  }
 }

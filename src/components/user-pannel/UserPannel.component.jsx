@@ -14,11 +14,10 @@ function UserPannel() {
         {users.length > 0 ? (
           users.map((u) => {
             return (
-              <li className={classes.activeCard}>
+              <li key={u.id} className={classes.activeCard}>
                 <div className={classes.activeCard_header}>
                   <div className={classes.activeCard_user}>
                     <Avatar
-                      key={u.id}
                       username={u.name}
                       userImage={u.profilePicture}
                       userId={u.id}
