@@ -1,12 +1,11 @@
 import classes from "./PostAddComment.module.scss";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
-import UserCard from "../userCard/UserCard.component";
 import { useRef, useState, useEffect } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import useAuth from "../../hooks/useAuth";
+import Avatar from "../avatar/avatar.component";
 
 export default function PostComment({
-  userName,
-  userImage,
   postId,
   loadComments,
   setLoadComments,
@@ -19,7 +18,7 @@ export default function PostComment({
 
   // Api
   const axiosPrivate = useAxiosPrivate();
-
+  const { user} = useAuth();
   
   useEffect(() => {
     textRef.current.focus();
@@ -47,7 +46,7 @@ export default function PostComment({
     <div className={classes.addComment}>
       <form>
         <div className={classes.addComment_container}>
-          <UserCard username={userName} profilePicture={userImage} hideName />
+          <Avatar username={user.name} userImage={user.profilePicture} userId={user.id} />
           <div className={classes.addComment_text}>
             <TextareaRezise
               name="textOfComment"

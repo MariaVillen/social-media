@@ -3,7 +3,6 @@ import classes from "./Feed.module.scss";
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-
 // Feed of Posts List
 
 export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className = "" }) {

@@ -6,6 +6,7 @@ import Feed from "../../components/feed/Feed.component";
 import ProfileCard from "../../components/profile-card/ProfileCard";
 import ProfileForm from "../../components/profile-form/ProfileForm.component";
 import UserCard from "../../components/userCard/UserCard.component";
+import useAuth from "../../hooks/useAuth";
 
 
 
@@ -14,9 +15,10 @@ import UserCard from "../../components/userCard/UserCard.component";
 
 export default function Profile() {
 
+  const {user} = useAuth();
   const params = useParams();
   const profileId= parseInt(params.id);
-  const [user, users] = useOutletContext();
+  const {users} = useOutletContext();
   const [userProfile, setUserProfile] = useState(user);
   const [notMyProfile, setNotMyProfile] = useState(false)
 
@@ -48,13 +50,13 @@ export default function Profile() {
         { (notMyProfile) ? null :
         <div className={classes.content_infoLoggedUser}>
           <h2>Informations Personnelles</h2>
-          <ProfileForm user = {user}/>
+          <ProfileForm/>
           <hr />
           <p className={classes.title}>Mes contacts</p>
           <ul className={classes.friendList}>
             {users.map((u) => {
               return (
-                <li>
+                <li key={u.id}>
                   <UserCard
                     userId = {u.id}
                     username={u.name}
@@ -70,7 +72,7 @@ export default function Profile() {
         <div className={classes.content_main}>
          {notMyProfile ? <button className = {classes.follow}>Suivre</button> : null}
           <div className={classes.content_feed}>
-            <Feed onlyForUserId={userProfile.idUsers} user={userProfile} />
+            <Feed onlyForUserId={userProfile.idUsers} userProfile={userProfile} />
           </div>
         </div>
       </div>

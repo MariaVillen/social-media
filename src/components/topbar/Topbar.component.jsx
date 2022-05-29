@@ -8,9 +8,9 @@ import useLogout from "../../hooks/useLogout";
 
 // Menu TopBar General navigation bar.
 
-export default function Topbar({rolesList, userAvatar}) {
+export default function Topbar({rolesList}) {
   // Authorization
-  const { auth } = useAuth();
+  const { auth, user } = useAuth();
   const userRole = auth.user.roles;
   const logout = useLogout();
 
@@ -50,8 +50,8 @@ export default function Topbar({rolesList, userAvatar}) {
             isSubMenuOpen && classes.show
           }`}
         >
-          {(userAvatar)
-            ?<img src={userAvatar} alt="Profile" />
+          {(user.profilePicture)
+            ?<img src={user.profilePicture} alt="Profile" />
             : <img src={DefaultAvatar} alt="Profile"/>}
         </div>
 

@@ -3,25 +3,22 @@ import { NoAccounts, LockReset } from "@mui/icons-material";
 import TextareaForm from "../textarea-form/TextareaForm.component";
 import ImageForm from "../image-form/ImageForm";
 
-export default function ProfileForm({ user }) {
 
+export default function ProfileForm() {
 
-  
 
   return (
     <div>
       <div className={classes.profileForm}>
         <div className={classes.sidebarList}>
-          <TextareaForm className={classes.edit} user={user} />
+          <TextareaForm className={classes.edit}/>
           <ImageForm
             className={classes.imageEdit}
-            user={user}
             imageName="cover"
             labelDesc="Modifier l'en tête."
           />
           <ImageForm
             className={classes.imageEdit}
-            user={user}
             imageName="avatar"
             labelDesc="Modifier l'avatar."
           />

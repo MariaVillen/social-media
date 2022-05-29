@@ -2,10 +2,13 @@ import classes from "./Sidebar.module.scss";
 import UserCard from "../../components/userCard/UserCard.component";
 import ProfileCard from "../profile-card/ProfileCard";
 import ProfileForm from "../profile-form/ProfileForm.component";
+import useAuth from "../../hooks/useAuth";
 
 // Sidebar of the home page.
 
-export default function Sidebar({user, users, className}) {
+export default function Sidebar({className, users}) {
+
+  const {user} = useAuth();
 
   return (
     <div className={`${classes.container} ${className}`}>

@@ -1,52 +1,41 @@
 import classes from "./ProfileCard.module.scss";
 import {Link} from "react-router-dom";
 import DefaultAvatar from "../../images/avatar-default.png";
-
-/**
- * @ReactComponent
- * @Property {String ('large' or 'small')} sizeCard // size of the card
- * @property {String} props.username // name of the user
- * @property {Url} props.cover // Cover Image of the user
- * @property {Url} props.avatar // avatar of the user
- * @property {String} props.bio // Biographie of the user
- * @param {*} props
- *
- * @returns
- */
-
-export default function ProfileCard({userId, name, cover, lastName, avatar, bio, size}) {
+import useAuth
+ from "../../hooks/useAuth";
+export default function ProfileCard({size}) {
   const sizeCard = size || "small";
-
+  const {user} = useAuth();
   return (
     <div className={classes[sizeCard]}>
       <div className={classes.header}>
         <div className={classes.container_cover}>
           <div className={classes.innerCover}>
-          { cover? <img
+          { user.coverPicture? <img
             className={classes.coverImage}
-            src={cover}
-            alt={name}
+            src={user.coverPicture}
+            alt={user.name}
           /> : <></>}
           </div>
         </div>
-        <Link to={`profile/${userId}`}>    
+        <Link to={`profile/${user.id}`}>    
         <div className={classes.container_avatar}>
-            {avatar ? 
+            {user.profilePicture ? 
           <img
             className={classes.userImage}
-            src={avatar}
-            alt={name}
+            src={user.profilePicture}
+            alt={user.name}
           /> : <img
           className={classes.userImage}
           src={DefaultAvatar}
-          alt={name}
+          alt={user.name}
         />}
         </div>
         </Link>     
       </div>
       <div className={classes.info}>
-        <h4 className={classes.name}>{name} {lastName}</h4>
-        <span className={classes.description}>{bio? bio : "Salut mes amis!"}</span>
+        <h4 className={classes.name}>{user.name} {user.lastName}</h4>
+        <span className={classes.description}>{user.bio? user.bio : "Salut mes amis!"}</span>
       </div>
     </div>
   );

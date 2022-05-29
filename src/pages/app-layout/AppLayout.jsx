@@ -9,13 +9,12 @@ function AppLayout({ rolesList }) {
   
   // Api
   const axiosPrivate = useAxiosPrivate();
-  const { auth } = useAuth();
+  const { auth, user, setUser } = useAuth();
 
   // User load
   const [isLoading, setIsLoading] = useState(true);
-  const [user, setUser] = useState();
   const [users, setUsers] = useState();
-  const [avatar, setAvatar] = useState();
+
   // Load User from database
 
   useEffect(() => {
@@ -61,11 +60,11 @@ function AppLayout({ rolesList }) {
       ) : (
         <>
           <div className={classes.navigation}>
-            <Topbar rolesList={rolesList} userAvatar={user.profilePicture} />
+            <Topbar rolesList={rolesList} />
           </div>
 
           <main className={classes.main}>
-            <Outlet context={[ user, users ]} />
+            <Outlet context={{users}} />
           </main>
         </>
       )}

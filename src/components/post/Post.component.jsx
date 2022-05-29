@@ -19,7 +19,7 @@ export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   // Likes
   const [like, setLike] = useState(post.totalLikes);
   const [isLiked, setisLiked] = useState(false);
-  const {auth } = useAuth();
+  const {auth, user } = useAuth();
 
   // Api
   const axiosPrivate = useAxiosPrivate();
@@ -105,7 +105,7 @@ const reportHandler = ()=>{
             <UserCard
               hideName
               userId={post.user.id}
-              profilePicture={post.user.profilePicture}
+              profilePicture={post.user.id === user.id? user.profilePicture: post.user.profilePicture}
               username={post.user.name}
             />
             <span className={classes.post_date}>{Date(post.createdAt)}</span>
@@ -159,8 +159,8 @@ const reportHandler = ()=>{
         </div>
         {onCommentView ? (
           <div className={classes.commentContent}>
-            <PostAddComment userName = {post.user.name} totalComments = {totalComments} loadComments = {loadComments}
-              setLoadComments = {setLoadComments} setTotalComments = {setTotalComments} userImage = {post.user.profilePicture} postId={post.id} />
+            <PostAddComment  totalComments = {totalComments} loadComments = {loadComments}
+              setLoadComments = {setLoadComments} setTotalComments = {setTotalComments} postId={post.id} />
             <FeedComments 
               loadComments = {loadComments}
               setLoadComments = {setLoadComments} 

@@ -6,14 +6,15 @@ import { useState, useRef } from "react";
 import useAuth from "../../hooks/useAuth";
 import { ROLES } from "../../helpers/rolesList";
 
-export default function TextareaForm({ user }) {
+export default function TextareaForm({className}) {
   const axios = useAxiosPrivate();
-  const { auth } = useAuth();
-  const allowEdition =
-    user.id === auth.user.id || auth.user.role === ROLES.admin;
+  const { auth, user, setUser } = useAuth();
+ 
 
     
   // EDIT textarea
+  const allowEdition =
+  user.id === auth.user.id || auth.user.role === ROLES.admin;
   const [content, setContent] = useState(user.bio || "Salut mes amis!");
   const contentRef = useRef();
   const [onEdit, setOnEdit] = useState(false);
@@ -45,6 +46,7 @@ export default function TextareaForm({ user }) {
         return;
       }
       console.log("Modifié!");
+      setUser({...user, bio: content});
     } catch (err) {
       console.log(err);
     }

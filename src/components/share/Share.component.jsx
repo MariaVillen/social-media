@@ -5,22 +5,22 @@ import PreviewImage from "./PreviewImage.component";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import Avatar from "../avatar/avatar.component";
+import useAuth from "../../hooks/useAuth";
 
 // Component to share and public text and one image.
 
 export default function Share({
   elementId,
-  userName,
-  userImage,
-  userId,
   photo,
   content,
   isOpen,
   isLoadPosts,
   loadPosts
 }) {
+
+  const {user} = useAuth();
   const contentRef = useRef();
-  const idInput = userId || "createPost";
+  const idInput = user.id || "createPost";
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
@@ -65,10 +65,10 @@ export default function Share({
     event.preventDefault();
     let formData = new FormData();
     if(file) {formData.append("image", file)};
-    formData.append("userId", userId);
+    formData.append("userId", user.id);
     if(text) {formData.append("content", text)};
 
-    if ((file || text) && userId)  {
+    if ((file || text) && user.id)  {
 
 
       try {
@@ -109,7 +109,7 @@ export default function Share({
       <form onSubmit={submitHandler} encType="multipart/form-data">
         <div className={classes.wrapper}>
           <div className={classes.shareHeader}>
-            <Avatar userImage={userImage} userName={userName} userId={userId} />
+            <Avatar userImage={user.profilePicture} userName={user.name} userId={user.id} />
 
             <div className={classes.shareHeader_content}>
               <TextareaRezise

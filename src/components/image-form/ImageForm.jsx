@@ -5,14 +5,15 @@ import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { ROLES } from "../../helpers/rolesList";
 
-export default function ImageForm({ user, imageName, className, labelDesc }) {
+export default function ImageForm({imageName, className, labelDesc }) {
   const axios = useAxiosPrivate();
-  const { auth } = useAuth();
-  const allowEdition =
-    user.id === auth.user.id || auth.user.role === ROLES.admin;
+  const { auth, user, setUser } = useAuth();
+
 
     
   // EDIT textarea
+  const allowEdition =
+    user.id === auth.user.id || auth.user.role === ROLES.admin;
   const [onEdit, setOnEdit] = useState(false);
 
   // Allow Edition
@@ -42,12 +43,25 @@ export default function ImageForm({ user, imageName, className, labelDesc }) {
         return;
     }
     try {
-      const response = await axios.put(putRoute, fd);
+      const response = await axios.put(putRoute, fd)
       if (!response) {
         console.log("No answer");
         return;
+      } else{
+        console.log("imagename", imageName);
+        if (imageName ==="cover") {
+          setUser({...user, coverPicture: response.data.message.coverPicture})
+          console.log(user);
+        } 
+        if (imageName ==="avatar"){
+          console.log("para por avatar");
+          setUser({...user, profilePicture: response.data.message.profilePicture});
+          console.log(user);
+        }
+         console.log("Modifié!");
       }
-      console.log("Modifié!");
+     
+
     } catch (err) {
       console.log(err);
     }
@@ -55,7 +69,7 @@ export default function ImageForm({ user, imageName, className, labelDesc }) {
 
 
   return (
-       <form className = {`${classes.imageForm} ${className}`}>
+       <form onSubmit={submitHandler} className = {`${classes.imageForm} ${className}`}>
           <div onClick={allowEditionHandler}className={classes.sidebarListItem}>
             <label className={classes.imageForm_item}>
             <Photo className={classes.imageForm_icon} />
@@ -75,7 +89,7 @@ export default function ImageForm({ user, imageName, className, labelDesc }) {
           {onEdit ? (
         <div className={classes.btn_section}>
           <Clear onClick={cancelHandler} className={classes.btn_cancel}/>
-           <Check onClick={submitHandler} className={classes.btn_submit} />
+          <button className = {classes.buttonContainer} type="submit"><Check className={classes.btn_submit} /></button>
         </div>
       ) : null}
     </form>)
