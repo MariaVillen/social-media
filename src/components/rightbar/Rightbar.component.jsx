@@ -7,8 +7,8 @@ import Feed from '../feed/Feed.component';
 export default function Rightbar({className}) {
   return (
     <div className={`${classes.container} ${className}`}>
-      <p className={classes.title}> Top Comments Posts!</p>
-      <Feed/>
+      <h2 className={classes.title}> Top Comments Posts!</h2>
+      <Feed topComments={true}/>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 // Feed of Posts List
 
-export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className = "" }) {
+export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className = "", topComments }) {
 
   // Api
   const axiosPrivate = useAxiosPrivate();
@@ -24,7 +24,9 @@ export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className =
     console.log(onlyForUserId);
     if (onlyForUserId) {
       post_url = "/post/user/" + onlyForUserId; 
-    } else {
+    } else if (topComments) {
+      post_url = "/post/topten"
+    } else { 
       post_url = "/post";
     }
 
