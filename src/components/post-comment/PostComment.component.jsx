@@ -21,7 +21,7 @@ export default function PostComment({className, postId, setTotalComments, totalC
 
   // Like Handler
   const [like, setLike] = useState(comment.likes);
-  const [isLiked, setisLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   
   const likeHandler = async (e) => {
    
@@ -31,7 +31,7 @@ export default function PostComment({className, postId, setTotalComments, totalC
     }).then(
       ()=> {
         setLike(isLiked ? like - 1 : like + 1);
-        setisLiked(!isLiked);    
+        setIsLiked(!isLiked);    
       }
     )
   } catch(err){
@@ -104,7 +104,38 @@ export default function PostComment({className, postId, setTotalComments, totalC
     )
     
   };
+  
+useEffect(  () => {
 
+  let isMounted = true;
+  const controller = new AbortController();
+
+  const getLike = async ()=> {
+    try {
+      const response = await axiosPrivate.get(`/comment/${comment.id}/like`, {signal: controller.signal});
+      const onLike = response.data;
+
+      if (isMounted) {
+        // Stock data
+        if (onLike) {
+          setIsLiked(onLike.message);
+        }
+        setLoadComments(false);
+    
+      }
+    }  catch(err) {
+       console.log("ERROR: ", err.message);
+    }
+  }
+
+  getLike();
+
+  // if unmounted component
+  return ()=> {
+    isMounted=false;
+    controller.abort();
+  }
+}, [loadComments]);
 
   return (
     <>

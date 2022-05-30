@@ -1,5 +1,5 @@
 import classes from "./Post.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Edit,
   Delete,
@@ -18,8 +18,9 @@ import useAuth from "../../hooks/useAuth";
 export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   // Likes
   const [like, setLike] = useState(post.totalLikes);
-  const [isLiked, setisLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const {auth, user } = useAuth();
+  const [isLoading, setIsLoading] = useState(true);
 
   // Api
   const axiosPrivate = useAxiosPrivate();
@@ -35,7 +36,7 @@ export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
     }).then(
       ()=> {
         setLike(isLiked ? like - 1 : like + 1);
-        setisLiked(!isLiked);    
+        setIsLiked(!isLiked);    
       }
     )
   } catch(err){
@@ -87,6 +88,38 @@ const reportHandler = ()=>{
 }
 
 
+useEffect(  () => {
+
+  let isMounted = true;
+  const controller = new AbortController();
+
+  const getLike = async ()=> {
+    try {
+      const response = await axiosPrivate.get(`/post/${post.id}/like`, {signal: controller.signal});
+      const onLike = response.data;
+
+      if (isMounted) {
+        // Stock data
+        if (onLike) {
+          setIsLiked(onLike.message);
+        }
+        setIsLoading(false);
+    
+      }
+    }  catch(err) {
+       console.log("ERROR: ", err.message);
+    }
+  }
+
+  getLike();
+
+  // if unmounted component
+  return ()=> {
+    isMounted=false;
+    controller.abort();
+  }
+}, [loadPosts]);
+
   return (
     <div className={`${classes.post} ${className}`}>
       <div className={classes.post_wrapper}>
@@ -111,7 +144,7 @@ const reportHandler = ()=>{
               profilePicture={post.user.id === user.id? user.profilePicture: post.user.profilePicture}
               username={post.user.name}
             />
-            <span className={classes.post_date}>{Date(post.createdAt)}</span>
+            <span className={classes.post_date}>{post.createdAt}</span>
           </div>
           <div className={classes.post_menu}>
             {auth.user.id === post.userId 
@@ -149,13 +182,13 @@ const reportHandler = ()=>{
                 <FavoriteBorderOutlined className={classes.likeIcon} />
               )}
             </button>
-            <span className={classes.likeCounter}>{like} people liked it!</span>
+            <span className={classes.likeCounter}>{like}</span>
           </div>
           <div className={classes.post_comments}>
             <button className={classes.comment} onClick={commentHandler}>
               <Comment className={classes.commentIcon} />
               <div className={classes.post_comments}>
-                <span>{totalComments} comments</span>
+                <span>{totalComments} commentaires</span>
               </div>
             </button>
           </div>

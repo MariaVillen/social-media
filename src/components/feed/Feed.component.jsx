@@ -31,7 +31,7 @@ export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className =
     const getPosts = async ()=> {
       try {
         console.log("url ", post_url);
-        const response = await axiosPrivate.get(post_url, {signal: controller.signal});
+        const response = await axiosPrivate.get(post_url, {signal: controller.signal})
         const posts = response.data;
         console.log(response.data);
 
