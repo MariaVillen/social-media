@@ -14,12 +14,7 @@ export default function Sidebar({className, users}) {
     <div className={`${classes.container} ${className}`}>
       "
       <ProfileCard
-        userId = {user.id}
-        name= {user.name}
-        lastName={user.lastName}
-        cover= {user.coverPicture}
-        avatar={user.profilePicture}
-        bio={user.bio}
+        user={user}
       />
       <div className={classes.wrapper}>
         <ProfileForm user = {user}/>

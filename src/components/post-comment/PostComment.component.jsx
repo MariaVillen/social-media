@@ -23,10 +23,21 @@ export default function PostComment({className, postId, setTotalComments, totalC
   const [like, setLike] = useState(comment.likes);
   const [isLiked, setisLiked] = useState(false);
   
-  const likeHandler = () => {
-    setLike(isLiked ? like - 1 : like + 1);
-    setisLiked(!isLiked);
-  };
+  const likeHandler = async (e) => {
+   
+    try{
+    const result = await axiosPrivate.post(`/comment/${comment.id}/like`, {
+      userId: auth.user.id
+    }).then(
+      ()=> {
+        setLike(isLiked ? like - 1 : like + 1);
+        setisLiked(!isLiked);    
+      }
+    )
+  } catch(err){
+    console.log(err);
+  }
+}
 
   // Delete Handler
   const deleteHandler = ()=>{

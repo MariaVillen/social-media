@@ -1,17 +1,15 @@
 import classes from "./ProfileCard.module.scss";
 import {Link} from "react-router-dom";
 import DefaultAvatar from "../../images/avatar-default.png";
-import useAuth
- from "../../hooks/useAuth";
-export default function ProfileCard({size}) {
+export default function ProfileCard({user, size}) {
+  
   const sizeCard = size || "small";
-  const {user} = useAuth();
   return (
     <div className={classes[sizeCard]}>
       <div className={classes.header}>
         <div className={classes.container_cover}>
           <div className={classes.innerCover}>
-          { user.coverPicture? <img
+          { user?.coverPicture ? <img
             className={classes.coverImage}
             src={user.coverPicture}
             alt={user.name}

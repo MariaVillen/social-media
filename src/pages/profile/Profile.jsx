@@ -37,12 +37,7 @@ export default function Profile() {
     <> 
      <div className={classes.header}>
         <ProfileCard
-          userId = {userProfile.id}
-          name={userProfile.name}
-          lastName={userProfile.lastName}
-          cover={userProfile.coverPicture}
-          avatar={userProfile.profilePicture}
-          bio={userProfile.bio}
+          user = {userProfile}
           size="large"
         />
       </div>
