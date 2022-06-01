@@ -27,7 +27,7 @@
   position: relative;
   padding-bottom: calc(100% * 4 / 12);
   margin-bottom: 20%;
-  background-color: #eb3d25;
+  background-color: #FD2D01;
 }
 
 .small .container_avatar {
@@ -102,7 +102,7 @@
 
 .large .innerCover {
   height: 200px;
-  background-color: mistyrose;
+  background-color: #FFD7D7;
 }
 
 .large .coverImage {

@@ -61,7 +61,7 @@
 }
 
 .post_menu_content_icon:hover .post_menu_icon {
-  background: #eb3d25;
+  background: #FD2D01;
   color: white;
   border-radius: 50%;
 }
@@ -178,7 +178,7 @@
 }
 
 .post_comments .comment:hover {
-  color: #eb3d25;
+  color: #FD2D01;
 }
 
 .post_comments .commentIcon {
