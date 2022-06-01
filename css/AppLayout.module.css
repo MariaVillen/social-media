@@ -4,6 +4,13 @@
   width: 100%;
 }
 
+.container * {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .main {
   min-height: calc(100vh - 70px);
 }

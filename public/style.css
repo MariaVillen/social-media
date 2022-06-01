@@ -3,3 +3,8 @@
     font-family: 'Roboto', sans-serif;
     box-sizing: border-box;
 }
+
+#root {
+    display: flex;
+    flex-grow: 1;
+}

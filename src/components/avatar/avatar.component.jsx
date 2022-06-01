@@ -8,7 +8,7 @@ export default function Avatar({userName, userImage, userId, sizePicture, classN
 
   return (
     <>
-    <Link className={className || classes.conteiner} to={`/profile/${userId}`}>
+    <Link area-label={userName} className={className || classes.conteiner} to={`/profile/${userId}`}>
       <img
         src={(userImage) ? userImage : DefaultAvatar}
         alt={userName}

@@ -64,6 +64,7 @@ export default function TextareaForm({className}) {
           </label>
           <div className={classes.textareaForm_action}>
             <TextareaRezise
+              name="bio"
               innerRef={contentRef}
               rows="1"
               onChange={(e) => setContent(e.target.value)}

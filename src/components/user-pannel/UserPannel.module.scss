@@ -13,7 +13,7 @@
     align-items: center;
     flex-wrap: wrap;
     margin: 1em;
-    background-color: mistyrose;
+    background-color: $secondary-color;
     @include box--shadow;
 
     &_data { 
@@ -91,7 +91,7 @@
                 margin: 0.5em;
                 border: none;
                 border-radius: 5px;
-                background-color: $primary-color;
+                background-color: $primary-contrast;
                 color: white;
             }
             &_active {

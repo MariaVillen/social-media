@@ -23,8 +23,9 @@
 .addComment_text {
   width: 100%;
   padding: 1em;
-  background: mistyrose;
+  background: #FFD7D7;
   border-radius: 1em;
+  margin-left: 0.5em;
 }
 
 .addComment_edit {
@@ -56,7 +57,7 @@
 }
 
 .btn_submit {
-  background-color: #eb3d25;
+  background-color: #FD2D01;
   color: white;
   width: auto;
   padding: auto 1em;

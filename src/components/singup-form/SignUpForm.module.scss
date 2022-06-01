@@ -1,7 +1,7 @@
 @import "../../styles-utils/graphiqueColors.scss";
 @import "../../styles-utils/mixins.scss";
 
-.auth {
+.authSignUp {
   width: 95%;
   max-width: 25rem;
   margin: 3rem auto;
@@ -24,7 +24,8 @@
   }
 
   .errMsg {
-    background-color: yellow;
+    background-color: $primary-color;
+    color: white;
     font-weight: 500;
     padding: 1em;
   }
@@ -39,23 +40,41 @@
       color: $black-color;
     }
 
+    span {
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+      border: 2px solid $secondary-color;
+      &:focus-within {
+        border: 2px solid $primary-color;
+      }
+      .passIcon {
+        align-self: flex-end;
+        color: $black-color;
+      }
+    }
+
     input {
       width: 100%;
       padding: 0.25rem;
       font-size: inherit;
       text-align: left;
       outline: none;
-      border-radius: 4px;
-      border: 2px solid $secondary-color;
+      border: none;
       background-color: white;
       color: $black-color;
-
-      &:focus,
-      &:active {
-        border: 2px solid $primary-color;
-      }
+      border: none;
     }
 
+    &>input {
+      border: 2px solid $secondary-color;
+    }
+
+    &>input:focus,
+    &>input:active {
+          border: 2px solid $primary-color;
+      }
+   
     .instructions {
       font-size: 0.75rem;
       border-radius: 0.5rem;
@@ -64,14 +83,18 @@
       position: relative;
       bottom: -5px;
     }
-    .offscreen {
-      position: absolute;
-      left: -9999px;
-    }
+
+     .offscreen {
+    position: absolute;
+    left: -9999px;
+  }
   }
 
   &_check {
-    padding: 1em;
+    padding: 1em 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: left;
     text-align: left;
 
     label {
@@ -85,6 +108,8 @@
     input {
       display: inline-block;
       vertical-align: middle;
+      height: 21px;
+      width: 21px;
     }
   }
 
@@ -130,4 +155,3 @@
     }
   }
 }
-

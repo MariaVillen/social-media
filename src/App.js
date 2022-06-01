@@ -1,3 +1,4 @@
+
 import { Routes, Route } from "react-router-dom";
 import RequireAuth from "./helpers/RequireAuth";
 import PersistLogin from "./helpers/persist-login";
@@ -12,8 +13,6 @@ import Unauthorized from "./pages/unauthorized/Unauthorized";
 // Home page Components
 import AppLayout from "./pages/app-layout/AppLayout";
 import HomePage from "./pages/home/Home";
-import Feed from "./components/feed/Feed.component";
-import PostDetail from "./components/post-detail/PostDetail";
 
 // Profile components
 import ProfilePage from "./pages/profile/Profile";

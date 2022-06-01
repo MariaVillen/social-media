@@ -31,8 +31,9 @@
 .shareHeader_content {
   width: 100%;
   padding: 1em;
-  background: mistyrose;
+  background: #FFD7D7;
   border-radius: 1em;
+  margin-left: 0.5em;
 }
 
 .shareHeader_content_edit {
@@ -53,7 +54,7 @@
 .shareInput {
   width: 100%;
   padding: 1em;
-  background-color: mistyrose;
+  background-color: #FFD7D7;
   border: none;
   border-radius: 1em;
 }
@@ -111,14 +112,14 @@
   margin-right: 20px;
   font-weight: 500;
   color: white;
-  background-color: #eb3d25;
+  background-color: #FD2D01;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .share_btn:hover {
-  background-color: "#eb3d25CC";
+  background-color: "#FD2D01CC";
 }
 
 .share_btn_cancel {

@@ -2,27 +2,26 @@
 import classes from "./SignUpForm.module.scss";
 import {useRef, useState, useEffect} from 'react';
 import {Link, useNavigate } from 'react-router-dom';
-import api from "../../api/axios";
+import axios from "../../api/axios";
+import { VisibilityOff, Visibility } from "@mui/icons-material";
+
 
 const SignUpForm = () => {
 
   // Navigation
-
   const navigate = useNavigate();
 
  // Validation
   const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!$%@\.]).{8,24}$/;
   const NAME_REGEX =/^[A-Za-zàâçéèêëîïôûùüÿñæœ' ]+/; 
-  const EMAIL_REGEX= /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+  const EMAIL_REGEX= /^([A-z0-9_\.-]+)@([\dA-z\.-]+)\.([A-z\.]{2,6})$/;
 
-  
   // Referencies
   const emailRef = useRef();
   const nameRef = useRef();
   const lastNameRef = useRef();
   const errRef = useRef();
   const condRef = useRef();
-
 
   // Error States
   const [email, setEmail] = useState('');
@@ -35,12 +34,9 @@ const SignUpForm = () => {
   const [validLastName, setValidLastName] = useState(false);
   const [conditions, setConditions] =  useState(false);
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
 
-  // focus on user input
-  useEffect( () => {
-    emailRef.current.focus();
-  },[])
+  // Other states
+  const [seePass, setSeePass] = useState(false);
 
   // Validation
   useEffect(()=>{
@@ -59,35 +55,39 @@ const SignUpForm = () => {
     setValidPwd(PWD_REGEX.test(pwd));
   },[pwd])
   
+  // focus on user input on init
+  useEffect( () => {
+    emailRef.current.focus();
+  },[])
 
   // Reset error messages to '' 
   useEffect(()=>{
     setErrMsg('');
   }, [email, pwd, name, lastName, conditions])
 
-
+  // Submit Form Handler
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/auth/signup", JSON.stringify({lastName: lastName, name: name, email: email, password: pwd}));
-      console.log(response.data);
-      console.log(response.accessToken);
-      setSuccess(true);
-      setEmail('')
-      setPwd('')
-      setName('')
-      setLastName('')
-      navigate('/login')
-      
+      const response = await axios.post("/auth/signup", JSON.stringify({lastName: lastName, name: name, email: email, password: pwd}));
+      if (response) {
+      setEmail('');
+      setPwd('');
+      setName('');
+      setLastName('');
+      navigate('/login');
+      } else {
+        console.log("Desolée un erreur est survenu");
+      }
     } catch (err) {
       console.log(err);
       if (!err?.response) {
         setErrMsg('Pas de réponse du serveur.');
+      } else if (err.response?.error) {
+        setErrMsg(err.response.error); 
       } else if (err.response?.status === 400) {
-        console.log(err.message);
         setErrMsg("Email déjà utilisé")
       } else {
-        console.log(err.message);
         setErrMsg('La connexion a échoué');
       }
       errRef.current.focus();
@@ -95,11 +95,11 @@ const SignUpForm = () => {
   };
 
   return (
-    <><section className={classes.auth}>
+    <><section className={classes.authSignUp}>
 
       <h1>S'inscrire</h1>
       <p ref={errRef} className={errMsg ? classes.errMsg : classes.offscreen } aria-live="assertive">{errMsg}</p><form onSubmit={submitHandler}>
-        <div className={classes.auth_control}>
+        <div className={classes.authSignUp_control}>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -110,11 +110,11 @@ const SignUpForm = () => {
             value={email}
             required />
           <p className={(email && !validEmail) ? classes.instructions : classes.offscreen}>
-            Mensaje de Instrucciones
+            Entrer un email valide.
           </p>
         </div>
 
-        <div className={classes.auth_control}>
+        <div className={classes.authSignUp_control}>
           <label htmlFor="name">Nom</label>
           <input
             type="text"
@@ -125,11 +125,11 @@ const SignUpForm = () => {
             value={name}
             required />
           <p className={(name && !validName) ? classes.instructions : classes.offscreen}>
-            Mensaje de Instrucciones
+            Seuls les caractères alphabétiques sont acceptés.
           </p>
         </div>
 
-        <div className={classes.auth_control}>
+        <div className={classes.authSignUp_control}>
           <label htmlFor="lastName">Prénom</label>
           <input
             type="text"
@@ -140,24 +140,41 @@ const SignUpForm = () => {
             value={lastName}
             required />
           <p className={(lastName && !validLastName) ? classes.instructions : classes.offscreen}>
-            Mensaje de Instrucciones
+            Seuls les caractères alphabétiques sont acceptés.
           </p>
         </div>
 
-        <div className={classes.auth_control}>
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            id="password"
-            onChange={e => setPwd(e.target.value)}
-            value={pwd}
-            required />
+
+        <div className={classes.authSignUp_control}>
+          <label htmlFor="password">Mot de passe </label>
+          <span>
+            <input
+              type={seePass ? "text" : "password"}
+              id="password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+            />
+            {seePass ? (
+              <Visibility
+                className={classes.passIcon}
+                onClick={() => setSeePass(false)}
+              />
+            ) : (
+              <VisibilityOff
+                className={classes.passIcon}
+                onClick={() => setSeePass(true)}
+              />
+            )}
+          </span>
           <p className={(pwd && !validPwd) ? classes.instructions : classes.offscreen}>
-            Mensaje de Instrucciones
+          Il doit contenir entre 8 et 28 caractères, et au moins une lettre majuscule, une lettre minuscule, un chiffre et un des caractères suivants :! $ % @ .
           </p>
         </div>
 
-        <div className={classes.auth_check}>
+
+
+        <div className={classes.authSignUp_check}>
           <input
             type="checkbox"
             ref={condRef}
@@ -171,7 +188,7 @@ const SignUpForm = () => {
           </label>
         </div>
 
-        <div className={classes.auth_actions}>
+        <div className={classes.authSignUp_actions}>
           <button type="submit" className={classes.auth_actions_link} disabled={!(validEmail && validLastName && validName && validPwd && conditions)}>Créer un compte.</button>
           <Link className={classes.auth_actions_toggle} to="/login">
             Connectez-vous avec un compte existant

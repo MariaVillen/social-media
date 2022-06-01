@@ -16,7 +16,7 @@
 }
 
 .topbar_logo {
-  height: calc(100% - 20px);
+  height: calc(100% - 10px);
   padding: 10px;
 }
 
@@ -30,6 +30,15 @@
 .topbar_menu {
   padding-right: 1em;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .topbar_avatar {
@@ -123,7 +132,7 @@
 }
 
 .topbar_item:hover {
-  background-color: #eb3d25E6;
+  background-color: #FD2D01E6;
 }
 
 .topbar_item.notLink {

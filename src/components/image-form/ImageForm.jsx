@@ -73,8 +73,8 @@ export default function ImageForm({imageName, className, labelDesc }) {
   return (
        <form onSubmit={submitHandler} className = {`${classes.imageForm} ${className}`}>
           <div onClick={allowEditionHandler}className={classes.sidebarListItem}>
-            <label className={classes.imageForm_item}>
-            <Photo className={classes.imageForm_icon} />
+            <label htmlFor={imageName} className={classes.imageForm_item}>
+            <Photo aria-label={`Image du ${imageName}`} className={classes.imageForm_icon} />
             <span className={classes.sidebarListItemText}>
               {labelDesc}
             </span>
@@ -90,8 +90,8 @@ export default function ImageForm({imageName, className, labelDesc }) {
           </div>
           {onEdit ? (
         <div className={classes.btn_section}>
-          <Clear onClick={cancelHandler} className={classes.btn_cancel}/>
-          <button className = {classes.buttonContainer} type="submit"><Check className={classes.btn_submit} /></button>
+          <Clear area-label="Annuler" onClick={cancelHandler} className={classes.btn_cancel}/>
+          <button className = {classes.buttonContainer} area-label="Envoyer" type="submit"><Check className={classes.btn_submit} /></button>
         </div>
       ) : null}
     </form>)

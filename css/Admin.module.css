@@ -4,27 +4,60 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: calc(100vh - 80px);
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: calc(100vh - 70px);
+  }
 }
 
 .navbar {
   height: 100%;
   background-color: #222;
   color: white;
-  width: 200px;
-  padding-top: 1em;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    width: 200px;
+    padding-top: 1em;
+    overflow-y: scroll;
+    position: -webkit-sticky;
+    position: sticky;
+  }
 }
 
 .navbar ul {
   height: 100%;
   width: 100%;
   padding: 0;
-  padding-top: 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+@media screen and (min-width: 768px) {
+  .navbar ul {
+    padding-top: 2em;
+    display: initial;
+    width: 200px;
+  }
 }
 
 .navbar ul li {
@@ -35,7 +68,7 @@
 }
 
 .navbar ul li:hover {
-  background-color: orangered;
+  background-color: #FD2D01;
 }
 
 .navbar_link {
@@ -58,5 +91,12 @@
 
 .wrapper {
   padding: 1em;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    max-height: 100%;
+    overflow-y: auto;
+  }
 }
 /*# sourceMappingURL=Admin.module.css.map */

@@ -16,7 +16,7 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 1em;
-  background-color: mistyrose;
+  background-color: #FFD7D7;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
@@ -139,7 +139,7 @@
   margin: 0.5em;
   border: none;
   border-radius: 5px;
-  background-color: #eb3d25;
+  background-color: #e32801;
   color: white;
 }
 

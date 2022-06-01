@@ -45,7 +45,7 @@ export default function Profile() {
         { (notMyProfile) ? null :
         <div className={classes.content_infoLoggedUser}>
           <h2>Informations Personnelles</h2>
-          <ProfileForm/>
+          <ProfileForm userProfile = {userProfile}/>
           <hr />
           <p className={classes.title}>Mes contacts</p>
           <ul className={classes.friendList}>

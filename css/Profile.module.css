@@ -26,13 +26,14 @@
 
 .content_infoLoggedUser {
   top: 70px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
 @media screen and (min-width: 992px) {
   .content_infoLoggedUser {
     height: calc(100vh - 70px);
+    width: 80%;
     overflow-y: scroll;
     position: -webkit-sticky;
     position: sticky;
@@ -66,7 +67,7 @@
 
 .content_main .follow {
   display: block;
-  background-color: #eb3d25;
+  background-color: #FD2D01;
   font-size: 1em;
   color: white;
   margin: 0 auto;
@@ -79,43 +80,63 @@
 }
 
 .friendList {
-  list-style: none;
-  display: inline-block;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   max-width: 100%;
-  padding: 0;
-}
-
-.friendList ul {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   padding: 0;
   margin: 0;
+  overflow-x: auto;
+}
+
+@media screen and (min-width: 992px) {
+  .friendList {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 .friendList li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+@media screen and (min-width: 992px) {
+  .friendList li {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 
 .friendList li .icon {
   border-radius: 50%;
-  color: #eb3d25;
-  border: 1px solid #eb3d25;
+  color: #FD2D01;
+  border: 1px solid #FD2D01;
   padding: 3px;
   background-color: white;
 }
 
 .friendList li .icon:hover {
   color: white;
-  background-color: #eb3d25;
+  background-color: #FD2D01;
 }
 /*# sourceMappingURL=Profile.module.css.map */

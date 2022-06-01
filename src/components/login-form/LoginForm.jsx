@@ -106,6 +106,9 @@ const LoginForm = () => {
 
   return (
     <section className={classes.auth}>
+    
+      <h1>Connexion</h1>
+
       <p
         ref={errRef}
         className={errMsg ? classes.errMsg : classes.offscreen}
@@ -113,8 +116,6 @@ const LoginForm = () => {
       >
         {errMsg}
       </p>
-
-      <h1>Connexion</h1>
 
       <form onSubmit={submitHandler}>
         <div className={classes.auth_control}>

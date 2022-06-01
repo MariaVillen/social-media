@@ -8,6 +8,25 @@ function UserPannel() {
   const [isLoading, setIsLoading] = useState(true);
   const [users] = useOutletContext();
   const {user} = useAuth();
+
+  const userActivationHandler = (event) => {
+    console.log(event.target.value);
+      // const idUser = user.id;
+      // const putRoute = "/user/" + idUser;
+      // try {
+      //   const response = await axios.put(putRoute, { isActive: content });
+      //   if (!response) {
+      //     console.log("No answer");
+      //     return;
+      //   }
+      //   console.log("Modifié!");
+      //   setUser({...user, bio: content});
+      //   setOnEdit(false);
+      // } catch (err) {
+      //   console.log(err);
+      // }
+    };
+
   return (
     <div>
       <h2>List of users</h2>
@@ -41,12 +60,13 @@ function UserPannel() {
                     </div>
                   </div>
                   <div className={classes.activeCard_action}>
-                    <input
+                    <button
+                      onClick={userActivationHandler}
                       className={u.isActive ? classes.activeCard_action_check_active : classes.activeCard_action_check_inactive}
                       id={`userActive${u.id}`}
                       type="button"
-                      value={u.isActive ? "Desactiver" : "Activer"}
-                    />
+                      value={u.isActive}
+                     >{u.isActive ? "Desactiver" : "Activer"}</button>
                   </div>
                 </div>
               </li>

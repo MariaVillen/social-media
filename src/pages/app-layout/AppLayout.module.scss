@@ -2,6 +2,13 @@
 
 .container {
   width: 100%;
+
+   * {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+  }
+
 }
 
 .main {

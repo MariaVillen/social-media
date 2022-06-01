@@ -2,10 +2,23 @@ import classes from "./ProfileForm.module.scss";
 import { NoAccounts, LockReset } from "@mui/icons-material";
 import TextareaForm from "../textarea-form/TextareaForm.component";
 import ImageForm from "../image-form/ImageForm";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import { useNavigate } from "react-router-dom";
 
+export default function ProfileForm( {userProfile}) {
 
-export default function ProfileForm() {
+  const axios = useAxiosPrivate();
+  const navigate = useNavigate();
 
+  const deleteAccountHandler = ()=> {
+      // eslint-disable-next-line no-unused-expressions
+      //async ()=>{
+       // const result = await axios.delete(`/api/user/${userProfile}`);
+        //if (result) {
+        //navigate("/login", { repalce: true }); }
+      console.log("delete user");
+
+  }
 
   return (
     <div>
@@ -32,10 +45,10 @@ export default function ProfileForm() {
         </span>
       </div>
 
-      <div className={`${classes.linkList} ${classes.linkList_danger}`}>
+      <button onClick={deleteAccountHandler} className={`${classes.linkList} ${classes.linkList_danger}`}>
         <NoAccounts className={classes.sidebarIcon} />
         <span className={classes.sidebarListItemText}>Supprimer compte.</span>
-      </div>
+      </button>
     </div>
   );
 }
