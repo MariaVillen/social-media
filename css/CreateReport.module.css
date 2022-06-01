@@ -1,0 +1,97 @@
+/* Breakpoints */
+/* Break Points */
+.createReport {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.createReport_card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: white;
+  padding: 1em;
+}
+
+.createReport_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.createReport_header p {
+  font-weight: 700;
+  font-size: 1.5em;
+  padding: 1em;
+}
+
+.createReport_body p {
+  margin-bottom: 1em;
+}
+
+.createReport_text {
+  width: 100%;
+  padding: 1em;
+  background: #FFD7D7;
+}
+
+.createReport_edit {
+  width: 100%;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  resize: none;
+  font-size: 1em;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  margin-top: 1em;
+}
+
+.btn_cancel {
+  background-color: #6fb9b5;
+  width: auto;
+  padding: auto 1em;
+  margin-right: 1em;
+}
+
+.btn_submit {
+  background-color: #FD2D01;
+  color: white;
+  width: auto;
+  padding: auto 1em;
+}
+/*# sourceMappingURL=CreateReport.module.css.map */

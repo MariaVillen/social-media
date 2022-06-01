@@ -5,7 +5,7 @@ import { PersonRemove } from "@mui/icons-material";
 import Feed from "../../components/feed/Feed.component";
 import ProfileCard from "../../components/profile-card/ProfileCard";
 import ProfileForm from "../../components/profile-form/ProfileForm.component";
-import UserCard from "../../components/userCard/UserCard.component";
+import Avatar from "../../components/avatar/avatar.component";
 import useAuth from "../../hooks/useAuth";
 
 
@@ -21,6 +21,11 @@ export default function Profile() {
   const {users} = useOutletContext();
   const [userProfile, setUserProfile] = useState({});
   const [notMyProfile, setNotMyProfile] = useState(false)
+
+
+  const addfollow = ()=>{
+    console.log("click");
+  }
 
 
   useEffect(()=>{
@@ -52,10 +57,10 @@ export default function Profile() {
             {users.map((u) => {
               return (
                 <li key={u.id}>
-                  <UserCard
+                  <Avatar
                     userId = {u.id}
                     username={u.name}
-                    profilePicture={u.profilePicture}
+                    userImage={u.profilePicture}
                     sizePicture="80px"
                   />
                   <PersonRemove className={classes.icon} />
@@ -65,7 +70,7 @@ export default function Profile() {
           </ul>
         </div>}
         <div className={classes.content_main}>
-         {notMyProfile ? <button className = {classes.follow}>Suivre</button> : null}
+         {notMyProfile ? <button onClick={addfollow} className = {classes.follow}>Suivre</button> : null}
           <div className={classes.content_feed}>
             <Feed onlyForUserId={profileId} userProfile={userProfile} />
           </div>

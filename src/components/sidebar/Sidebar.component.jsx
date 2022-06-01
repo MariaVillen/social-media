@@ -1,5 +1,5 @@
 import classes from "./Sidebar.module.scss";
-import UserCard from "../../components/userCard/UserCard.component";
+import Avatar from "../avatar/avatar.component";
 import ProfileCard from "../profile-card/ProfileCard";
 import ProfileForm from "../profile-form/ProfileForm.component";
 import useAuth from "../../hooks/useAuth";
@@ -26,11 +26,10 @@ export default function Sidebar({className, users}) {
             {users.map((u) => {
               return (
                 <li key={u.id}>
-                  <UserCard
-                    key={u.id}
-                    userId = {u.id}
-                    username={u.name}
-                    profilePicture={u.profilePicture}
+                  <Avatar
+                    userName={u.name} 
+                    userImage= { u.profilePicture }
+                    userId= { u.id }
                   />
                 </li>
               );}

@@ -1,28 +1,70 @@
 
 import classes from "./UserCard.module.scss";
-import DefaultAvatar from "../../images/avatar-default.png";
-import {Link} from "react-router-dom";
+import { useRef, useState } from "react";
+import Avatar from "../avatar/avatar.component";
+import  useAxiosPrivate  from "../../hooks/useAxiosPrivate";
 
-// User Card. 
-// Property hideName true in component will hide the name of the user.
-// Property sizePicture will set the size of the image (values accepted: {string} clasic css mesures).
 
-export default function UserCard(props) {
+export default function UserCard({userInCard}) {
 
-  const hideName = (props.hideName) ? false : true;
+  const axios = useAxiosPrivate();
+  const activeRef = useRef();
+  const [active, setActive] = useState(userInCard.isActive);
+  console.log("user: ", userInCard.id, "status: ", active)
+
+  const userActivationHandler = async ()=>{
+    setActive(!active);
+    const idUser = userInCard.id;
+    let option= active ? 1 : 0;
+    try {
+      const response = await axios.put(`/user/${idUser}`, { isActive: option });
+      if (!response) {
+         console.log("No answer");
+         return;
+      } 
+      console.log("Modifié!");
+      } catch (err) {
+       console.log(err);
+       }
+  }
 
   return (
     <>
-    <Link to={`/profile/${props.userId}`}>
-      <img
-        src={(props.profilePicture) ? props.profilePicture : DefaultAvatar}
-        alt={props.username}
-        className={classes.profilePictureImg}
-        width={props.sizePicture || "48px" }
-        height={props.sizePicture || "48px" }
-      />
-      </Link>
-      {(hideName) ? <span className={classes.friendName}>{props.username}</span> : null}
+        <div className={classes.activeCard_header}>
+                  <div className={classes.activeCard_user}>
+                    <Avatar
+                      username={userInCard.name}
+                      userImage={userInCard.profilePicture}
+                      userId={userInCard.id}
+                    />
+                    <div className={classes.activeCard_user_name}>
+                      <span>{userInCard.name}</span>
+                      <span>{userInCard.lastName}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className={classes.activeCard_body}>
+                  <div className={classes.activeCard_data}>
+                    <div className={classes.activeCard_data_email}>
+                      <span>Email:</span>
+                      {userInCard.email}
+                    </div>
+                    <div className={classes.activeCard_data_register}>
+                      <span>Inscription:</span>
+                      {userInCard.createdAt}
+                    </div>
+                  </div>
+                  <div className={classes.activeCard_action}>
+                    <button
+                      ref = {activeRef}
+                      onClick={userActivationHandler}
+                      className={active? classes.activeCard_action_check_active : classes.activeCard_action_check_inactive}
+                      id={`userActive${userInCard.id}`}
+                      type="button"
+                      value={active}
+                     >{active ? "Desactiver" : "Activer"}</button>
+                  </div>
+                </div>
     </>
     );
    

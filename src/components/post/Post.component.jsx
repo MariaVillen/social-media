@@ -9,11 +9,13 @@ import {
   Comment,
 } from "@mui/icons-material";
 import Share from "../share/Share.component";
-import UserCard from "../../components/userCard/UserCard.component";
+import Avatar from "../avatar/avatar.component";
 import FeedComments from "../../components/feed-comments/FeedComents.component";
 import PostAddComment from "../../components/post-add-comment/PostAddComment.component";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
+import Portal from "../portal/Portal";
+import CreateReport from "../create-report/CreateReport";
 
 export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   // Likes
@@ -81,11 +83,8 @@ export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   }
  }
 
-
-  //Report Post
-const reportHandler = ()=>{
-
-}
+ //report
+ const [onReport, setOnReport] = useState(false);
 
 
 useEffect(  () => {
@@ -138,11 +137,10 @@ useEffect(  () => {
         ) : null}
         <div className={classes.post_header}>
           <div className={classes.post_profile}>
-            <UserCard
-              hideName
-              userId={post.user.id}
+            <Avatar
+              userName = {post.user.name}
+              userId = {post.user.id}
               profilePicture={post.user.id === user.id? user.profilePicture: post.user.profilePicture}
-              username={post.user.name}
             />
             <span className={classes.post_date}>{post.createdAt}</span>
           </div>
@@ -160,7 +158,12 @@ useEffect(  () => {
             }
             {auth.user.id !== post.userId 
              ?<span className={classes.post_menu_content_icon}>
-             <Report onClick={reportHandler} className={classes.post_menu_icon} />
+             <Report onClick={()=>{setOnReport(true)}} className={classes.post_menu_icon} />
+              {onReport
+                ? <Portal>
+                    <CreateReport messageId = {post.id} typeMessage="post" setOnReport={setOnReport}/> 
+                  </Portal>
+                  :null}
            </span>
              : null
             }

@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+body {
+    position: relative;
+}
 #root {
     display: flex;
     flex-grow: 1;
