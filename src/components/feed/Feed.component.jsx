@@ -35,7 +35,7 @@ export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className =
         console.log("url ", post_url);
         const response = await axiosPrivate.get(post_url, {signal: controller.signal})
         const posts = response.data;
-        console.log(response.data);
+        console.log("data response ", response.headers.authtorisation);
 
         if (isMounted) {
           // Stock data
@@ -44,7 +44,7 @@ export default function Feed({onlyForUserId, loadPosts, isLoadPosts, className =
         } 
       
       } catch(err) {
-        console.log(`"ERROR": ${err.message}`);
+        console.log(err.message);
       }
     }
 

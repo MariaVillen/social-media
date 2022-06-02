@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material";
 import classes from "./AdminReportCard.module.scss";
 import {Link } from "react-router-dom";
 
-function AdminReportCard() {
+function AdminReportCard({report}) {
   return (
     <div className={classes.reportAdminCard}>
       <div className={classes.reportAdminCard_header}>

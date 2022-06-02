@@ -1,51 +1,43 @@
-
-import { useEffect } from "react";
+import { axiosPrivate } from "../api/axios";
+import { useEffect  } from "react";
 import useRefreshToken from "./useRefreshToken";
 import useAuth from "./useAuth";
-import { axiosPrivate } from "../api/axios";
+import { useNavigate } from "react-router-dom";
+
 
 const useAxiosPrivate = ()=>{
 
     const refresh = useRefreshToken();
     const { auth } = useAuth();
+    let navigate = useNavigate();
 
     useEffect( () => {
 
         const requestIntercept = axiosPrivate.interceptors.request.use(
-            
             config => {
-                console.log("request interceptor: ", config);
-                if (!config.headers['Authorization'] || !config.headers['authorization']) {
-                    // first attempt
-                    if (config.headers === 'Authorization') {
-                    config.headers['Authorization'] = `Bearer ${auth.accessToken}`;}
-                    else {
-                    config.headers['authorization'] = `Bearer ${auth.accessToken}`;}    
-                    }
+                  // first attempt
+                if (!config.headers['authorization']) {
+                    config.headers['authorization'] = `Bearer ${auth?.newAccessToken}` //Initial token our token after refresh
+                }
                 return config;
-            }, (error) => {
-                Promise.reject(error);
-            }
+            }, (error) => Promise.reject(error)
         );
 
-        const responseIntercept = axiosPrivate.interceptors.response.use( response => response, 
+        const responseIntercept = axiosPrivate.interceptors.response.use( 
+            response => response, 
+
             // token expired 
-            async (error) => 
-            {   
+            async (error) => {   
                 const prevRequest = error?.config; // getting the previous request 
-                console.log("response interceptor prevRequest ", prevRequest);
                
                 if (error?.response?.status === 403 && !prevRequest?.sent){
-                    console.log("error status 403");
-                    console.log("prev ", prevRequest);
                     prevRequest.sent = true;
                     const newAccessToken = await refresh();
-                    if (prevRequest.headers['Authorization']) { prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;  }
-                    if (prevRequest.headers['authorization']) { prevRequest.headers['authorization'] = `Bearer ${newAccessToken}`;  }
-                    console.log("request interceptor: ", prevRequest);
+                    prevRequest.headers['authorization']=`Bearer ${newAccessToken}`;
                     return axiosPrivate(prevRequest);
+                } else if (error?.response?.status === 401 && !prevRequest?.sent){
+                    navigate("../login", { replace: true });
                 }
-     
                 return Promise.reject(error);
             }
         );
@@ -58,7 +50,7 @@ const useAxiosPrivate = ()=>{
     },[auth, refresh])
 
 
-    return axiosPrivate;
+    return axiosPrivate;// to call function.
 }
 
 
