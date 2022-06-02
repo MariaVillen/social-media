@@ -17,6 +17,7 @@
           justify-content: center;
   background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
+  font-family: Roboto, sans-serif;
 }
 
 .createReport_card {
@@ -48,6 +49,7 @@
   font-weight: 700;
   font-size: 1.5em;
   padding: 1em;
+  margin: 0;
 }
 
 .createReport_body p {
@@ -55,9 +57,10 @@
 }
 
 .createReport_text {
-  width: 100%;
+  width: 90%;
   padding: 1em;
   background: #FFD7D7;
+  margin: 0 auto;
 }
 
 .createReport_edit {

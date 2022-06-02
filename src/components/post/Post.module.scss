@@ -17,6 +17,10 @@
     position: relative;
   }
 
+  &_avatar {
+    margin-right: 1em;
+  }
+
   &_menu {
     box-sizing: border-box;
     height: 100%;
@@ -37,25 +41,6 @@
         border-radius: 50%;
       }
     }
-    /*quitar
-        &_context {
-            position: absolute;
-            right: 0.35em;
-            top: calc(100% - 0.7em);
-            list-style: none;
-            background: $primary-color;
-            color: white;
-            padding: 0;
-            @include box--shadow;
-
-            li {
-                padding:1em;
-
-                &:hover {
-                    background-color: rgba(0,0,0,0.5);
-                }
-            }
-        }*/
   }
 
   &_profile {

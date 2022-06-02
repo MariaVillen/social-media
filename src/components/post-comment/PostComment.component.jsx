@@ -1,5 +1,7 @@
 import classes from "./PostComment.module.scss";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
+import Portal from "../portal/Portal";
+import CreateReport from "../create-report/CreateReport";
 import { useState, useRef, useEffect } from "react";
 import {
   MoreHoriz,
@@ -17,6 +19,10 @@ export default function PostComment({className, postId, setTotalComments, totalC
 
 
   const {auth} = useAuth();
+
+
+  // id comment DOM
+  const id = `comment${comment.id}${comment.postId}`;
 
 
   // Like Handler
@@ -77,7 +83,7 @@ export default function PostComment({className, postId, setTotalComments, totalC
   }
 
   //REPORT
-  const reportHandler = ()=>{}
+ const [onReport, setOnReport] = useState(false);
 
 
   // SubMenu Handler
@@ -139,7 +145,7 @@ useEffect(  () => {
 
   return (
     <>
-      <div className={classes.wrapper}>
+      <div id= {id} className={classes.wrapper}>
         <div className={classes.central}>
           <div className={classes.central_container}>
             <div className={classes.avatar}>
@@ -171,7 +177,7 @@ useEffect(  () => {
                   : null}
 
                  {auth.user.id !== comment.userId 
-                    ? <li onClick={reportHandler}>Signaler</li>
+                    ? <li onClick={()=>{setOnReport(true)}}>Signaler</li>
                     : null }
                 </ul>
               ) : null}
@@ -203,6 +209,11 @@ useEffect(  () => {
           } 
         </div>
       </div>
+      {onReport
+        ? <Portal>
+          <CreateReport messageId = {comment.id} typeMessage="comment" setOnReport={setOnReport}/> 
+          </Portal>
+        :null}
     </>
   );
 }

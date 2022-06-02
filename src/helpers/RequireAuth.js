@@ -10,8 +10,8 @@ const RequireAuth = ({ allowedRoles }) => {
         allowedRoles?.includes(auth?.user?.roles) // role exists?
          ? <Outlet /> 
          : ((auth?.user) 
-            ? <Navigate to="/unauthorized" state={{from: location }} relace />
-            : <Navigate to="/login" state={{from: location }} relace />)) // Put the login in the navigation history instead of the last location
+            ? <Navigate to="/unauthorized" state={{from: location }} replace />
+            : <Navigate to="/login" state={{from: location }} replace />)) // Put the login in the navigation history instead of the last location
 }
 
 export default RequireAuth;

@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AEAA,iBAAiB;AASjB,kBAAkB",
+    "mappings": "AEAA,iBAAiB;AASjB,kBAAkB;AFNlB,AAAA,SAAS,CAAC;EACN,UAAU,EAAE,GAAG;CAClB;;AAED,AAAA,MAAM,CAAC;EACH,MAAM,EAAE,KAAK;CAChB",
     "sources": [
         "../src/components/reports-pannel/ReportPannel.module.scss",
         "../src/styles-utils/graphiqueColors.scss",

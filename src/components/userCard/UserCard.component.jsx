@@ -13,9 +13,9 @@ export default function UserCard({userInCard}) {
   console.log("user: ", userInCard.id, "status: ", active)
 
   const userActivationHandler = async ()=>{
-    setActive(!active);
     const idUser = userInCard.id;
-    let option= active ? 1 : 0;
+    setActive(!active);
+    const option = active? 0 : 1;
     try {
       const response = await axios.put(`/user/${idUser}`, { isActive: option });
       if (!response) {
@@ -23,6 +23,7 @@ export default function UserCard({userInCard}) {
          return;
       } 
       console.log("Modifié!");
+
       } catch (err) {
        console.log(err);
        }

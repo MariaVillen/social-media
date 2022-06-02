@@ -1,32 +1,52 @@
-import { Avatar } from "@mui/material";
+import Avatar from "../avatar/avatar.component";
 import classes from "./AdminReportCard.module.scss";
 import {Link } from "react-router-dom";
+import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
-function AdminReportCard({report}) {
+function AdminReportCard({report, className}) {
+
+  const hash = report.postId ? `#${report.postId}` : `#${report.comment.postId}#comment${report.comment.id}${report.comment.postId}`;
+  const axios = useAxiosPrivate();
+
+  const stateHandler = async (e)=>{
+    const option = e.target.value;
+    const options = ["Non lu", "En cours", "Accepté", "Rejeté", "Archivé"];
+    if (options.includes(option)){
+      
+      const result = await axios.put(`/report/${report.id}`, {
+        state: option});
+    }
+
+  }
+
+
   return (
-    <div className={classes.reportAdminCard}>
+    <div className={`${classes.reportAdminCard} ${className}`}>
       <div className={classes.reportAdminCard_header}>
-        <Avatar />
+        <Avatar 
+          userImage={report.user.profilePicture} 
+          userId = {report.userId} 
+          userName = {report.user.name}
+        />
         <div className={classes.reportAdminCard_body_title}>Signalement</div>
-        <div>Created: 28/05/2027</div>
+        <div>Date de Signalement: {report.createdAt} </div>
       </div>
       <div className={classes.reportAdminCard_main}>
         <div className={classes.reportAdminCard_body}>
           <div className={classes.reportAdminCard_body_report}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-            dolores temporibus debitis sint. Magnam iste et est nihil in,
-            blanditiis dignissimos optio explicabo sit quae vel nostrum, laborum
-            laboriosam! Provident!
+            {report.reason}
           </div>
         </div>
         <div className={classes.reportAdminCard_footer}>
-          <Link to="post/1">Aller au message signalé </Link>
+
+          <Link to={{ pathname: "/", hash: hash }}>Aller au message signalé </Link>
           <form>
             <label>Etat: </label>
-            <select> 
+            <select onChange={stateHandler} value={report.state}> 
               <option>Non lu</option>
               <option>En cours</option>
-              <option>Refusé</option>
+              <option>Accepté</option>
+              <option>Rejeté</option>
               <option>Archivé</option>
             </select>
           </form>

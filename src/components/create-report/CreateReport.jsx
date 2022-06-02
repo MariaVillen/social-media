@@ -2,7 +2,6 @@ import classes from "./CreateReport.module.scss";
 import TextareaRezise from "../textarea-rezise/TextareaResize.component";
 import { useRef, useState, useEffect } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
-import useAuth from "../../hooks/useAuth";
 
 export default function CreateReport({ messageId, typeMessage, setOnReport }) {
   const textRef = useRef();

@@ -18,6 +18,11 @@ import Portal from "../portal/Portal";
 import CreateReport from "../create-report/CreateReport";
 
 export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
+
+
+  //Id
+  const id = `post${post.id}`;
+
   // Likes
   const [like, setLike] = useState(post.totalLikes);
   const [isLiked, setIsLiked] = useState(false);
@@ -120,7 +125,7 @@ useEffect(  () => {
 }, [loadPosts]);
 
   return (
-    <div className={`${classes.post} ${className}`}>
+    <div id={id} className={`${classes.post} ${className}`}>
       <div className={classes.post_wrapper}>
         {onEdit ? (
           <div className={classes.modal}>
@@ -138,9 +143,10 @@ useEffect(  () => {
         <div className={classes.post_header}>
           <div className={classes.post_profile}>
             <Avatar
+              className = {classes.post_avatar}
               userName = {post.user.name}
               userId = {post.user.id}
-              profilePicture={post.user.id === user.id? user.profilePicture: post.user.profilePicture}
+              userImage={post.user.id === user.id? user.profilePicture: post.user.profilePicture}
             />
             <span className={classes.post_date}>{post.createdAt}</span>
           </div>
