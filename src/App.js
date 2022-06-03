@@ -13,6 +13,8 @@ import Unauthorized from "./pages/unauthorized/Unauthorized";
 // Home page Components
 import AppLayout from "./pages/app-layout/AppLayout";
 import HomePage from "./pages/home/Home";
+import PostDetail from "./components/post-detail/PostDetail";
+import PostList from "./components/post-list/PostList";
 
 // Profile components
 import ProfilePage from "./pages/profile/Profile";
@@ -43,8 +45,9 @@ function App() {
         >
           <Route element={<AppLayout rolesList={ROLES} />}>
             <Route path="/" element={<HomePage />}>
+              <Route path="/" element={<PostList/>}/>
+              <Route path="/post/:id" element={<PostDetail/>}/>
             </Route>
-
             <Route path="profile/:id" element={<ProfilePage/>} />
           </Route>
         </Route>

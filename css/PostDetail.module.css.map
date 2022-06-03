@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/components/post-detail/PostDetail.module.scss"
+    ],
+    "names": [],
+    "file": "PostDetail.module.css"
+}

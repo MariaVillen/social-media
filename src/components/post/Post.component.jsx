@@ -1,5 +1,6 @@
 import classes from "./Post.module.scss";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Edit,
   Delete,
@@ -10,14 +11,12 @@ import {
 } from "@mui/icons-material";
 import Share from "../share/Share.component";
 import Avatar from "../avatar/avatar.component";
-import FeedComments from "../../components/feed-comments/FeedComents.component";
-import PostAddComment from "../../components/post-add-comment/PostAddComment.component";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
 import Portal from "../portal/Portal";
 import CreateReport from "../create-report/CreateReport";
 
-export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
+export default function Post({post, loadPosts, isLoadPosts, totalComments, className = "" }) {
 
 
   //Id
@@ -32,7 +31,7 @@ export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   // Api
   const axiosPrivate = useAxiosPrivate();
 
-  const [totalComments, setTotalComments] = useState(post.totalComments);
+  //const [totalComments, setTotalComments] = useState(post.totalComments);
 
 
   const likeHandler = async (e) => {
@@ -54,18 +53,8 @@ export default function Post({post, loadPosts, isLoadPosts, className = "" }) {
   // Edit
   const [onEdit, setOnEdit] = useState(false);
 
-  const [loadComments, setLoadComments] = useState([]);
-
-  
   const editHandler = () => {
     setOnEdit(true);
-  };
-
-  const [onCommentView, setOnCommentView] = useState(false);
-
-  //Coments
-  const commentHandler = () => {
-    setOnCommentView(!onCommentView);
   };
 
 
@@ -194,26 +183,14 @@ useEffect(  () => {
             <span className={classes.likeCounter}>{like}</span>
           </div>
           <div className={classes.post_comments}>
-            <button className={classes.comment} onClick={commentHandler}>
+            <Link to={`/post/${post.id}`} className={classes.comment}>
               <Comment className={classes.commentIcon} />
               <div className={classes.post_comments}>
                 <span>{totalComments} commentaires</span>
               </div>
-            </button>
+            </Link>
           </div>
         </div>
-        {onCommentView ? (
-          <div className={classes.commentContent}>
-            <PostAddComment  totalComments = {totalComments} loadComments = {loadComments}
-              setLoadComments = {setLoadComments} setTotalComments = {setTotalComments} postId={post.id} />
-            <FeedComments 
-              loadComments = {loadComments}
-              setLoadComments = {setLoadComments} 
-              setTotalComments = {setTotalComments}
-              totalComments = {totalComments}
-              onlyForPostId={post.id} />
-          </div>
-        ) : null}
       </div>
     </div>
   );

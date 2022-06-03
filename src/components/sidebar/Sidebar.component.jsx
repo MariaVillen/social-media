@@ -19,7 +19,7 @@ export default function Sidebar({className, users}) {
       <div className={classes.wrapper}>
         <ProfileForm user = {user}/>
         <hr className={classes.separator} />
-        <p className={classes.title}>Mes contacts</p>
+        <p className={classes.title}>Utilisateurs</p>
         {(users?.length)
 
           ? <ul className={classes.friendList}>

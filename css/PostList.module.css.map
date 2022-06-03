@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../src/components/post-list/PostList.module.scss"
+    ],
+    "names": [],
+    "file": "PostList.module.css"
+}

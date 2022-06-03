@@ -1,11 +1,10 @@
 import classes from "./Home.module.scss";
 import Sidebar from "../../components/sidebar/Sidebar.component";
 import Rightbar from "../../components/rightbar/Rightbar.component";
-import Share from "../../components/share/Share.component";
 import useMediaQuery from "../../hooks/useMediaQuery";
 import {useState } from "react";
-import { useOutletContext } from "react-router-dom";
-import Feed from "../../components/feed/Feed.component";
+import {Outlet, useOutletContext } from "react-router-dom";
+
 
 // Home Page
 
@@ -20,8 +19,7 @@ export default function Home() {
     <div className={classes.home_container}>
       {tablet ? <Sidebar className={classes.home_sidebar} users={users} /> : <></>}
       <div className={classes.home_feed_content}>
-        <Share isLoadPosts={isLoadPosts} loadPosts = {loadPosts}/>
-        <Feed loadPosts = {loadPosts} isLoadPosts={isLoadPosts}/>
+        <Outlet context = {[isLoadPosts, loadPosts]} />
       </div>
       {pc ? (
         <Rightbar className={classes.home_more_comment_content} />

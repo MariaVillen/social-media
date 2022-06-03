@@ -5,7 +5,7 @@ import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 
 function AdminReportCard({report, className}) {
 
-  const hash = report.postId ? `#${report.postId}` : `#${report.comment.postId}#comment${report.comment.id}${report.comment.postId}`;
+  const urlid = report.postId ? `/post/${report.postId}` : `/post/${report.comment.postId}`;
   const axios = useAxiosPrivate();
 
   const stateHandler = async (e)=>{
@@ -39,7 +39,7 @@ function AdminReportCard({report, className}) {
         </div>
         <div className={classes.reportAdminCard_footer}>
 
-          <Link to={{ pathname: "/", hash: hash }}>Aller au message signalé </Link>
+          <Link to={urlid} replace>Aller au message signalé </Link>
           <form>
             <label>Etat: </label>
             <select onChange={stateHandler} value={report.state}> 
