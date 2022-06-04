@@ -5,6 +5,7 @@ import FeedComments from "../feed-comments/FeedComents.component";
 import { useParams } from 'react-router-dom';
 import { useEffect, useState} from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
+import SpinnerLoad from "../spinner-load/SpinnerLoad";
 
 function PostDetail() {
   
@@ -50,7 +51,8 @@ function PostDetail() {
   return (
 
     <>
-      { isLoading ? <p>Loading...</p>
+      { isLoading 
+        ? <SpinnerLoad/>
         :  <>
           <Post
             key={post.id}

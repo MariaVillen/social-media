@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAE,AAAA,kBAAkB,CAAC;EACjB,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,CAAC;EACT,WAAW,EAAE,CAAC;CACf",
+    "mappings": "AAEG,AAAD,aAAO,CAAC;EACN,aAAa,EAAE,GAAG;EAClB,UAAU,EAAE,KAAK;EACjB,MAAM,EAAE,CAAC;EACT,WAAW,EAAE,CAAC;CACf",
     "sources": [
         "../src/components/avatar/avatar.module.scss"
     ],

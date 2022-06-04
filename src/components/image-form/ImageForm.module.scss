@@ -1,90 +1,53 @@
 @import "../../styles-utils/graphiqueColors.scss";
-@import "../../styles-utils/mixins.scss";
 
 .imageForm {
-    width: 100%;
+  width: 100%;
+  cursor: pointer;
 
-    &_item {
-        display: flex;
-        align-items: center;
-    }
-    &_icon{
-        margin-right: 1em;
-    }
+  &_item {
+    display: flex;
+    align-items: center;
+  }
+  &_icon {
+    margin-right: 1em;
+  }
 
-    &_container {
-        width: 100%;
-    }
+  &_container {
+    margin: 1em 0;
 
-    &_edit {
-        background: $secondary-color;
-        width: 100%;
-        border: none;
-        resize: none;
-        border-radius: 5px;
-        padding: 10px 0.5em;
-        margin: 0.5em 0px;
-        flex:1;
-        margin-right: 0.5em;
+    input {
+      margin-top: 1em;
     }
-    &_noedit {
-        background: none;
-        width: 100%;
-        border: none;
-        resize: none;
-        border-radius: 5px;
-        padding: 10px 0.5em;
-        margin: 0.5em 0px;
-        flex:1;
-        margin-right: 0.5em;
-    }
-    &_action {
-        display: flex;
-        flex-direction: column;
-    }
-    &_item_icon {
-        margin-right: 1em;
-    }
-}
+  }
 
-.btn_section {
+  &_btn_section {
     display: flex;
     justify-content: right;
-}
-.btn_cancel {
-        margin: 0.5em 0px;
-        width: 25px;
-        height: 25px;
-        background-color: $secondary-color-op;
-        color: black;
-        margin-right: 1em; 
-        padding: 3px;
-        border-radius: 50%;
-}
-
-.btn_submit {
+  }
+  &_btn {
     border-radius: 50%;
     margin: 0.5em 0px;
     height: 25px;
     width: 25px;
     background-color: $secondary-color-op;
+    border-color: $secondary-color-op;
     color: black;
     margin-right: 1em;
     padding: 3px;
-}
+    transition: background 300ms ease-in-out;
 
-.sidebarListItemText {
-    margin: 1em 0;
-
-    input {
-        margin-top: 1em;
+    &:hover {
+      background-color: $primary-contrast;
+      border-color: $primary-contrast;
+      color: white;
     }
-}
 
-.buttonContainer {
-    padding: 0;
-    margin: 0;
-    background: none;
-    width: auto;
-    text-align: center;
+    &_container {
+      padding: 0;
+      margin: 0;
+      background: none;
+      width: auto;
+      text-align: center;
+    }
+  }
 }

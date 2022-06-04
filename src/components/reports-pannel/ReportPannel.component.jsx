@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import AdminReportCard from "../admin-report-card/AdminReportCard.component";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import classes from "./ReportPannel.module.scss";
+import SpinnerLoad from "../spinner-load/SpinnerLoad";
 
 function ReportPannel() {
 
   const axiosPrivate = useAxiosPrivate();
   const [reports, setReports ] = useState();
-  const [isLoading, setIsLoading ] = useState();
+  const [isLoading, setIsLoading ] = useState(true);
+
 
   useEffect(  () => {
 
@@ -43,7 +45,7 @@ function ReportPannel() {
   return (
     <>
       { isLoading 
-          ? <p>Loading...</p>
+          ? <SpinnerLoad/>
           : reports && (reports?.length > 0)
               ? reports.map(
                 (r) => {

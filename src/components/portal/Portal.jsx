@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 
+
+// Open a modal in full screen containig the childrens
+
 const Portal = ({ children }) => {
   const mount = document.getElementById("portal-root");
   const el = document.createElement("div");
@@ -8,7 +11,7 @@ const Portal = ({ children }) => {
   useEffect(() => {
     mount.appendChild(el);
     return () => mount.removeChild(el);
-  }, [el, mount]);
+  }, [ el, mount ]);
 
   return createPortal(children, el);
 };

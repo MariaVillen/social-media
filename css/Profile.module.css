@@ -25,8 +25,9 @@
 }
 
 .content_infoLoggedUser {
-  top: 70px;
+  top: 80px;
   width: 100%;
+  padding: 0.5em;
   margin: 0 auto;
 }
 
@@ -67,6 +68,14 @@
 
 .content_main .follow {
   display: block;
+  background-color: #6fb9b5;
+  font-size: 1em;
+  color: white;
+  margin: 0 auto;
+}
+
+.content_main .unfollow {
+  display: block;
   background-color: #FD2D01;
   font-size: 1em;
   color: white;
@@ -93,6 +102,26 @@
   overflow-x: auto;
 }
 
+.friendList_name {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 1em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
 @media screen and (min-width: 992px) {
   .friendList {
     -webkit-box-orient: vertical;
@@ -116,6 +145,11 @@
   -webkit-box-pack: left;
       -ms-flex-pack: left;
           justify-content: left;
+  border-radius: 1em;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  margin: 0.5em;
+  padding: 0.5em;
 }
 
 @media screen and (min-width: 992px) {
@@ -129,10 +163,13 @@
 
 .friendList li .icon {
   border-radius: 50%;
-  color: #FD2D01;
-  border: 1px solid #FD2D01;
+  color: #6fb9b5;
+  border: 1px solid #6fb9b5;
   padding: 3px;
+  width: 40px;
+  height: 40px;
   background-color: white;
+  margin: 0 1em;
 }
 
 .friendList li .icon:hover {

@@ -1,7 +1,7 @@
 @import "../../styles-utils/graphiqueColors.scss";
 @import "../../styles-utils/mixins.scss";
 
-.createReport {
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,6 +19,7 @@
     flex-direction: column;
     padding: 1em;
     background: white;
+    max-width: 500px;
   }
 
   &_header {
@@ -34,29 +35,6 @@
     }
   }
 
-  &_body {
-    p {
-      margin-bottom: 1em;
-    }
-
-    &_text {
-      width: 90%;
-      padding: 1em;
-      background: $secondary-color;
-      margin: 0 auto;
-    }
-
-    &_edit {
-      width: 100%;
-      box-sizing: content-box;
-      resize: none;
-      font-size: 1em;
-      outline: none;
-      border: none;
-      background-color: transparent;
-    }
-  }
-
   &_footer {
     display: flex;
     justify-content: right;
@@ -65,6 +43,7 @@
     .btn {
       width: auto;
       padding: auto 1em;
+      font-size: 1.5em;
 
       &_cancel {
         background-color: $secondary-color-op;

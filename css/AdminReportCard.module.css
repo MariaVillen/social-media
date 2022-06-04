@@ -29,6 +29,14 @@
   padding: 1em;
 }
 
+.reportAdminCard_header_title {
+  font-weight: 700;
+  font-size: 1.2em;
+  text-align: left;
+  padding: 0.5em;
+  padding: 1em;
+}
+
 .reportAdminCard_main {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -54,14 +62,6 @@
       -ms-flex-align: center;
           align-items: center;
   background-color: white;
-  padding: 1em;
-}
-
-.reportAdminCard_body_title {
-  font-weight: 700;
-  font-size: 1.2em;
-  text-align: left;
-  padding: 0.5em;
   padding: 1em;
 }
 

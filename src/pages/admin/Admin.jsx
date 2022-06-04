@@ -4,7 +4,7 @@ import { Outlet, useOutletContext, Link } from "react-router-dom";
 
 export default function Admin() {
 
-  const {users} = useOutletContext();
+  const [users] = useOutletContext();
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function Admin() {
           </nav>
           <div className={classes.wrapper}>
           <h1> Panneau d'administration</h1>
-          <Outlet  context={[users]}/>
+          <Outlet context={[users]} />
         </div>
       </main>
     </>

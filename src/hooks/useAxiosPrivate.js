@@ -16,8 +16,10 @@ const useAxiosPrivate = ()=>{
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config => {
                   // first attempt
+                console.log(config?.headers);
+                console.log(auth?.accessToken);
                 if (!config.headers['authorization']) {
-                    config.headers['authorization'] = `Bearer ${auth?.newAccessToken}` //Initial token our token after refresh
+                    config.headers['authorization'] = `Bearer ${auth?.accessToken}` //Initial token our token after refresh
                 }
                 return config;
             }, (error) => Promise.reject(error)
@@ -32,9 +34,14 @@ const useAxiosPrivate = ()=>{
                
                 if (error?.response?.status === 403 && !prevRequest?.sent){
                     prevRequest.sent = true;
+                    try{
                     const newAccessToken = await refresh();
                     prevRequest.headers['authorization']=`Bearer ${newAccessToken}`;
                     return axiosPrivate(prevRequest);
+                } catch (err) {
+                    console.log(err);
+                    navigate('/login', { replace: true }); 
+                }
                 }
                 
                 return Promise.reject(error);

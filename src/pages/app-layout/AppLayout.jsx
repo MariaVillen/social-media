@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
+import SpinnerLoad from "../../components/spinner-load/SpinnerLoad";
 
 function AppLayout({ rolesList }) {
   
@@ -45,7 +46,7 @@ function AppLayout({ rolesList }) {
     };
 
     getUsers();
-
+    console.log("USER ", user);
     // if unmounted component
     return () => {
       isMounted = false;
@@ -56,7 +57,7 @@ function AppLayout({ rolesList }) {
   return (
     <div className={classes.container}>
       {isLoading ? (
-        <div>Loading...</div>
+        <SpinnerLoad className={classes.spinner}/>
       ) : (
         <>
           <div className={classes.navigation}>
@@ -64,7 +65,7 @@ function AppLayout({ rolesList }) {
           </div>
 
           <main className={classes.main}>
-            <Outlet context={{users}} />
+            <Outlet context={[users, user]} />
           </main>
         </>
       )}

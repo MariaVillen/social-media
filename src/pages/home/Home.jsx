@@ -12,14 +12,16 @@ export default function Home() {
   
   const tablet = useMediaQuery("(min-width: 768px)");
   const pc = useMediaQuery("(min-width: 1200px)");
-  const {users} = useOutletContext();
+
+  const [users, user] = useOutletContext();
+
   const [ loadPosts, isLoadPosts] = useState(true);
 
   return (
     <div className={classes.home_container}>
-      {tablet ? <Sidebar className={classes.home_sidebar} users={users} /> : <></>}
+      {tablet ? <Sidebar className={classes.home_sidebar} user = {user} users={users} /> : <></>}
       <div className={classes.home_feed_content}>
-        <Outlet context = {[isLoadPosts, loadPosts]} />
+        <Outlet context = {[isLoadPosts, loadPosts, user, users]} />
       </div>
       {pc ? (
         <Rightbar className={classes.home_more_comment_content} />

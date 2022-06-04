@@ -91,6 +91,9 @@
 
 .wrapper {
   padding: 1em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 @media screen and (min-width: 768px) {

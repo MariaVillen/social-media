@@ -1,23 +1,40 @@
 import classes from "./ProfileForm.module.scss";
+import { useState } from "react";
 import { NoAccounts, LockReset } from "@mui/icons-material";
 import TextareaForm from "../textarea-form/TextareaForm.component";
 import ImageForm from "../image-form/ImageForm";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import { useNavigate } from "react-router-dom";
+import Portal from "../portal/Portal";
+import Modal from "../modal/Modal";
 
 export default function ProfileForm( {userProfile}) {
 
   const axios = useAxiosPrivate();
   const navigate = useNavigate();
 
-  const deleteAccountHandler = ()=> {
-      // eslint-disable-next-line no-unused-expressions
-      //async ()=>{
-       // const result = await axios.delete(`/api/user/${userProfile}`);
-        //if (result) {
-        //navigate("/login", { repalce: true }); }
-      console.log("delete user");
 
+  const [confirm, setConfirm ] = useState(false);
+  const [onModal, setOnModal] = useState(false);
+
+  const deleteAccountHandler = async (e)=> {
+    e.preventDefault();
+    // eslint-disable-next-line no-unused-expressions
+
+    setOnModal(true);
+    if (confirm) {
+    try{
+      const result = await axios.delete(`/user/${userProfile.id}`);
+      if (result) {
+        navigate("/login", { repalce: true }); }
+        console.log("delete user");
+    } catch(err) {
+      console.log("Erreur en supprimir compte ", err);
+    }
+    }
+    else {
+      console.log("Suppresion annulée");
+    }
   }
 
   return (
@@ -49,6 +66,12 @@ export default function ProfileForm( {userProfile}) {
         <NoAccounts className={classes.sidebarIcon} />
         <span className={classes.sidebarListItemText}>Supprimer compte.</span>
       </button>
+      {onModal 
+        ?<Portal>
+          <Modal setConfirm={setConfirm} setOnModal = {setOnModal} message="Vous etes pour supprimer votre compte. Confirmer la suppresion de compte."></Modal>
+        </Portal>
+        : null
+      }
     </div>
   );
 }

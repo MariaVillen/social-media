@@ -51,7 +51,7 @@ export default function Topbar({rolesList}) {
           }`}
         >
           {(user.profilePicture)
-            ?<img src={user.profilePicture} alt="Profile" />
+            ?<img src={user.profilePicture || DefaultAvatar} alt="Profile" />
             : <img src={DefaultAvatar} alt="Profile"/>}
         </div>
 

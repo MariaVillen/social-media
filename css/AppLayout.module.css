@@ -13,6 +13,7 @@
 
 .main {
   min-height: calc(100vh - 70px);
+  height: 100%;
 }
 
 .navigation {
@@ -24,5 +25,9 @@
   z-index: 999;
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.spinner {
+  position: absolute;
 }
 /*# sourceMappingURL=AppLayout.module.css.map */

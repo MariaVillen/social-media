@@ -160,6 +160,12 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-decoration: none;
+  color: #333333;
+}
+
+.post_comments .comment_visited {
+  color: black;
 }
 
 .post_comments .comment:hover {
@@ -178,5 +184,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.post_comments {
+  text-decoration: none;
 }
 /*# sourceMappingURL=Post.module.css.map */

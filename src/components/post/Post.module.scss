@@ -127,6 +127,12 @@
       background-color: transparent;
       display: flex;
       align-items: center;
+      text-decoration: none;
+      color: $black-color;
+      
+      &_visited {
+        color: black;
+      }
 
       &:hover {
         color: $primary-color;
@@ -144,4 +150,7 @@
 }
 .post_menu_user {
   display: flex;
+}
+.post_comments {
+  text-decoration: none;
 }

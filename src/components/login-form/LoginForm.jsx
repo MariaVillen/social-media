@@ -1,16 +1,17 @@
-import classes from "./LoginForm.module.scss"; // styles
+import classes from "./LoginForm.module.scss"; 
 import { VisibilityOff, Visibility } from "@mui/icons-material";
+
 import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+
 import useAuth from "../../hooks/useAuth"; // Get auth information
 import api from "../../api/axios"; // db request
 
 
 const LoginForm = () => {
-  // Instance of hook for DB requests
 
   // Getting Authorization Data from AuthContext.
-  const { setAuth, persist, setPersist } = useAuth();
+  const {auth, setAuth, persist, setPersist } = useAuth();
 
   // Navigate handler
   const navigate = useNavigate();
@@ -22,9 +23,9 @@ const LoginForm = () => {
   const errRef = useRef();
 
   // Error States
-  const [email, setEmail] = useState("");
-  const [pwd, setPwd] = useState("");
-  const [errMsg, setErrMsg] = useState("");
+  const [ email, setEmail ] = useState("");
+  const [ pwd, setPwd ] = useState("");
+  const [ errMsg, setErrMsg ] = useState("");
 
   // Focus on email input at first render
   useEffect(() => {
@@ -32,17 +33,17 @@ const LoginForm = () => {
   }, []);
 
   // Reset error messages to '' if user or password changes to clear error messages.
-  useEffect(() => {
+  useEffect( () => {
     setErrMsg("");
-  }, [email, pwd]);
+  }, [ email, pwd ]);
 
   // Password visibility handler
-  const [seePass, setSeePass] = useState(false);
+  const [ seePass, setSeePass ] = useState(false);
 
-  // Form Submition
-  const submitHandler = async (e) => {
+  // Form Submition to login
+  const submitHandler = async ( e ) => {
     e.preventDefault()
-    // Requesting login to DB
+
     try {
       const response = await api.post("/auth/login", JSON.stringify({ email: email, password: pwd }), {
         headers: {'Content-Type':'application/json'},
@@ -50,19 +51,19 @@ const LoginForm = () => {
       });
 
       if (!response) {
-        console.log("No answer");
+        console.log("Pas de réponse");
         return;
       } else if (!response?.data?.accessToken) {
-        console.log("Not acces token sent");
+        console.log("Pas authorisé (token)");
         return;
       } else if (!response?.data?.userRole) {
-        console.log("No roles sent");
+        console.log("Roles manquantes");
         return;
       } else if (!response?.data?.userId) {
-        console.log("No user id sent");
+        console.log("Id de l'utilisateur manquante");
       }
-      console.log(response);
-      // Setting auth value for authcontext<
+      
+      // Setting auth value for authcontext
       const accessToken = response?.data?.accessToken;
       const userId = response?.data?.userId;
       const roles = response?.data?.userRole;
@@ -72,36 +73,39 @@ const LoginForm = () => {
       setEmail("");
       setPwd("");
       emailRef.current.focus();
-
+      console.log("Paso por login: ", auth);
       // Redirecting to last location
       navigate(from, { replace: true }); // redirect to last location
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("Pas de réponse du serveur.");
-      } else if (err.response?.status === 400) {
-        setErrMsg("Missing username or password");
-      } else if (err.response?.status === 401) {
-        setErrMsg("Nom d'utilisateur ou mot de passe incorrecte");
-      } else if (err.response?.status === 403) {
+   
+    } catch ( err ) {
+      
+      if ( !err?.response ) {
+        setErrMsg( "Pas de réponse du serveur." );
+      } else if ( err.response?.status === 400 ) {
+        setErrMsg( "Missing username or password" );
+      } else if ( err.response?.status === 401 ) {
+        setErrMsg( "Nom d'utilisateur ou mot de passe incorrecte" );
+      } else if ( err.response?.status === 403 ) {
         setErrMsg(
           "L'utilisateur n'es pas activé. Veuillez contacter avec administration."
         );
-      } else if (err.response?.status === 429) {
+      } else if ( err.response?.status === 429 ) {
         setErrMsg("Trop de tentatives, réessayez plus tard");
       } else {
-        setErrMsg("La connexion a échoué");
+        setErrMsg( "La connexion a échoué" );
       }
       errRef.current.focus();
     }
   };
 
+  // Persist Login Handler
   const togglePersist = () => {
     setPersist(prev=> !prev );
   }
 
-  useEffect(()=> {
+  useEffect( ()=> {
     localStorage.setItem("persist", persist);
-  }, [persist]);
+  }, [ persist ]);
 
 
   return (

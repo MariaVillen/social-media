@@ -13,9 +13,10 @@ import {
 import Avatar from "../avatar/avatar.component";
 import useAuth from "../../hooks/useAuth";
 import { axiosPrivate } from "../../api/axios";
+import DefaultAvatar from "../../images/avatar-default.png";
 
 
-export default function PostComment({className, postId, setTotalComments, totalComments, loadComments, setLoadComments, comment})  {
+export default function PostComment({className, setTotalComments, totalComments, loadComments, setLoadComments, comment})  {
 
 
   const {auth} = useAuth();
@@ -149,11 +150,11 @@ useEffect(  () => {
         <div className={classes.central}>
           <div className={classes.central_container}>
             <div className={classes.avatar}>
-              <Avatar userName = {comment.user.name} userImage={comment.user.profilePicture} userId = {comment.user.id}/> 
+              <Avatar userName = {comment.user?.name || "Invité"} userImage={comment.user?.profilePicture || DefaultAvatar } userId = {comment.user?.id || comment.userId}/> 
             </div>
 
             <div className={classes.body}>
-              <span>{comment.user.name}</span>
+              <span>{comment.user?.name || "Invité"}</span>
               <TextareaRezise
                 name="textComment"
                 innerRef={contentRef}
