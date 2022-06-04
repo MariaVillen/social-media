@@ -74,7 +74,7 @@ const LoginForm = () => {
       emailRef.current.focus();
 
       // Redirecting to last location
-      navigate(from, { repalce: true }); // redirect to last location
+      navigate(from, { replace: true }); // redirect to last location
     } catch (err) {
       if (!err?.response) {
         setErrMsg("Pas de réponse du serveur.");

@@ -23,7 +23,7 @@ const PersistLogin = ()=> {
         }
 
         // If no access token at all in Auth (avoid to request the refersh token every time we request the protected pages).
-
+        console.log("EXISTE EL AUTH ACCESS TOKEN ", auth?.accessToken );
         !auth?.accessToken 
             ? verifyRefreshToken() 
             : setIsLoading(false); 

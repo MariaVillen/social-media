@@ -23,9 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # images
-/public/assets/covers/*
-/public/assets/persons/*
-/public/assets/covers/*
+/public/assets
 
 # styles 
 /public/css/

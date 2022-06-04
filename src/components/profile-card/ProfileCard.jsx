@@ -4,6 +4,13 @@ import DefaultAvatar from "../../images/avatar-default.png";
 export default function ProfileCard({user, size}) {
   
   const sizeCard = size || "small";
+
+  
+  const onerrorLoad = (e) => {
+    e.target.src = DefaultAvatar;
+    e.target.onError = false;
+  }
+
   return (
     <div className={classes[sizeCard]}>
       <div className={classes.header}>
@@ -21,6 +28,7 @@ export default function ProfileCard({user, size}) {
             {user.profilePicture ? 
           <img
             className={classes.userImage}
+            onError = {onerrorLoad}
             src={user.profilePicture}
             alt={user.name}
           /> : <img
