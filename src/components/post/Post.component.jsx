@@ -11,7 +11,7 @@ import CreateReport from "../create-report/CreateReport";
 
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import useAuth from "../../hooks/useAuth";
-
+import {ROLES} from "../../helpers/rolesList";
 
 // Show a Post
 
@@ -121,7 +121,7 @@ export default function Post({ post, loadPosts, isLoadPosts, totalComments, clas
               isOpen={ setOnEdit }
               content={ post.content }
               photo={ post.attachement }
-              userId={ post.userId }
+              userShared = {post.user}
               elementId={ post.id }
               isLoadPosts={ isLoadPosts }
               loadPosts={ loadPosts }
@@ -144,7 +144,7 @@ export default function Post({ post, loadPosts, isLoadPosts, totalComments, clas
             <span className={ classes.post_date }>{ post.createdAt }</span>
           </div>
           <div className={ classes.post_menu }>
-            {auth.user.id === post.userId 
+            {auth.user.id === post.userId || auth.user.roles === ROLES.admin 
              ? (<div className={ classes.post_menu_user }>
                   <span className={ classes.post_menu_content_icon }>
                     <Delete
@@ -161,7 +161,7 @@ export default function Post({ post, loadPosts, isLoadPosts, totalComments, clas
                   </span>
               </div>) 
             : null}
-            { auth.user.id !== post.userId 
+            { auth.user.id !== post.userId || auth.user.roles === ROLES.admin
               ? ( <span className={classes.post_menu_content_icon}>
                     <Report onClick={() => { setOnReport( true ) }} className={ classes.post_menu_icon }/>
                     {onReport 

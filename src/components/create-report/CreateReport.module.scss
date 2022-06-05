@@ -44,17 +44,17 @@
       padding: 1em;
       background: $secondary-color;
       margin: 0 auto;
-    }
 
-    &_edit {
-      width: 100%;
-      box-sizing: content-box;
-      resize: none;
-      font-size: 1em;
-      outline: none;
-      border: none;
-      background-color: transparent;
-    }
+      &_edit {
+        width: 100%;
+        box-sizing: content-box;
+        resize: none;
+        font-size: 1em;
+        outline: none;
+        border: none;
+        background-color: transparent;
+      }
+    } 
   }
 
   &_footer {

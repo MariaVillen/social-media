@@ -104,8 +104,9 @@ export default function PostComment({className, setTotalComments, totalComments,
     }).then(
       ()=>{
         setOnEdit(false);
-        setTextComment(comment.content);
+        setTextComment(textComment);
         setIsMenuActive(false);
+        setLoadComments(!loadComments);
         contentRef.current.style.height = "inherit";
       }
     )
@@ -127,7 +128,7 @@ useEffect(  () => {
         if (onLike) {
           setIsLiked(onLike.message);
         }
-        setLoadComments(false);
+        setLoadComments(!loadComments);
     
       }
     }  catch(err) {

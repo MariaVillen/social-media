@@ -16,8 +16,8 @@ const useAxiosPrivate = ()=>{
         const requestIntercept = axiosPrivate.interceptors.request.use(
             config => {
                   // first attempt
-                console.log(config?.headers);
-                console.log(auth?.accessToken);
+                //console.log(config?.headers);
+                //console.log(auth?.accessToken);
                 if (!config.headers['authorization']) {
                     config.headers['authorization'] = `Bearer ${auth?.accessToken}` //Initial token our token after refresh
                 }

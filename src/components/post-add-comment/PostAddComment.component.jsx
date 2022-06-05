@@ -35,6 +35,7 @@ export default function PostComment({
           setText("");
           setTotalComments(totalComments + 1);
           setLoadComments(!loadComments);
+          
         })
         .catch((err) => {
           console.log(err);

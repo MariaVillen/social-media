@@ -31,6 +31,7 @@ function PostDetail() {
           // Stock data
           setPost(data);
           setTotalComments(data.totalComments);
+          setLoadComments(!loadComments);
           setIsLoading(false);
         } 
       } catch(err) {
@@ -45,7 +46,7 @@ function PostDetail() {
       isMounted=false;
       controller.abort();
     }
-  }, []);
+  }, [loadComments]);
 
   
   return (

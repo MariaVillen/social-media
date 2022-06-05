@@ -43,7 +43,7 @@ function ReportPannel() {
 
 
   return (
-    <>
+    <div className={classes.reportList}>
       { isLoading 
           ? <SpinnerLoad/>
           : reports && (reports?.length > 0)
@@ -58,7 +58,7 @@ function ReportPannel() {
                 )})
               : <p className={classes.notFound}>Pas de signalements trouvées.</p>
       }           
-    </>
+    </div>
   );
 }
 

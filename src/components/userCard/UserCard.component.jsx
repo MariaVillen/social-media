@@ -10,7 +10,6 @@ export default function UserCard({userInCard}) {
   const axios = useAxiosPrivate();
   const activeRef = useRef();
   const [active, setActive] = useState(userInCard.isActive);
-  console.log("user: ", userInCard.id, "status: ", active)
 
   const userActivationHandler = async ()=>{
     const idUser = userInCard.id;

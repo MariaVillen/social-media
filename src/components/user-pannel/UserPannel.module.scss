@@ -7,6 +7,12 @@
     list-style: none;
 }
 
+.friendList {
+    display: flex;
+    justify-content:space-evenly;
+    flex-flow: row wrap;
+}
+
 .activeCard {
     display: flex;
     align-items: center;
@@ -14,4 +20,5 @@
     margin: 1em;
     background-color: $secondary-color;
     @include box--shadow;
+    max-width: 500px;
 }

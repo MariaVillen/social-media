@@ -39,7 +39,7 @@ function AdminReportCard({ report, className }) {
         />
 
         <div className={ classes.reportAdminCard_header_title }>Signalement</div>
-        <div>Date de Signalement: { report.createdAt } </div>
+        <div>{ report.createdAt } </div>
 
       </div>
 

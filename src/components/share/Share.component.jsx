@@ -15,12 +15,14 @@ export default function Share({
   content,
   isOpen,
   isLoadPosts,
-  loadPosts
+  loadPosts,
+  userShared
 }) {
 
   const {user} = useAuth();
+  const userShare = userShared || user;
   const contentRef = useRef();
-  const idInput = elementId? user.id : "createPost";
+  const idInput = elementId? userShare.id : "createPost";
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
@@ -65,10 +67,10 @@ export default function Share({
     event.preventDefault();
     let formData = new FormData();
     if(file) {formData.append("image", file)};
-    formData.append("userId", user.id);
+    formData.append("userId", userShare.id);
     if(text) {formData.append("content", text)};
 
-    if ((file || text) && user.id)  {
+    if ((file || text) && userShare.id)  {
 
 
       try {
@@ -110,12 +112,12 @@ export default function Share({
       <form onSubmit={submitHandler} encType="multipart/form-data">
         <div className={classes.wrapper}>
           <div className={classes.shareHeader}>
-            <Avatar userImage={user.profilePicture} userName={user.name} userId={user.id} />
+            <Avatar userImage={userShare.profilePicture} userName={userShare.name} userId={userShare.id} />
 
             <div className={classes.shareHeader_content}>
               <TextareaRezise
                 innerRef={contentRef}
-                name={user.id || "textComment"}
+                name={userShare.id || "textComment"}
                 onChange={(e) => setText(e.target.value)}
                 placeHolder="À quoi penses-tu?"
                 className={classes.shareHeader_content_edit}
