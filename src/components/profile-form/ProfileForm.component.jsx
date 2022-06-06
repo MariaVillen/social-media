@@ -13,28 +13,29 @@ export default function ProfileForm( {userProfile}) {
   const axios = useAxiosPrivate();
   const navigate = useNavigate();
 
-
-  const [confirm, setConfirm ] = useState(false);
   const [onModal, setOnModal] = useState(false);
 
-  const deleteAccountHandler = async (e)=> {
+
+  const deleteHandler = (e) => {
+      axios.delete(`/user/${userProfile.id}`)
+      .then( ( result ) => {
+        if (result) {
+          console.log("Utilisateur supprimé");
+          navigate("/login", { repalce: true });
+        } else {
+          console.log("suppresion annulée");
+        }
+      })
+      .catch((err)=>{
+      console.log("Erreur en supprimir compte ", err);
+      })
+      setOnModal(false);
+    }
+
+  const deleteAccountHandler = (e)=> {
     e.preventDefault();
     // eslint-disable-next-line no-unused-expressions
-
     setOnModal(true);
-    if (confirm) {
-    try{
-      const result = await axios.delete(`/user/${userProfile.id}`);
-      if (result) {
-        navigate("/login", { repalce: true }); }
-        console.log("delete user");
-    } catch(err) {
-      console.log("Erreur en supprimir compte ", err);
-    }
-    }
-    else {
-      console.log("Suppresion annulée");
-    }
   }
 
   return (
@@ -68,7 +69,7 @@ export default function ProfileForm( {userProfile}) {
       </button>
       {onModal 
         ?<Portal>
-          <Modal setConfirm={setConfirm} setOnModal = {setOnModal} message="Vous etes pour supprimer votre compte. Confirmer la suppresion de compte."></Modal>
+          <Modal actionConfirm = {deleteHandler} setOnModal = {setOnModal} message="Vous etes pour supprimer votre compte. Confirmer la suppresion de compte."></Modal>
         </Portal>
         : null
       }

@@ -1,20 +1,15 @@
+import { useEffect, useState } from "react";
 import classes from "./Modal.module.scss";
 
 // Show a form to allow user create a report to a comment or post.
 
-export default function Modal({ message, setOnModal, setConfirm }) {
+export default function Modal({ message, setOnModal, actionConfirm }) {
 
+  const [onConfirm, setOnConfirm ] = useState(false);
 
   const cancelHandler = ()=>{
-    setConfirm(false);
     setOnModal(false);
   }
-
-  const confirmHandler = ()=> {
-    setConfirm(true);
-    setOnModal(false);
-  }
-  
 
   return (
         <div className={classes.modal}>
@@ -29,7 +24,7 @@ export default function Modal({ message, setOnModal, setConfirm }) {
               onClick={cancelHandler}>Annuler
             </button>
             <button
-              onClick={confirmHandler}
+              onClick={actionConfirm}
               className={`${classes.btn} ${classes.btn_submit}`}
             > Confirmer</button>
           </div>

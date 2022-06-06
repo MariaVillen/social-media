@@ -189,8 +189,8 @@ const SignUpForm = () => {
         </div>
 
         <div className={classes.authSignUp_actions}>
-          <button type="submit" className={classes.auth_actions_link} disabled={!(validEmail && validLastName && validName && validPwd && conditions)}>Créer un compte.</button>
-          <Link className={classes.auth_actions_toggle} to="/login">
+          <button type="submit" className={classes.authSignUp_actions_link} disabled={!(validEmail && validLastName && validName && validPwd && conditions)}>Créer un compte.</button>
+          <Link className={classes.authSignUp_actions_toggle} to="/login">
             Connectez-vous avec un compte existant
           </Link>
         </div>

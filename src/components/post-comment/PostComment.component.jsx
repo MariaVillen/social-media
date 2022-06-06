@@ -25,7 +25,6 @@ export default function PostComment({className, setTotalComments, totalComments,
   // id comment DOM
   const id = `comment${comment.id}${comment.postId}`;
 
-
   // Like Handler
   const [like, setLike] = useState(comment.likes);
   const [isLiked, setIsLiked] = useState(false);
@@ -113,6 +112,9 @@ export default function PostComment({className, setTotalComments, totalComments,
     
   };
   
+
+  // Get if a message was like for me
+  
 useEffect(  () => {
 
   let isMounted = true;
@@ -128,7 +130,6 @@ useEffect(  () => {
         if (onLike) {
           setIsLiked(onLike.message);
         }
-        setLoadComments(!loadComments);
     
       }
     }  catch(err) {
@@ -143,7 +144,7 @@ useEffect(  () => {
     isMounted=false;
     controller.abort();
   }
-}, [loadComments]);
+}, []);
 
   return (
     <>

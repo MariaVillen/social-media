@@ -9,6 +9,7 @@ import Avatar from "../../components/avatar/avatar.component";
 import useAuth from "../../hooks/useAuth";
 import useAxiosPrivate from "../../hooks/useAxiosPrivate";
 import SpinnerLoad from "../../components/spinner-load/SpinnerLoad";
+import { useNavigate } from "react-router-dom";
 
 // Profile Page
 
@@ -18,8 +19,11 @@ export default function Profile() {
   const params = useParams();
   const axiosPrivate = useAxiosPrivate();
   const [isLoading, setIsLoading] = useState(true);
+  let navigate = useNavigate();
+
 
   // Determinate Profile Person
+   console.log(params.id);
   const profileId = parseInt(params.id);
   const [userProfile, setUserProfile] = useState({});
   const [notMyProfile, setNotMyProfile] = useState(auth.user.id !== profileId);
@@ -91,7 +95,8 @@ export default function Profile() {
         console.log("ahora profil id es ", profileId);
         const response = await axiosPrivate.get(`/user/${profileId}`, {
           signal: controller.signal,
-        });
+        })
+        if (response.data) {
         const userLoaded = response.data;
 
         if (isMounted) {
@@ -100,6 +105,10 @@ export default function Profile() {
           setUserProfile(userLoaded);
           setIsLoading(false);
         }
+       } else {
+         console.log("not user ");
+        navigate('/notfound', { replace: true }); 
+       }
       } catch (err) {
         console.log(`"ERROR": ${err.message}`);
       }

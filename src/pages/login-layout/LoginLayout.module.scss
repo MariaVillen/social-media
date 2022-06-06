@@ -6,7 +6,12 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh;;
+  min-height: 100vh;
+  height: 100%;
+
+  @include mq("medium") {
+    min-height: 100vh;
+  }
 
   * {
     margin: 0;
@@ -20,8 +25,10 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-    @include mq(large) {
+    min-height: 100vh;
+    @include mq("large") {
       flex-direction: row;
+      min-height: 100vh;
     }
   }
 
@@ -35,9 +42,15 @@
   &_body {
     flex: 1;
     background: url("../../images/background.jpeg");
-    background-position: center;
+    background-position: inherit;
     background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
     background-color: $dark-primary;
+    @include mq("large"){
+      min-height: 100vh;
+    }
+    
   }
 
   &_title {

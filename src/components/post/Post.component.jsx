@@ -108,7 +108,7 @@ export default function Post({ post, loadPosts, isLoadPosts, totalComments, clas
       isMounted = false;
       controller.abort();
     };
-  }, [ loadPosts ]);
+  }, [ ]);
 
 
   return (

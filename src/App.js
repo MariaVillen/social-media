@@ -66,11 +66,11 @@ function App() {
         <Route index path="login" element={<LoginForm />} />
         <Route path="register" element={<SignUpForm />} />
         <Route path="forgottenPass" element={<ForgotenPass />} />
-        <Route path="unauthorized" element={<Unauthorized />} />
       </Route>
 
       {/* Cath All */}
       <Route path="/*" element={<NotFound />} />
+      <Route path="unauthorized" element={<Unauthorized />} />
     </Routes>
   );
 }

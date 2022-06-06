@@ -55,9 +55,4 @@
             flex: 2;
   }
 }
-
-/* Eliminate scrollbar */
-::-webkit-scrollbar {
-  display: none;
-}
 /*# sourceMappingURL=Home.module.css.map */
