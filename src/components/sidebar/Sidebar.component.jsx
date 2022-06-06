@@ -12,7 +12,6 @@ export default function Sidebar({className, users}) {
 
   return (
     <div className={`${classes.container} ${className}`}>
-      "
       <ProfileCard
         user={user}
       />
