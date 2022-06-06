@@ -175,5 +175,6 @@
 .friendList li .icon:hover {
   color: white;
   background-color: #FD2D01;
+  border: 1px solid #FD2D01;
 }
 /*# sourceMappingURL=Profile.module.css.map */

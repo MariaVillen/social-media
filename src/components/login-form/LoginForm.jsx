@@ -87,7 +87,7 @@ const LoginForm = () => {
         setErrMsg( "Nom d'utilisateur ou mot de passe incorrecte" );
       } else if ( err.response?.status === 403 ) {
         setErrMsg(
-          "L'utilisateur n'es pas activé. Veuillez contacter avec administration."
+          "Probleme de sécurité - Reesayez, sinon, contactez administration"
         );
       } else if ( err.response?.status === 429 ) {
         setErrMsg("Trop de tentatives, réessayez plus tard");
